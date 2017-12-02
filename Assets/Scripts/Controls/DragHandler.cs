@@ -48,7 +48,7 @@ public class DragHandler : MonoBehaviour
 
     float Remap(float _val, float _from, float _to)
     {
-        return (_val - 0) / (_to - 1f) * (_to - _from) + _from;
+        return (_val - 0) / (1f- 0f) * (_to - _from) + _from;
     }
 
     private void OnDrawGizmos()
