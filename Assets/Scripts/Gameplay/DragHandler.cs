@@ -39,7 +39,7 @@ public class DragHandler : MonoBehaviour
         //Debug.DrawLine(ray.origin, ray.origin + (ray.direction * 1000.0f), Color.red, 50.0f);
 
         RaycastHit hitInfo;
-        Physics.Raycast(ray, out hitInfo, m_MaxDistance, LayerMask.NameToLayer("Draggable"));
+        Physics.Raycast(ray, out hitInfo, m_MaxDistance);// LayerMask.NameToLayer("Ignore Raycast"));
 
         if (hitInfo.collider == null)
             return;
