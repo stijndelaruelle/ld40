@@ -106,7 +106,7 @@ public class Ship : IDamagable
         //Attach cargo to ship
         NormalizeCargoPosition(cargo);
 
-        cargo.gameObject.transform.parent = transform;
+        //cargo.gameObject.transform.parent = transform;
         cargo.StartDragEvent += OnCargoStartDrag;
 
         m_Cargo.Add(cargo);

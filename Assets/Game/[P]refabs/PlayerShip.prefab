@@ -112,7 +112,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1517885438686720}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.6, z: 2.4}
+  m_LocalPosition: {x: 0, y: 0.6, z: 3.1000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4832151526553882}
@@ -125,7 +125,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1027079090403184}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.6, z: -1.74}
+  m_LocalPosition: {x: 0, y: 0.6, z: -1.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4832151526553882}
@@ -138,7 +138,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1752262120420608}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4832151526553882}
@@ -151,7 +151,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1493785519930632}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.6, z: 2.4}
+  m_LocalPosition: {x: 0, y: 0.6, z: 3.1000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4832151526553882}
@@ -215,7 +215,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1752262120420608}
-  m_Mesh: {fileID: 4300066, guid: 7b02e82bd243a9d4d830364c208ed579, type: 3}
+  m_Mesh: {fileID: 4300068, guid: 7b02e82bd243a9d4d830364c208ed579, type: 3}
 --- !u!54 &54524081309837660
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -242,7 +242,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.9, y: 1.46, z: 5.5}
-  m_Center: {x: 0, y: 0.71, z: -0.25}
+  m_Center: {x: 0, y: 0.71, z: 0.5}
 --- !u!65 &65174039256680916
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_IsSunk: 0
   Indestructible: 0
   m_MaxSpeed: 0
-  m_WeightToSpeedRatio: 0.5
+  m_WeightToSpeedRatio: 5
   m_MaxTiltAngle: 0
   m_WeightToAngleRatio: 1
   m_RotationAnimationCurve:
@@ -3761,7 +3761,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1360734199
+  randomSeed: 1520226390
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7078,7 +7078,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1887120182
+  randomSeed: 962631751
   InitialModule:
     serializedVersion: 3
     enabled: 1
