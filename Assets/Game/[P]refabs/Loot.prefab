@@ -592,7 +592,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1896317047074152}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.12600008, y: 0.019000001, z: -0.13200003}
+  m_LocalPosition: {x: -0.004, y: 0.577, z: -0.13200003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4415925493908200}
@@ -780,7 +780,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1525801412030824}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.577, y: 0.019, z: -0.132}
+  m_LocalPosition: {x: -0.5, y: 0.541, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4519692895746440}
@@ -828,7 +828,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1060839872598508}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.12600008, y: 0.48299995, z: -0.45499995}
+  m_LocalPosition: {x: 0.124, y: 1.041, z: -0.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4408685069278274}
@@ -1497,7 +1497,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!108 &108138215805719900
 Light:
   m_ObjectHideFlags: 1
@@ -1655,9 +1655,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Position: 0
   m_Weight: 28.4
-  m_Gravity: 5
+  m_Gravity: 0
   m_SwapRotation: 0
-  m_State: 0
+  m_State: 1
   StateSmall: {fileID: 1896317047074152}
   StateMedium: {fileID: 1525801412030824}
   StateLarge: {fileID: 1060839872598508}
