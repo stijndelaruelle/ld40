@@ -18,6 +18,9 @@ public abstract class IDamagable : PoolableObject
         get { return m_IsSunk; }
     }
 
+    [SerializeField]
+    public bool Indestructible;
+
     public void Damage(int _damage)
     {
         m_Health -= _damage;
@@ -32,9 +35,16 @@ public abstract class IDamagable : PoolableObject
     {
         if (!IsSunk)
         {
-            if (collision.transform.GetComponent<Bullet>())
+            if (collision.transform.GetComponent<Bullet>() || collision.transform.GetComponent<IDamagable>())
             {
                 Damage(1);
+            }
+        }
+        else if (Indestructible)
+        {
+            if (collision.gameObject.GetComponent<IDamagable>())
+            {
+                collision.gameObject.GetComponent<IDamagable>().Damage(100);
             }
         }
     }
