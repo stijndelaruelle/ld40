@@ -48,7 +48,7 @@ public class Canon : ICargo
         if (m_CooldownTimer > 0.0f)
             return;
 
-        if (IsDragged)
+        if (CanUse)
             return;
 
         //Fire bullet

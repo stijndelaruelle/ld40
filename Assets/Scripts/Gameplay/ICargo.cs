@@ -39,6 +39,14 @@ public abstract class ICargo : MonoBehaviour
         get { return m_IsDragged; }
     }
 
+    public bool CanUse
+    {
+        get
+        {
+            return (m_IsDragged == false && m_UseGravity == true);
+        }
+    }
+
     public event CargoDelegate StartDragEvent;
     public event CargoEndDelegate EndDragEvent;
 
