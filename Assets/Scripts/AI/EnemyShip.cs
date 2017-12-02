@@ -34,8 +34,6 @@ public class EnemyShip : IDamagable
     {
         m_Player = GameObject.FindGameObjectWithTag("Player").transform;
         m_Agent = GetComponent<NavMeshAgent>();
-        m_LeftsidePlayer = m_Player.right * 20f;
-        m_RightsidePlayer = -m_Player.right * 20f;
 
         m_Canons = new List<Canon>();
         m_Canons.AddRange(GetComponentsInChildren<Canon>());
@@ -52,7 +50,10 @@ public class EnemyShip : IDamagable
     {
         if (Vector3.Distance(transform.position, m_Player.transform.position) < 30)
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(m_Player.forward), 10 * Time.deltaTime);
+            if (Vector3.Dot(transform.right, m_Player.right) > 0)
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(m_Player.forward), 10 * Time.deltaTime);
+            else
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(-m_Player.forward), 10 * Time.deltaTime);
             m_ShootCooldown += Time.deltaTime;
             if (m_ShootCooldown >= m_ShootPerSecond)
             {
@@ -66,18 +67,18 @@ public class EnemyShip : IDamagable
                 }
             }
         }
-        else
-        {
-            m_Agent.SetDestination(m_Target);
-        }
 
         if (IsSunk)
             Deactivate();
+
+        m_LeftsidePlayer = m_Player.right * 20f;
+        m_RightsidePlayer = -m_Player.right * 20f;
     }
 
     public void SteerChange()
     {
         m_Target = GetNearest();
+        m_Agent.SetDestination(m_Target);
     }
 
     private Vector3 GetNearest()

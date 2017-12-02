@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ship : MonoBehaviour
+public class Ship : IDamagable
 {
     [Header("Speed")]
     [SerializeField]
@@ -55,6 +55,11 @@ public class Ship : MonoBehaviour
         //Visually rotate
         //float tiltAngle = m_MaxTiltAngle
         transform.rotation = Quaternion.Euler(new Vector3(0.0f, m_CurrentSpeed, -m_CummulativeAngle));
+
+        if (IsSunk)
+        {
+            Debug.Log("DEAD! Play animation here");
+        }
     }
 
     private void RecalculateSpeed()
@@ -181,4 +186,26 @@ public class Ship : MonoBehaviour
     {
         RemoveCargo(cargo);
     }
+
+    #region PoolableObject
+    public override void Initialize()
+    {
+
+    }
+
+    public override void Activate()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public override void Deactivate()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public override bool IsAvailable()
+    {
+        return (!gameObject.activeInHierarchy);
+    }
+    #endregion
 }
