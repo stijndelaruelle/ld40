@@ -494,6 +494,15 @@ Prefab:
       propertyPath: m_MaxSpeed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 65002779264817196, guid: f41883b61f950924dae2fc36922d1960,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907154360944258, guid: f41883b61f950924dae2fc36922d1960, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f41883b61f950924dae2fc36922d1960, type: 2}
   m_IsPrefabParent: 0
@@ -574,7 +583,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 521501140}
-  m_LocalRotation: {x: 0.47615823, y: -0.00000019782657, z: 0.00000024685238, w: 0.87935966}
+  m_LocalRotation: {x: 0.47615823, y: -0.00000019781426, z: 0.00000024684007, w: 0.87935966}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1398,7 +1407,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1561182397}
-  m_LocalRotation: {x: 0.5010695, y: 0.00000007255245, z: -0.00000027711528, w: 0.8654071}
+  m_LocalRotation: {x: 0.5010694, y: 0.000000072547856, z: -0.00000027712912, w: 0.86540717}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1417,7 +1426,7 @@ GameObject:
   - component: {fileID: 1665286079}
   - component: {fileID: 1665286081}
   - component: {fileID: 1665286082}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Canon 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
