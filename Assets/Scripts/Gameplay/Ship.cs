@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ship : MonoBehaviour
+public class Ship : IDamagable
 {
     [Header("Speed")]
     [SerializeField]
@@ -188,5 +188,26 @@ public class Ship : MonoBehaviour
     private void OnCargoStartDrag(ICargo cargo)
     {
         RemoveCargo(cargo);
+    }
+
+    //Poolable object
+    public override void Initialize()
+    {
+
+    }
+
+    public override void Activate()
+    {
+
+    }
+
+    public override void Deactivate()
+    {
+
+    }
+
+    public override bool IsAvailable()
+    {
+        return true;
     }
 }

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: b9033b7adea482842a22d44546e0526d
-timeCreated: 1512229509
+guid: fb345507fb3bee0478b1cc8f18a1c029
+timeCreated: 1512243482
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -9,13 +9,14 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: cannonball
+    4300000: Rock_1
+    9500000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: mat_cannonball
-    second: {fileID: 2100000, guid: 0046e2fce4354004aa8bcd520c1906d6, type: 2}
+      name: MAT_Game
+    second: {fileID: 2100000, guid: 6c470b0bbedc1f542ac86def1da64e93, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -45,7 +46,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 2
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -87,7 +88,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
