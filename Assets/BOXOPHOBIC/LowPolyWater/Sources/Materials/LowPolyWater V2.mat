@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: LowPolyWater V2
   m_Shader: {fileID: 4800000, guid: 3a378783ee6abf54eb635f183e91b504, type: 3}
-  m_ShaderKeywords: _PERVERTEXSPECULAR_ON
+  m_ShaderKeywords: 
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -80,10 +80,10 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _PerVertexSpecular: 1
+    - _PerVertexSpecular: 0
     - _ReflectionBoost: 1
     - _ReflectionIntensity: 1
-    - _SmoothNormals: 0.785
+    - _SmoothNormals: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -91,11 +91,11 @@ Material:
     - _UseReflectionProbe: 0
     - _VertexSpecular: 0
     - _WaterGloss: 3
-    - _WaterSpecular: 3
-    - _WaveCycles: 1.5
-    - _WaveDirectionZX: 0
-    - _WaveHeight: 0.5
-    - _WaveSpeed: 25
+    - _WaterSpecular: 0.35
+    - _WaveCycles: 5
+    - _WaveDirectionZX: 0.602
+    - _WaveHeight: 3
+    - _WaveSpeed: 20
     - _ZWrite: 1
     - __dirty: 0
     - _gloss: 128
