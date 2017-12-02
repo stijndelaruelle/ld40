@@ -5,11 +5,24 @@ using UnityEngine.AI;
 
 public class EnemyShip : IDamagable
 {
+    public enum TargettedSide
+    {
+        LEFT,
+        RIGHT
+    }
+    public TargettedSide TargetSide;
+
     [SerializeField]
     private Transform m_Player;
     [SerializeField]
     private Vector3 m_LeftsidePlayer, m_RightsidePlayer, m_Target;
     private NavMeshAgent m_Agent;
+
+    public EnemySpawner SpawnParent
+    {
+        set;
+        private get;
+    }
 
     [SerializeField]
     private float m_ShootPerSecond;
@@ -31,8 +44,8 @@ public class EnemyShip : IDamagable
 
     public void Spawn()
     {
-        transform.position = new Vector3(Random.Range(-120f, 120f), 0, Random.Range(-120f, 120f)) + m_Player.transform.position;
-        InvokeRepeating("SteerChange", 0, 2) ;
+        transform.position = new Vector3(Random.Range(-120f, 120f), -1f, Random.Range(-120f, 120f)) + m_Player.transform.position;
+        InvokeRepeating("SteerChange", 0, 2);
     }
 
     private void Update()
@@ -57,9 +70,12 @@ public class EnemyShip : IDamagable
         {
             m_Agent.SetDestination(m_Target);
         }
+
+        if (IsSunk)
+            Deactivate();
     }
 
-    private void SteerChange()
+    public void SteerChange()
     {
         m_Target = GetNearest();
     }
@@ -68,9 +84,39 @@ public class EnemyShip : IDamagable
     {
         float _distance = Vector3.Distance(m_LeftsidePlayer, transform.position);
         if (Vector3.Distance(m_RightsidePlayer, transform.position) < _distance)
-            return m_RightsidePlayer;
+        {
+            if (SpawnParent.SideUsed == TargettedSide.LEFT)
+            {
+                SpawnParent.SideUsed = TargettedSide.RIGHT;
+                TargetSide = SpawnParent.SideUsed;
+                SpawnParent.AlertRedirection(this);
+                return m_RightsidePlayer;
+            }
+            else
+            {
+                SpawnParent.SideUsed = TargettedSide.LEFT;
+                TargetSide = SpawnParent.SideUsed;
+                SpawnParent.AlertRedirection(this);
+                return m_LeftsidePlayer;
+            }
+        }
         else
-            return m_LeftsidePlayer;
+        {
+            if (SpawnParent.SideUsed == TargettedSide.LEFT)
+            {
+                SpawnParent.SideUsed = TargettedSide.RIGHT;
+                TargetSide = SpawnParent.SideUsed;
+                SpawnParent.AlertRedirection(this);
+                return m_RightsidePlayer;
+            }
+            else
+            {
+                SpawnParent.SideUsed = TargettedSide.LEFT;
+                TargetSide = SpawnParent.SideUsed;
+                SpawnParent.AlertRedirection(this);
+                return m_LeftsidePlayer;
+            }
+        }
     }
 
     private void OnDrawGizmos()

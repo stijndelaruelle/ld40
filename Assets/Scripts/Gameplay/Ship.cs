@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ship : IDamagable
+public class Ship : MonoBehaviour
 {
     [Header("Speed")]
     [SerializeField]
     private float m_MaxSpeed;
+    private float m_CurrentSpeed;
 
     [SerializeField]
     private float m_WeightToSpeedRatio; //F.e.: if this is 5, it means: 5kg = 1 less speed
@@ -14,6 +15,8 @@ public class Ship : IDamagable
     [Header("Turning")]
     [SerializeField]
     private float m_MaxTiltAngle; //Higher than this and the ship sinks
+    private Vector2 m_CurrentDirection;
+    private float m_CummulativeAngle;
 
     [SerializeField]
     private float m_WeightToAngleRatio; //F.e.: if this is 5, it means:  5kg = add 1 degree per second
@@ -22,37 +25,56 @@ public class Ship : IDamagable
     [SerializeField]
     private float m_MaxWeight; //Higher than this and the ship sinks
 
+
+    [Header("References")]
+    [SerializeField]
+    private BoxCollider m_BoxCollider;
+
     [SerializeField]
     private List<ICargo> m_Cargo;
+    private float m_CummulativeWeight = 0.0f;
+    private float m_RelativeWeight = 0.0f;
 
-    private Vector2 m_CurrentDirection;
+
+    private void Start()
+    {
+        foreach (ICargo cargo in m_Cargo)
+        {
+            cargo.StartDragEvent += OnCargoStartDrag;
+        }
+    }
 
     private void Update()
     {
-        //Determine the speed & direction of the ship
-        float cumulativeWeight = 0;
-        float relativeWeight = 0;
+        //Actually move
+        Vector2 addedPosition = (m_CurrentSpeed * m_CurrentDirection) * Time.deltaTime;
+        transform.position = new Vector3(transform.position.x + addedPosition.x,
+                                         transform.position.y,
+                                         transform.position.z + addedPosition.y);
 
-        foreach (ICargo cargo in m_Cargo)
-        {
-            cumulativeWeight += cargo.Weight;
-            relativeWeight += cargo.Position * cargo.Weight;
-        }
+        //Visually rotate
+        //float tiltAngle = m_MaxTiltAngle
+        transform.rotation = Quaternion.Euler(new Vector3(0.0f, m_CurrentSpeed, -m_CummulativeAngle));
+    }
 
-        //Calculate speed
+    private void RecalculateSpeed()
+    {
         float lostSpeed = 0;
-        if (m_WeightToSpeedRatio > 0) { lostSpeed = cumulativeWeight / m_WeightToSpeedRatio; };
+        if (m_WeightToSpeedRatio > 0) { lostSpeed = m_CummulativeWeight / m_WeightToSpeedRatio; };
 
-        float currentSpeed = m_MaxSpeed - lostSpeed;
-        if (currentSpeed < 0.0f)
-            currentSpeed = 0.0f;
+        m_CurrentSpeed = m_MaxSpeed - lostSpeed;
+        if (m_CurrentSpeed < 0.0f)
+            m_CurrentSpeed = 0.0f;
+    }
 
+    private void RecalculateAngle()
+    {
         //Calculate angle
-        float addedAngle = 0;
-        if (m_WeightToAngleRatio > 0) { addedAngle = relativeWeight / m_WeightToAngleRatio; }
+        m_CummulativeAngle = 0;
+        if (m_WeightToAngleRatio > 0) { m_CummulativeAngle = m_RelativeWeight / m_WeightToAngleRatio; }
 
         Vector2 addedDirection = Vector2.zero;
-        addedDirection = addedDirection.DegreeToVector2(addedAngle);
+        addedDirection = addedDirection.DegreeToVector2(m_CummulativeAngle);
         addedDirection.Normalize();
 
         float currentAngle = Mathf.Atan2(addedDirection.y, addedDirection.x) * Mathf.Rad2Deg;
@@ -61,16 +83,88 @@ public class Ship : IDamagable
         m_CurrentDirection.y += addedDirection.x * Time.deltaTime;
 
         m_CurrentDirection.Normalize();
+    }
 
-        //Actually move
-        Vector2 addedPosition = (currentSpeed * m_CurrentDirection) * Time.deltaTime;
-        transform.position = new Vector3(transform.position.x + addedPosition.x,
-                                         transform.position.y,
-                                         transform.position.z + addedPosition.y);
+    public void AddCargo(ICargo cargo)
+    {
+        if (m_Cargo.Contains(cargo))
+            return;
 
-        //Visually rotate
-        //float tiltAngle = m_MaxTiltAngle
-        transform.rotation = Quaternion.Euler(new Vector3(0.0f, currentAngle, -addedAngle));
+        //Attach cargo to ship
+        NormalizeCargoPosition(cargo);
+
+        cargo.gameObject.transform.parent = transform;
+        cargo.StartDragEvent += OnCargoStartDrag;
+
+        m_Cargo.Add(cargo);
+
+        m_CummulativeWeight += cargo.Weight;
+        m_RelativeWeight += cargo.Position * cargo.Weight;
+
+        RecalculateSpeed();
+        RecalculateAngle();
+    }
+
+    public void RemoveCargo(ICargo cargo)
+    {
+        //Detach cargo from ship
+        cargo.gameObject.transform.parent = null;
+
+        //Stop listening for events
+        cargo.StartDragEvent -= OnCargoStartDrag;
+
+        //Remove from list
+        m_Cargo.Remove(cargo);
+
+        m_CummulativeWeight -= cargo.Weight;
+        m_RelativeWeight -= cargo.Position * cargo.Weight;
+
+        RecalculateSpeed();
+        RecalculateAngle();
+    }
+
+    private void NormalizeCargoPosition(ICargo cargo)
+    {
+        //Terrible calculation, sorry.
+
+        //Calculate distance from forward
+        Vector3 sameY = new Vector3(cargo.transform.position.x, transform.position.y, cargo.transform.position.z); //eliminate Y from the equation
+        Vector3 diff = (sameY - transform.position); //Diff between cargo & ship point
+        float angle = Vector3.Angle(diff, transform.forward); //Angle between that vector & the forward vector
+        float distanceS = diff.magnitude; //Distances of the diff
+
+        float distanceO = Mathf.Sin(angle * Mathf.Deg2Rad) * distanceS; //SOS
+        //Debug.Log(distanceO);
+
+        //Left or right?
+        float dot = Vector3.Dot(transform.right, diff);
+        distanceO *= Mathf.Sign(dot);
+
+        //Debug.Log(dot);
+
+        //Convert to -1, 1
+        float totalWidth = m_BoxCollider.size.x * transform.localScale.x;
+        float halfWidth = totalWidth * 0.5f;
+
+        float remapped = distanceO.Remap(-halfWidth, halfWidth, -1.0f, 1.0f);
+        remapped = Mathf.Clamp(remapped, -1.0f, 1.0f); //Can go outside because of an offset pivot.
+
+        //Debug.Log(remapped);
+        cargo.Position = remapped;
+    }
+
+    //Unity callbacks
+    public void OnCollisionEnter(Collision collision)
+    {
+        ICargo cargo = collision.collider.GetComponent<ICargo>();
+
+        if (cargo == null)
+            return;
+
+        if (cargo.IsDragged)
+            return;
+
+        AddCargo(cargo);
     }
 
     private void OnDrawGizmos()
@@ -82,26 +176,9 @@ public class Ship : IDamagable
         Gizmos.DrawLine(transform.position, lineEnd);
     }
 
-
-    #region PoolableObject
-    public override void Initialize()
+    //Custom callbacks
+    private void OnCargoStartDrag(ICargo cargo)
     {
-
+        RemoveCargo(cargo);
     }
-
-    public override void Activate()
-    {
-        gameObject.SetActive(true);
-    }
-
-    public override void Deactivate()
-    {
-        gameObject.SetActive(false);
-    }
-
-    public override bool IsAvailable()
-    {
-        return (!gameObject.activeInHierarchy);
-    }
-    #endregion
 }

@@ -1,108 +1,78 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 
+public delegate void CargoDelegate(ICargo cargo);
+
 public abstract class ICargo : MonoBehaviour
 {
     [Header("Cargo stats")]
     [SerializeField]
     [Range(-1.0f, 1.0f)]
     private float m_Position; //-1 to 1
-    private float m_CurrentPosition;
     public float Position
     {
-        get { return m_CurrentPosition; }
-        set { SetPosition(value); }
+        get { return m_Position; }
+        set { m_Position = value; }
     }
 
     [SerializeField]
     [Range(0.0f, 100.0f)]
     private float m_Weight;
-    private float m_CurrentWeight;
     public float Weight
     {
         get { return m_Weight; }
-        set { SetWeight(value); }
+        set { m_Weight = value; }
     }
 
-    [Header("Cargo animation")]
     [SerializeField]
-    private Transform m_LeftPosition;
+    private float m_Gravity;
+    private bool m_UseGravity = true;
 
     [SerializeField]
-    private Transform m_RightPosition;
+    private bool m_SwapRotation = false;
 
-    [SerializeField]
-    private float m_SnapSpeed; //Speed to change from -1 to 1
-    //private Sequence m_MoveSequence;
-
-    [SerializeField]
-    private bool m_SnapPosition;
-
-    private bool m_CanUse;
-    public bool CanUse
+    private bool m_IsDragged = false;
+    public bool IsDragged
     {
-        get { return m_CanUse; }
+        get { return m_IsDragged; }
     }
+
+    public event CargoDelegate StartDragEvent;
 
     protected virtual void Update()
     {
-        HandlePositionSnapping();
-    }
-
-    private void HandlePositionSnapping()
-    {
-        if (m_CurrentPosition != m_Position)
-        {
-            m_CanUse = false;
-            float dir = -1;
-            if (m_Position > m_CurrentPosition) { dir = 1; }
-
-            m_CurrentPosition += dir * m_SnapSpeed * Time.deltaTime;
-
-            float newDir = -1;
-            if (m_Position > m_CurrentPosition) { newDir = 1; }
-
-            //We flipped
-            if (dir + newDir == 0)
-            {
-                m_CurrentPosition = m_Position;
-                m_CanUse = true;
-            }
-
-            Vector3 newWorldPosition = Vector3.Lerp(m_LeftPosition.position, m_RightPosition.position, RemapPosition(m_CurrentPosition));
-            Quaternion newWorldRotation = Quaternion.Lerp(m_LeftPosition.rotation, m_RightPosition.rotation, RemapPosition(m_CurrentPosition));
-
-            transform.position = newWorldPosition;
-            transform.rotation = newWorldRotation;
-        }
-    }
-
-
-    //Mutators
-    private void SetPosition(float position)
-    {
-        if (m_SnapPosition)
-        {
-            position = Mathf.Sign(position);
-        }
-
-        m_Position = position;
-    }
-
-    private void SetWeight(float weight)
-    {
-        m_Weight = weight;
-    }
-
-
-    //Unity callback
-    private void OnValidate()
-    {
-        if (m_CanUse == false)
+        if (m_IsDragged == true)
             return;
 
-        SetPosition(m_Position);
-        SetWeight(m_Weight);
+        if (m_UseGravity == false)
+            return;
+
+        Vector3 gravity = new Vector3(0.0f, -m_Gravity, 0.0f);
+        transform.position += gravity * Time.deltaTime;
+    }
+
+    public void StartDrag()
+    {
+        m_IsDragged = true;
+
+        if (StartDragEvent != null)
+            StartDragEvent(this);
+    }
+
+    public void StopDrag()
+    {
+        m_IsDragged = false;
+        m_UseGravity = true;
+    }
+
+    //Unity callback
+    public void OnCollisionEnter(Collision collision)
+    {
+        m_UseGravity = false;
+    }
+
+    private void OnValidate()
+    {
     }
 
     //Utility

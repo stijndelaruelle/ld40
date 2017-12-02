@@ -46,4 +46,9 @@ public static class ExtentionMethods
     {
         return RadianToVector2(vec, degree * Mathf.Deg2Rad);
     }
+
+    public static float Remap(this float value, float rangeOneFrom, float rangeOneTo, float rangeTwoFrom, float rangeTwoTo)
+    {
+        return (value - rangeOneFrom) / (rangeOneTo - rangeOneFrom) * (rangeTwoTo - rangeTwoFrom) + rangeTwoFrom;
+    }
 }

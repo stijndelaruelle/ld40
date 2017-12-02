@@ -13,6 +13,11 @@ public class Canon : ICargo
     [SerializeField]
     private ObjectPool m_BulletPool;
 
+    private void Start()
+    {
+        m_BulletPool = GameObject.Find("BulletPool").GetComponent<ObjectPool>();
+    }
+
     protected override void Update()
     {
         base.Update();
@@ -35,9 +40,6 @@ public class Canon : ICargo
     public void Fire()
     {
         if (m_CooldownTimer > 0.0f)
-            return;
-
-        if (CanUse == false)
             return;
 
         //Fire bullet
