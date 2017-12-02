@@ -40,11 +40,16 @@ public class Ship : MonoBehaviour
         }
 
         //Calculate speed
-        float lostSpeed = cumulativeWeight / m_WeightToSpeedRatio;
+        float lostSpeed = 0;
+        if (m_WeightToSpeedRatio > 0) { lostSpeed = cumulativeWeight / m_WeightToSpeedRatio; };
+
         float currentSpeed = m_MaxSpeed - lostSpeed;
+        if (currentSpeed < 0.0f)
+            currentSpeed = 0.0f;
 
         //Calculate angle
-        float addedAngle = relativeWeight / m_WeightToAngleRatio;
+        float addedAngle = 0;
+        if (m_WeightToAngleRatio > 0) { addedAngle = relativeWeight / m_WeightToAngleRatio; }
 
         Vector2 addedDirection = Vector2.zero;
         addedDirection = addedDirection.DegreeToVector2(addedAngle);
