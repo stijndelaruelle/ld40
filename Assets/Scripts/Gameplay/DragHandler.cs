@@ -7,6 +7,10 @@ public class DragHandler : MonoBehaviour
     [SerializeField]
     private Camera m_Camera;
     private ICargo m_CurrentCargo;
+    public bool IsDragging
+    {
+        get { return (m_CurrentCargo != null); }
+    }
 
     [SerializeField]
     private float m_MinDistance;

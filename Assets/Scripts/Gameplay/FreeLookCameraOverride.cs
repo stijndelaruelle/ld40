@@ -23,7 +23,7 @@ public class FreeLookCameraOverride : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1) && m_DragHandler.IsDragging == false)
         {
             m_FreeLookCamera.m_XAxis.m_InputAxisName = m_InputAxisNameX;
             m_FreeLookCamera.m_YAxis.m_InputAxisName = m_InputAxisNameY;
