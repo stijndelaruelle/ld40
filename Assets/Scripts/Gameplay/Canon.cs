@@ -11,6 +11,9 @@ public class Canon : ICargo
     private float m_CooldownTimer;
 
     [SerializeField]
+    private Transform m_FirePosition;
+
+    [SerializeField]
     private ObjectPool m_BulletPool;
 
     private void Start()
@@ -44,7 +47,7 @@ public class Canon : ICargo
 
         //Fire bullet
         Bullet bullet = (Bullet)m_BulletPool.ActivateAvailableObject();
-        bullet.StartFlying(transform.position + (transform.forward * (transform.localScale.z * 0.5f)), transform.forward);
+        bullet.StartFlying(m_FirePosition.position, transform.forward);
 
         //Set cooldown
         m_CooldownTimer = m_Cooldown;
