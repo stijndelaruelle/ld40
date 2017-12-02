@@ -189,6 +189,7 @@ ModelImporter:
     4300062: pCube14
     4300064: pCube16
     4300066: Schip
+    4300068: Ship_Player
     9500000: //RootNode
   externalObjects:
   - first:
