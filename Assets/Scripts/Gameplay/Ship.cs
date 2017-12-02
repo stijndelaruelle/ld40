@@ -34,6 +34,9 @@ public class Ship : IDamagable
     private BoxCollider m_BoxCollider;
 
     [SerializeField]
+    private UnityMethodsForwarder m_MethodForwarder;
+
+    [SerializeField]
     private List<ICargo> m_Cargo;
     private float m_CummulativeWeight = 0.0f;
     private float m_RelativeWeight = 0.0f;
@@ -41,6 +44,8 @@ public class Ship : IDamagable
 
     private void Start()
     {
+        m_MethodForwarder.CollisionEnterEvent += OnForwardedCollisionEnter;
+
         foreach (ICargo cargo in m_Cargo)
         {
             cargo.StartDragEvent += OnCargoStartDrag;
@@ -162,7 +167,7 @@ public class Ship : IDamagable
     }
 
     //Unity callbacks
-    public void OnCollisionEnter(Collision collision)
+    public void OnForwardedCollisionEnter(Collision collision)
     {
         ICargo cargo = collision.collider.GetComponent<ICargo>();
 
