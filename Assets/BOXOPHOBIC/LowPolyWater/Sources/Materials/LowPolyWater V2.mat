@@ -63,8 +63,8 @@ Material:
     - _AbsorptionIntensity: 2
     - _BumpScale: 1
     - _Cutoff: 0.5
-    - _DepthFalloff: 3
-    - _DepthOffset: 1
+    - _DepthFalloff: 3.89
+    - _DepthOffset: 0.8
     - _DetailNormalMapScale: 1
     - _DisableReflection: 0
     - _DstBlend: 0
@@ -72,7 +72,7 @@ Material:
     - _EdgeIntensity: 1
     - _EdgeLevels: 3
     - _EdgeOffset: 0.95
-    - _FresnelPower: 3
+    - _FresnelPower: 1.32
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
