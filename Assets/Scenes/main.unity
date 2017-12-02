@@ -376,6 +376,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 428cd04114654f844b28ccd1cd6a1425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Health: 0
+  m_IsSunk: 0
   m_MaxSpeed: 1
   m_WeightToSpeedRatio: 0
   m_MaxTiltAngle: 0

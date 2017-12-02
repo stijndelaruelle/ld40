@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ship : MonoBehaviour
+public class Ship : IDamagable
 {
     [Header("Speed")]
     [SerializeField]
@@ -33,7 +33,7 @@ public class Ship : MonoBehaviour
         float cumulativeWeight = 0;
         float relativeWeight = 0;
 
-        foreach(ICargo cargo in m_Cargo)
+        foreach (ICargo cargo in m_Cargo)
         {
             cumulativeWeight += cargo.Weight;
             relativeWeight += cargo.Position * cargo.Weight;
@@ -81,4 +81,27 @@ public class Ship : MonoBehaviour
 
         Gizmos.DrawLine(transform.position, lineEnd);
     }
+
+
+    #region PoolableObject
+    public override void Initialize()
+    {
+
+    }
+
+    public override void Activate()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public override void Deactivate()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public override bool IsAvailable()
+    {
+        return (!gameObject.activeInHierarchy);
+    }
+    #endregion
 }
