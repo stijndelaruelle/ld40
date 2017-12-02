@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,14 +22,19 @@ public class Ship : IDamagable
     [SerializeField]
     private float m_WeightToAngleRatio; //F.e.: if this is 5, it means:  5kg = add 1 degree per second
 
+    [SerializeField]
+    private AnimationCurve m_RotationAnimationCurve;
+
     [Header("Weight")]
     [SerializeField]
     private float m_MaxWeight; //Higher than this and the ship sinks
 
-
     [Header("References")]
     [SerializeField]
     private BoxCollider m_BoxCollider;
+
+    [SerializeField]
+    private UnityMethodsForwarder m_MethodForwarder;
 
     [SerializeField]
     private List<ICargo> m_Cargo;
@@ -38,6 +44,8 @@ public class Ship : IDamagable
 
     private void Start()
     {
+        m_MethodForwarder.CollisionEnterEvent += OnForwardedCollisionEnter;
+
         foreach (ICargo cargo in m_Cargo)
         {
             cargo.StartDragEvent += OnCargoStartDrag;
@@ -54,12 +62,7 @@ public class Ship : IDamagable
 
         //Visually rotate
         //float tiltAngle = m_MaxTiltAngle
-        transform.rotation = Quaternion.Euler(new Vector3(0.0f, m_CurrentSpeed, -m_CummulativeAngle));
-
-        if (IsSunk)
-        {
-            Debug.Log("DEAD! Play animation here");
-        }
+        //transform.rotation = Quaternion.Euler(new Vector3(0.0f, m_CurrentSpeed, -m_CummulativeAngle));
     }
 
     private void RecalculateSpeed()
@@ -88,6 +91,11 @@ public class Ship : IDamagable
         m_CurrentDirection.y += addedDirection.x * Time.deltaTime;
 
         m_CurrentDirection.Normalize();
+
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(0.0f, m_CurrentSpeed, -m_CummulativeAngle));
+
+        Tweener tweener = transform.DORotateQuaternion(targetRotation, 1.0f);
+        tweener.SetEase(m_RotationAnimationCurve);
     }
 
     public void AddCargo(ICargo cargo)
@@ -159,7 +167,7 @@ public class Ship : IDamagable
     }
 
     //Unity callbacks
-    public void OnCollisionEnter(Collision collision)
+    public void OnForwardedCollisionEnter(Collision collision)
     {
         ICargo cargo = collision.collider.GetComponent<ICargo>();
 
@@ -175,7 +183,7 @@ public class Ship : IDamagable
     private void OnDrawGizmos()
     {
         Vector3 lineEnd = transform.position;
-        lineEnd.x += m_CurrentDirection.x * 2.0f;
+        lineEnd.x += m_CurrentDirection.x * 2.0f; //*2 just so we can see it
         lineEnd.z += m_CurrentDirection.y * 2.0f;
 
         Gizmos.DrawLine(transform.position, lineEnd);
@@ -187,7 +195,7 @@ public class Ship : IDamagable
         RemoveCargo(cargo);
     }
 
-    #region PoolableObject
+    //Poolable object
     public override void Initialize()
     {
 
@@ -195,17 +203,16 @@ public class Ship : IDamagable
 
     public override void Activate()
     {
-        gameObject.SetActive(true);
+
     }
 
     public override void Deactivate()
     {
-        gameObject.SetActive(false);
+
     }
 
     public override bool IsAvailable()
     {
-        return (!gameObject.activeInHierarchy);
+        return true;
     }
-    #endregion
 }
