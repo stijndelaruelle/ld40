@@ -14,6 +14,14 @@ public class EnemySpawner : MonoBehaviour
 
     private float m_Time;
 
+    private List<EnemyShip> m_Ships = new List<EnemyShip>();
+    private EnemyShip.TargettedSide m_SidesUsed;
+    public EnemyShip.TargettedSide SideUsed
+    {
+        get { return m_SidesUsed; }
+        set { m_SidesUsed = value; }
+    }
+
     private void Update()
     {
         m_Time += Time.deltaTime;
@@ -21,6 +29,23 @@ public class EnemySpawner : MonoBehaviour
         {
             m_Time = 0;
             EnemyShip _enemy = (EnemyShip)m_EnemyPool.ActivateAvailableObject();
+            _enemy.SpawnParent = this;
+            m_Ships.Add(_enemy);
+        }
+    }
+
+    public void AlertRedirection(EnemyShip _instigator)
+    {
+        foreach (EnemyShip _ship in m_Ships)
+        {
+            if (!_ship.gameObject.activeSelf)
+                return;
+
+            if (_ship == _instigator)
+                continue;
+
+            if (_ship.TargetSide == _instigator.TargetSide)
+                _ship.SteerChange();
         }
     }
 }
