@@ -53,8 +53,22 @@ public class DragHandler : MonoBehaviour
 
     void UpdateDrag()
     {
-        float _delta = Mathf.Clamp01(Mathf.InverseLerp(m_LeftPoint.x, m_RightPoint.x, Input.mousePosition.x));
+        if (m_MouseDelta.x < Input.mousePosition.x)
+        {
+            transform.Translate(1 * Time.deltaTime, 0, 0);
+        }
+        else
+        {
+            transform.Translate(-1 * Time.deltaTime, 0, 0);
+        }
+        float _delta = Mathf.Clamp01(Mathf.InverseLerp(m_LeftPoint.x, m_RightPoint.x, transform.position.x));
         Debug.Log(_delta);
+        m_MouseDelta.x = Input.mousePosition.x;
+
+        if (transform.position.x < m_LeftPoint.x)
+            transform.position = m_LeftPoint;
+        if (transform.position.x > m_RightPoint.x)
+            transform.position = m_RightPoint;
     }
 
     private void OnDrawGizmos()
