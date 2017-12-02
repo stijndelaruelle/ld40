@@ -2,15 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Loot : MonoBehaviour {
+public class Loot : ICargo
+{
+    [Header("General settings")]
+    [SerializeField]
+    private int m_State;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void Start()
+    {
+        EndDragEvent += ChangeState;
+    }
+
+    void ChangeState(ICargo _target)
+    {
+
+    }
+
+    public void MakeBigger()
+    {
+        m_State++;
+        // TODO: change visuals
+    }
 }

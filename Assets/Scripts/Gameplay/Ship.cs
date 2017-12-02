@@ -109,7 +109,14 @@ public class Ship : IDamagable
         cargo.gameObject.transform.parent = transform;
         cargo.StartDragEvent += OnCargoStartDrag;
 
-        m_Cargo.Add(cargo);
+        if (HasCargo(cargo) && cargo is Loot)
+        {
+            Loot _loot = (Loot)m_Cargo.Find(c => c is Loot);
+            if (_loot != null)
+                _loot.MakeBigger();
+        }
+        else
+            m_Cargo.Add(cargo);
 
         m_CummulativeWeight += cargo.Weight;
         m_RelativeWeight += cargo.Position * cargo.Weight;
@@ -134,6 +141,11 @@ public class Ship : IDamagable
 
         RecalculateSpeed();
         RecalculateAngle();
+    }
+
+    public bool HasCargo(ICargo _cargo)
+    {
+        return m_Cargo.Contains(_cargo);
     }
 
     private void NormalizeCargoPosition(ICargo cargo)
