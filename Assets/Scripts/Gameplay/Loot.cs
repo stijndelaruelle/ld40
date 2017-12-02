@@ -23,6 +23,13 @@ public class Loot : ICargo
         m_Gravity = 5f;
     }
 
+    protected override void Update()
+    {
+        base.Update();
+        if (Input.GetKeyUp(KeyCode.B))
+            MakeBigger();
+    }
+
     public void MakeBigger()
     {
         m_State++;
@@ -33,10 +40,16 @@ public class Loot : ICargo
                 StateSmall.SetActive(true);
                 break;
             case 2:
-                StateSmall.transform.DOScale(2, 2f);
+                StateSmall.transform.DOScale(1.5f, 2f);
+                StateSmall.transform.DOLocalMoveY(1f, 2f);
                 break;
             case 3:
-                StateSmall.transform.DOScale(2, 3f);
+                StateSmall.transform.DOScale(2, 2f);
+                StateSmall.transform.DOLocalMoveY(1f, 2f);
+                break;
+            case 4:
+                StateSmall.SetActive(false);
+                StateMedium.SetActive(true);
                 break;
                 /*
             case 2:
@@ -49,6 +62,7 @@ public class Loot : ICargo
                 break;
                 */
         }
+        Debug.Log("Loot state: " + m_State);
         // TODO: change visuals
     }
 
