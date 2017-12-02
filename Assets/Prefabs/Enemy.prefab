@@ -771,10 +771,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Position: 0
   m_Weight: 0
-  m_LeftPosition: {fileID: 0}
-  m_RightPosition: {fileID: 0}
-  m_SnapSpeed: 0
-  m_SnapPosition: 0
+  m_Gravity: 0
+  m_SwapRotation: 0
   m_Cooldown: 0
   m_BulletPool: {fileID: 0}
 --- !u!114 &114462079698117442
@@ -790,6 +788,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Health: 0
   m_IsSunk: 0
+  TargetSide: 0
   m_Player: {fileID: 0}
   m_LeftsidePlayer: {x: 0, y: 0, z: 0}
   m_RightsidePlayer: {x: 0, y: 0, z: 0}
@@ -808,10 +807,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Position: 0
   m_Weight: 0
-  m_LeftPosition: {fileID: 0}
-  m_RightPosition: {fileID: 0}
-  m_SnapSpeed: 0
-  m_SnapPosition: 0
+  m_Gravity: 0
+  m_SwapRotation: 0
   m_Cooldown: 0
   m_BulletPool: {fileID: 0}
 --- !u!114 &114824618423259350
@@ -827,10 +824,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Position: 0
   m_Weight: 0
-  m_LeftPosition: {fileID: 0}
-  m_RightPosition: {fileID: 0}
-  m_SnapSpeed: 0
-  m_SnapPosition: 0
+  m_Gravity: 0
+  m_SwapRotation: 0
   m_Cooldown: 0
   m_BulletPool: {fileID: 0}
 --- !u!114 &114970702133984594
@@ -846,10 +841,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Position: 0
   m_Weight: 0
-  m_LeftPosition: {fileID: 0}
-  m_RightPosition: {fileID: 0}
-  m_SnapSpeed: 0
-  m_SnapPosition: 0
+  m_Gravity: 0
+  m_SwapRotation: 0
   m_Cooldown: 0
   m_BulletPool: {fileID: 0}
 --- !u!195 &195516540400146136
@@ -862,15 +855,15 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 5
   m_Speed: 4
-  m_Acceleration: 8
+  m_Acceleration: 12
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 5
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 0
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 0.5
+  m_BaseOffset: 0
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 3
 --- !u!198 &198264211959143914
