@@ -107,7 +107,7 @@ public class Ship : IDamagable
         //Attach cargo to ship
         NormalizeCargoPosition(cargo);
 
-        cargo.gameObject.transform.parent = transform;
+        //cargo.gameObject.transform.parent = transform;
         cargo.StartDragEvent += OnCargoStartDrag;
 
         if (cargo.GetType() == typeof(Loot))
@@ -128,7 +128,7 @@ public class Ship : IDamagable
     public void RemoveCargo(ICargo cargo)
     {
         //Detach cargo from ship
-        cargo.gameObject.transform.parent = null;
+        //cargo.gameObject.transform.parent = null;
 
         //Stop listening for events
         cargo.StartDragEvent -= OnCargoStartDrag;

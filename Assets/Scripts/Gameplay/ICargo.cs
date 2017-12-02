@@ -75,6 +75,7 @@ public abstract class ICargo : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
     {
         m_UseGravity = false;
+        transform.parent = collision.collider.transform;
     }
 
     private void OnValidate()
