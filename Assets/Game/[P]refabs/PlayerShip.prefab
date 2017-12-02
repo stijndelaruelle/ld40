@@ -74,6 +74,8 @@ GameObject:
   - component: {fileID: 23211684121396858}
   - component: {fileID: 95737531259403244}
   - component: {fileID: 65002779264817196}
+  - component: {fileID: 208580315311735830}
+  - component: {fileID: 114649777490755008}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Player
@@ -207,6 +209,33 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114649777490755008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1907154360944258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 428cd04114654f844b28ccd1cd6a1425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Health: 1
+  m_IsSunk: 0
+  Indestructible: 0
+  m_MaxSpeed: 5
+  m_WeightToSpeedRatio: 0
+  m_MaxTiltAngle: 0
+  m_WeightToAngleRatio: 0
+  m_RotationAnimationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_MaxWeight: 0
+  m_BoxCollider: {fileID: 65002779264817196}
+  m_Cargo: []
 --- !u!198 &198073591810933104
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -10320,3 +10349,18 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!208 &208580315311735830
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1907154360944258}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.4640001, y: 1.148, z: 2.778}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.148, z: -0.273}
+  m_TimeToStationary: 0.5

@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4982602861500334}
   - component: {fileID: 33795870185069332}
   - component: {fileID: 23096573622194244}
+  - component: {fileID: 114981049392511776}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -154,3 +155,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1930605467011188}
   m_Mesh: {fileID: 4300000, guid: 7943cc90751eac9469763f4a2195b829, type: 3}
+--- !u!114 &114981049392511776
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1930605467011188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab902dfafac16544a899fdc45063c888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Position: 0
+  m_Weight: 0
+  m_Gravity: 0
+  m_SwapRotation: 0
+  m_Cooldown: 0
+  m_BulletPool: {fileID: 0}
