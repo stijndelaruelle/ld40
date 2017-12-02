@@ -121,7 +121,7 @@ public class Ship : IDamagable
     public void RemoveCargo(ICargo cargo)
     {
         //Detach cargo from ship
-        cargo.gameObject.transform.parent = null;
+        //cargo.gameObject.transform.parent = null;
 
         //Stop listening for events
         cargo.StartDragEvent -= OnCargoStartDrag;
