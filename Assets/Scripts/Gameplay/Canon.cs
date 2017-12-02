@@ -37,9 +37,6 @@ public class Canon : ICargo
         if (m_CooldownTimer > 0.0f)
             return;
 
-        if (CanUse == false)
-            return;
-
         //Fire bullet
         Bullet bullet = (Bullet)m_BulletPool.ActivateAvailableObject();
         bullet.StartFlying(transform.position + (transform.forward * (transform.localScale.z * 0.5f)), transform.forward);
