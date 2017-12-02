@@ -7174,6 +7174,7 @@ GameObject:
   - component: {fileID: 972795588}
   - component: {fileID: 972795587}
   - component: {fileID: 972795586}
+  - component: {fileID: 972795589}
   m_Layer: 0
   m_Name: Loot
   m_TagString: Untagged
@@ -7247,6 +7248,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 972795584}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &972795589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 972795584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c3fddb652e43524db22b89a64798e6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShipCamera: {fileID: 229400502}
+  m_LeftPoint: {x: -4.5, y: 1.5, z: 4}
+  m_RightPoint: {x: 4.5, y: 1.5, z: 4}
 --- !u!4 &1091165757 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400004, guid: 7b02e82bd243a9d4d830364c208ed579, type: 3}
@@ -7516,8 +7531,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShipCamera: {fileID: 229400502}
-  m_LeftPoint: {x: 4.5, y: 1.5, z: 2.5}
-  m_RightPoint: {x: -4.5, y: 1.5, z: 2.5}
+  m_LeftPoint: {x: -4.5, y: 1.5, z: 2.5}
+  m_RightPoint: {x: 4.5, y: 1.5, z: 2.5}
 --- !u!23 &1455767438
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10983,6 +10998,7 @@ GameObject:
   - component: {fileID: 1850870854}
   - component: {fileID: 1850870853}
   - component: {fileID: 1850870852}
+  - component: {fileID: 1850870855}
   m_Layer: 0
   m_Name: Cannon 2
   m_TagString: Untagged
@@ -11056,3 +11072,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1850870850}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1850870855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1850870850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c3fddb652e43524db22b89a64798e6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShipCamera: {fileID: 229400502}
+  m_LeftPoint: {x: -4.5, y: 1.5, z: 5.5}
+  m_RightPoint: {x: 4.5, y: 1.5, z: 5.5}

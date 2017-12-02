@@ -13,57 +13,26 @@ public class DragHandler : MonoBehaviour
     private Vector3 m_MouseDelta;
     private bool m_Dragging;
 
+    private Vector3 m_ScreenPos, m_Offset, m_CurPosition;
+
     private void Start()
     {
-        transform.position = m_LeftPoint;
+        transform.position = (m_LeftPoint + m_RightPoint) / 2f;
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnMouseDown()
     {
-        Ray _ray = m_ShipCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit _hit;
+        m_ScreenPos = m_ShipCamera.WorldToScreenPoint(gameObject.transform.position);
 
-        if (!m_Dragging)
-        {
-            if (Input.GetMouseButton(0))
-            {
-                if (Physics.Raycast(_ray, out _hit))
-                {
-                    if (_hit.collider.CompareTag("Draggable"))
-                    {
-                        m_Dragging = true;
-                        m_MouseDelta = Input.mousePosition;
-                    }
-                }
-            }
-        }
-        else
-        {
-            if (Input.GetMouseButtonUp(0))
-            {
-                m_Dragging = false;
-            }
-            else if (Input.GetMouseButton(0))
-            {
-                UpdateDrag();
-            }
-        }
+        m_Offset = gameObject.transform.position - m_ShipCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, m_ScreenPos.z));
     }
 
-    void UpdateDrag()
+    void OnMouseDrag()
     {
-        if (m_MouseDelta.x < Input.mousePosition.x)
-        {
-            transform.Translate(1 * Time.deltaTime, 0, 0);
-        }
-        else
-        {
-            transform.Translate(-1 * Time.deltaTime, 0, 0);
-        }
-        float _delta = Mathf.Clamp01(Mathf.InverseLerp(m_LeftPoint.x, m_RightPoint.x, transform.position.x));
-        Debug.Log(_delta);
-        m_MouseDelta.x = Input.mousePosition.x;
+        Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, m_ScreenPos.z);
+
+        Vector3 curPosition = m_ShipCamera.ScreenToWorldPoint(curScreenPoint);// - m_Offset;
+        transform.position = new Vector3(curPosition.x, transform.position.y, transform.position.z);
 
         if (transform.position.x < m_LeftPoint.x)
             transform.position = m_LeftPoint;
@@ -74,6 +43,8 @@ public class DragHandler : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
+        Gizmos.DrawSphere(m_LeftPoint, 0.5f);
         Gizmos.DrawLine(m_LeftPoint, m_RightPoint);
+        Gizmos.DrawSphere(m_RightPoint, 0.5f);
     }
 }
