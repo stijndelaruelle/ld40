@@ -20,6 +20,7 @@ public static class ExtentionMethods
         }
     }
 
+
     public static Vector2 Copy(this Vector2 vec)
     {
         return new Vector2(vec.x, vec.y);
@@ -33,5 +34,16 @@ public static class ExtentionMethods
     public static Quaternion Copy(this Quaternion quaternion)
     {
         return new Quaternion(quaternion.x, quaternion.y, quaternion.z, quaternion.w);
+    }
+
+
+    public static Vector2 RadianToVector2(this Vector2 vec, float radian)
+    {
+        return new Vector2(Mathf.Cos(radian), Mathf.Sin(radian));
+    }
+
+    public static Vector2 DegreeToVector2(this Vector2 vec, float degree)
+    {
+        return RadianToVector2(vec, degree * Mathf.Deg2Rad);
     }
 }
