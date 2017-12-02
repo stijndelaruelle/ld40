@@ -40,6 +40,17 @@ public class DragHandler : MonoBehaviour
             transform.position = m_RightPoint;
     }
 
+    private void OnMouseUp()
+    {
+        float _delta = Remap(Mathf.InverseLerp(m_LeftPoint.x, m_RightPoint.x, transform.position.x), -1f, 1f);
+        Debug.Log(_delta);
+    }
+
+    float Remap(float _val, float _from, float _to)
+    {
+        return (_val - 0) / (_to - 1f) * (_to - _from) + _from;
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
