@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 65705996447829862}
   - component: {fileID: 65315673334728498}
   - component: {fileID: 65174039256680916}
+  - component: {fileID: 54524081309837660}
   m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
@@ -95,7 +96,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4832151526553882}
   - component: {fileID: 114649777490755008}
-  - component: {fileID: 54893607099316252}
   - component: {fileID: 208580315311735830}
   - component: {fileID: 65144045476434826}
   m_Layer: 0
@@ -216,18 +216,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1752262120420608}
   m_Mesh: {fileID: 4300066, guid: 7b02e82bd243a9d4d830364c208ed579, type: 3}
---- !u!54 &54893607099316252
+--- !u!54 &54524081309837660
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1907154360944258}
+  m_GameObject: {fileID: 1752262120420608}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
@@ -332,7 +332,7 @@ MonoBehaviour:
   m_MaxSpeed: 0
   m_WeightToSpeedRatio: 0.5
   m_MaxTiltAngle: 0
-  m_WeightToAngleRatio: 0
+  m_WeightToAngleRatio: 1
   m_RotationAnimationCurve:
     serializedVersion: 2
     m_Curve:
@@ -444,7 +444,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 999988952
+  randomSeed: -1476567470
   InitialModule:
     serializedVersion: 3
     enabled: 1

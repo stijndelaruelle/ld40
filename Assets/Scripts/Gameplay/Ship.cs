@@ -92,7 +92,7 @@ public class Ship : IDamagable
 
         m_CurrentDirection.Normalize();
 
-        Quaternion targetRotation = Quaternion.Euler(new Vector3(0.0f, m_CurrentSpeed, -m_CummulativeAngle));
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(0.0f, currentAngle, -m_CummulativeAngle));
 
         Tweener tweener = transform.DORotateQuaternion(targetRotation, 1.0f);
         tweener.SetEase(m_RotationAnimationCurve);
