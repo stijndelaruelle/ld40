@@ -69,9 +69,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4588101701128874}
-  - component: {fileID: 114909710018758292}
-  - component: {fileID: 65440476311777146}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Lootstack_S
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +109,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1864524887997878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.67, y: 0.43, z: 0}
+  m_LocalPosition: {x: 0.39, y: 1.63, z: -0.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4367217446790496}
@@ -224,18 +222,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1451931559301538}
   m_Mesh: {fileID: 4300000, guid: f5bdadbc70bbef049a97e16bb1833f74, type: 3}
---- !u!65 &65440476311777146
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1864524887997878}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!108 &108769929082621680
 Light:
   m_ObjectHideFlags: 1
@@ -272,19 +258,3 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114909710018758292
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1864524887997878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c68d9194b0f205a42bf8969905e96d1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Position: 0
-  m_Weight: 28.4
-  m_Gravity: 5
-  m_SwapRotation: 0
-  m_State: 0

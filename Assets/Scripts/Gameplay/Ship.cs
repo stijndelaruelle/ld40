@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Ship : IDamagable
@@ -109,11 +110,10 @@ public class Ship : IDamagable
         cargo.gameObject.transform.parent = transform;
         cargo.StartDragEvent += OnCargoStartDrag;
 
-        if (HasCargo(cargo) && cargo is Loot)
+        if (cargo.GetType() == typeof(Loot))
         {
-            Loot _loot = (Loot)m_Cargo.Find(c => c is Loot);
-            if (_loot != null)
-                _loot.MakeBigger();
+            if (!HasLoot())
+                m_Cargo.Add(cargo);
         }
         else
             m_Cargo.Add(cargo);
@@ -143,9 +143,9 @@ public class Ship : IDamagable
         RecalculateAngle();
     }
 
-    public bool HasCargo(ICargo _cargo)
+    public bool HasLoot()
     {
-        return m_Cargo.Contains(_cargo);
+        return m_Cargo.OfType<Loot>().Any();
     }
 
     private void NormalizeCargoPosition(ICargo cargo)

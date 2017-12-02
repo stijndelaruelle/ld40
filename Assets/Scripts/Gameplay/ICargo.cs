@@ -27,7 +27,7 @@ public abstract class ICargo : MonoBehaviour
     }
 
     [SerializeField]
-    private float m_Gravity;
+    protected float m_Gravity;
     private bool m_UseGravity = true;
 
     [SerializeField]
