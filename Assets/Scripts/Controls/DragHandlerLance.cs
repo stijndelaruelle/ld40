@@ -4,23 +4,41 @@ using UnityEngine;
 
 public class DragHandlerLance : MonoBehaviour
 {
-
+    // tweaks
+    [Header("Camera")]
     [SerializeField]
     private Camera m_ShipCamera;
 
+    [Header("Drag Endpoints")]
     [SerializeField]
-    private Vector3 m_LeftPoint, m_RightPoint;
+    private Vector3 m_LeftPoint;
+    [SerializeField]
+    private Vector3 m_RightPoint;
+
+    // private core
     private Vector3 m_MouseDelta;
     private bool m_Dragging;
-
     private Vector3 m_ScreenPos, m_Offset, m_CurPosition;
+    private float m_DragDelta;
+
+    private Plane m_DragPlane;
+
+    // accessors
+    public float GetDragDelta
+    {
+        get { return m_DragDelta; }
+    }
+    public bool IsDragging
+    {
+        get { return m_Dragging; }
+    }
 
     private void Start()
     {
         transform.position = (m_LeftPoint + m_RightPoint) / 2f;
     }
 
-    void OnMouseDown()
+    private void OnMouseDown()
     {
         if (!m_Dragging)
         {
@@ -41,19 +59,20 @@ public class DragHandlerLance : MonoBehaviour
         }
     }
 
-    void OnMouseDrag()
+    private void OnMouseDrag()
     {
         if (m_Dragging)
         {
-            Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, m_ScreenPos.z);
+            Vector3 _curScreenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, m_ScreenPos.z);
 
-            Vector3 curPosition = m_ShipCamera.ScreenToWorldPoint(curScreenPoint);// - m_Offset;
-            transform.position = new Vector3(curPosition.x, transform.position.y, transform.position.z);
+            Vector3 _curPos = m_ShipCamera.ScreenToWorldPoint(_curScreenPos);
+            transform.position = new Vector3(_curPos.x, transform.position.y, transform.position.z);
 
             if (transform.position.x < m_LeftPoint.x)
-                transform.position = m_LeftPoint;
+                transform.position = transform.TransformPoint(m_LeftPoint);
             if (transform.position.x > m_RightPoint.x)
-                transform.position = m_RightPoint;
+                transform.position = transform.TransformPoint(m_RightPoint);
+
         }
     }
 
@@ -61,13 +80,12 @@ public class DragHandlerLance : MonoBehaviour
     {
         if (m_Dragging)
         {
-            float _delta = Remap(Mathf.InverseLerp(m_LeftPoint.x, m_RightPoint.x, transform.position.x), -1f, 1f);
-            Debug.Log(_delta);
+            m_DragDelta = Remap(Mathf.InverseLerp(m_LeftPoint.x, m_RightPoint.x, transform.position.x), -1f, 1f);
             m_Dragging = false;
         }
     }
 
-    float Remap(float _val, float _from, float _to)
+    private float Remap(float _val, float _from, float _to)
     {
         return (_val - 0) / (1f - 0f) * (_to - _from) + _from;
     }

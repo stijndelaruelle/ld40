@@ -13,6 +13,11 @@ public class Canon : ICargo
     [SerializeField]
     private ObjectPool m_BulletPool;
 
+    private void Start()
+    {
+        m_BulletPool = GameObject.Find("BulletPool").GetComponent<ObjectPool>();
+    }
+
     protected override void Update()
     {
         base.Update();
