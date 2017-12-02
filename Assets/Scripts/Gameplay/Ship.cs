@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Ship : IDamagable
@@ -106,10 +107,16 @@ public class Ship : IDamagable
         //Attach cargo to ship
         NormalizeCargoPosition(cargo);
 
-        cargo.gameObject.transform.parent = transform;
+        //cargo.gameObject.transform.parent = transform;
         cargo.StartDragEvent += OnCargoStartDrag;
 
-        m_Cargo.Add(cargo);
+        if (cargo.GetType() == typeof(Loot))
+        {
+            if (!HasLoot())
+                m_Cargo.Add(cargo);
+        }
+        else
+            m_Cargo.Add(cargo);
 
         m_CummulativeWeight += cargo.Weight;
         m_RelativeWeight += cargo.Position * cargo.Weight;
@@ -121,7 +128,7 @@ public class Ship : IDamagable
     public void RemoveCargo(ICargo cargo)
     {
         //Detach cargo from ship
-        cargo.gameObject.transform.parent = null;
+        //cargo.gameObject.transform.parent = null;
 
         //Stop listening for events
         cargo.StartDragEvent -= OnCargoStartDrag;
@@ -134,6 +141,11 @@ public class Ship : IDamagable
 
         RecalculateSpeed();
         RecalculateAngle();
+    }
+
+    public bool HasLoot()
+    {
+        return m_Cargo.OfType<Loot>().Any();
     }
 
     private void NormalizeCargoPosition(ICargo cargo)

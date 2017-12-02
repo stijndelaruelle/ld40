@@ -16,6 +16,9 @@ public class Canon : ICargo
     [SerializeField]
     private ObjectPool m_BulletPool;
 
+    [SerializeField]
+    private List<ParticleSystem> m_Particles;
+
     private void Start()
     {
         m_BulletPool = GameObject.Find("BulletPool").GetComponent<ObjectPool>();
@@ -45,11 +48,19 @@ public class Canon : ICargo
         if (m_CooldownTimer > 0.0f)
             return;
 
+        if (CanUse)
+            return;
+
         //Fire bullet
         Bullet bullet = (Bullet)m_BulletPool.ActivateAvailableObject();
         bullet.StartFlying(m_FirePosition.position, transform.forward);
 
         //Set cooldown
         m_CooldownTimer = m_Cooldown;
+
+        foreach(ParticleSystem particle in m_Particles)
+        {
+            particle.Play();
+        }
     }
 }
