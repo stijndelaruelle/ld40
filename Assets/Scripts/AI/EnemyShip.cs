@@ -32,7 +32,7 @@ public class EnemyShip : IDamagable
     public void Spawn()
     {
         transform.position = new Vector3(Random.Range(-120f, 120f), 0, Random.Range(-120f, 120f)) + m_Player.transform.position;
-        InvokeRepeating("SteerChange", 0, 2);
+        InvokeRepeating("SteerChange", 0, 2) ;
     }
 
     private void Update()
