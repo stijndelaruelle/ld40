@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Sjabloon;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,6 +20,12 @@ public class Bullet : PoolableObject
     private float m_Gravity;
     private Vector3 m_Direction;
 
+    [Header("Effects")]
+    [SerializeField]
+    private PoolableObject m_ImpactExplosion;
+
+    [SerializeField]
+    private PoolableObject m_ImpactWater;
 
     public void StartFlying(Vector3 postion, Vector3 direction, Mesh mesh, Material[] materials)
     {
@@ -50,6 +57,29 @@ public class Bullet : PoolableObject
 
         //Rotate (fix: klopt niet helemaal)
         transform.rotation = Quaternion.LookRotation(m_Direction);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        ImpactEffect effect = null;
+
+        if (collision.collider.gameObject.tag == "Water")
+        {
+            //Water effect
+            ObjectPool pool = ObjectPoolManager.Instance.GetPool(m_ImpactWater);
+            effect = (ImpactEffect)pool.ActivateAvailableObject();
+        }
+        else
+        {
+            //Other effect
+            ObjectPool pool = ObjectPoolManager.Instance.GetPool(m_ImpactExplosion);
+            effect = (ImpactEffect)pool.ActivateAvailableObject();
+        }
+
+        if (effect != null)
+            effect.Play(transform.position, Quaternion.identity);
+
+        Deactivate();
     }
 
     #region PoolableObject
