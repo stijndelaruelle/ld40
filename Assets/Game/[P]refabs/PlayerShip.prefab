@@ -1019,7 +1019,7 @@ Transform:
   - {fileID: 4102983061935972}
   - {fileID: 4907464740034584}
   m_Father: {fileID: 4962579691515198}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4551029903784564
 Transform:
@@ -1230,7 +1230,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1907154360944258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.36, y: -0.5, z: -13.21}
+  m_LocalPosition: {x: -5.36, y: 0, z: -13.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4520386482973138}
@@ -1255,7 +1255,7 @@ Transform:
   - {fileID: 4400757339587998}
   - {fileID: 4654403685620626}
   m_Father: {fileID: 4962579691515198}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4847579643289796
 Transform:
@@ -1299,7 +1299,7 @@ Transform:
   - {fileID: 4026344709187832}
   - {fileID: 4134057845908870}
   m_Father: {fileID: 4962579691515198}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4892056863522414
 Transform:
@@ -1345,12 +1345,12 @@ Transform:
   - {fileID: 4987419022957282}
   - {fileID: 4781454548721436}
   - {fileID: 4987492771261950}
-  - {fileID: 4845179122701350}
   - {fileID: 4534477084247626}
+  - {fileID: 4845179122701350}
   - {fileID: 4805582567795432}
   - {fileID: 4863334839429900}
-  - {fileID: 4975142461679602}
   - {fileID: 4871879111055726}
+  - {fileID: 4975142461679602}
   m_Father: {fileID: 4832151526553882}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1380,7 +1380,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4962579691515198}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4987419022957282
 Transform:
@@ -2447,7 +2447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4093c171a9955240b7a4f71e5eec822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weight: 0
+  m_Weight: 2
   m_Gravity: 5
   m_Collider: {fileID: 65969792925844414}
   m_Projection: {fileID: 1219663017237440}
@@ -2466,7 +2466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4093c171a9955240b7a4f71e5eec822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weight: 0
+  m_Weight: 1
   m_Gravity: 5
   m_Collider: {fileID: 65325563419813460}
   m_Projection: {fileID: 1393886302838606}
@@ -2523,7 +2523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4093c171a9955240b7a4f71e5eec822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weight: 0
+  m_Weight: 3
   m_Gravity: 5
   m_Collider: {fileID: 65861578074359282}
   m_Projection: {fileID: 1480427046337284}
@@ -2546,9 +2546,9 @@ MonoBehaviour:
   m_Gravity: 5
   m_Collider: {fileID: 65126580889470222}
   m_Projection: {fileID: 1920963072911628}
-  m_Renderer: {fileID: 0}
-  m_MeshFilter: {fileID: 0}
-  m_ActiveMaterial: {fileID: 0}
+  m_Renderer: {fileID: 23958057203544020}
+  m_MeshFilter: {fileID: 33302212677780454}
+  m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
   m_RotationSpeed: {x: 0, y: 0, z: 0}
   m_Cooldown: 1
   m_FirePosition: {fileID: 4675829686229348}
@@ -2586,7 +2586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4093c171a9955240b7a4f71e5eec822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weight: 0
+  m_Weight: 1
   m_Gravity: 5
   m_Collider: {fileID: 65460925328301796}
   m_Projection: {fileID: 1510336412696926}
@@ -2627,7 +2627,7 @@ MonoBehaviour:
   m_Health: 1
   m_IsSunk: 0
   Indestructible: 0
-  m_MaxSpeed: 0
+  m_MaxSpeed: 5
   m_WeightToSpeedRatio: 5
   m_MaxTiltAngle: 0
   m_WeightToAngleRatio: 1
@@ -2667,7 +2667,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  m_MaxWeight: 0
+  m_MaxWeight: 30
+  m_MaxDepth: -1.4
   m_WaterTrails:
   - {fileID: 198164254549829244}
   - {fileID: 198073591810933104}
@@ -2715,7 +2716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4093c171a9955240b7a4f71e5eec822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weight: 0
+  m_Weight: 1
   m_Gravity: 5
   m_Collider: {fileID: 65509578226137988}
   m_Projection: {fileID: 1147344845950592}

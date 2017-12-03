@@ -30,6 +30,10 @@ public class Ship : IDamagable
     [SerializeField]
     private float m_MaxWeight; //Higher than this and the ship sinks
 
+    [SerializeField]
+    private float m_MaxDepth; //The transform the the deepest the boat can be
+    private float m_DefaultDepth;
+
     [Header("Effects")]
     [SerializeField]
     private ParticleSystem[] m_WaterTrails;
@@ -47,6 +51,7 @@ public class Ship : IDamagable
 
     private void Start()
     {
+        m_DefaultDepth = transform.position.y;
         m_CurrentSpeed = m_MaxSpeed;
         m_CurrentDirection = new Vector2(transform.forward.x, transform.forward.z);
 
@@ -88,8 +93,10 @@ public class Ship : IDamagable
         Sequence _Seq = DOTween.Sequence();
         if (m_RelativeWeight > 0.3f || m_RelativeWeight < -0.3f)
         {
-            _Seq.Append(transform.DORotate(new Vector3(0, 0, 180), 10, RotateMode.FastBeyond360).SetEase(Ease.OutSine));
-            _Seq.Insert(0, transform.DOMoveY(1, 10));
+            float zAdd = 180 - transform.rotation.eulerAngles.z;
+            
+            _Seq.Append(transform.DORotate(new Vector3(0.0f, 0.0f, zAdd), 2, RotateMode.LocalAxisAdd).SetEase(Ease.OutSine));
+            _Seq.Insert(0, transform.DOMoveY(1, 1));
         }
         _Seq.Append(transform.DOMoveY(-5, 4));
         _Seq.Play();
@@ -175,6 +182,15 @@ public class Ship : IDamagable
         {
             Sink();
         }
+        else
+        {
+            float diff = _weight / m_MaxWeight;
+
+            float lerp = Mathf.Lerp(m_DefaultDepth, m_MaxDepth, diff);
+
+            Tweener tweener = transform.DOMoveY(lerp, 1.0f);
+            tweener.SetEase(m_RotationAnimationCurve);
+        }
     }
 
     public void RemoveCargo(ICargo cargo)
@@ -197,6 +213,7 @@ public class Ship : IDamagable
 
         RecalculateSpeed();
         RecalculateAngle();
+        CheckWeight();
     }
 
     public bool HasLoot()
