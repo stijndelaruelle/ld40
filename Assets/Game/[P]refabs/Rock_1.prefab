@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 64608303966907314}
   - component: {fileID: 208373174806996718}
   m_Layer: 0
-  m_Name: Rots
+  m_Name: Rock_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
