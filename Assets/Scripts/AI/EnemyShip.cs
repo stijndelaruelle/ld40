@@ -65,6 +65,12 @@ public class EnemyShip : IDamagable
         if (!m_Player)
             return;
 
+        if (m_Player.GetComponent<Ship>().GameEnded)
+        {
+            Sink();
+            return;
+        }
+
         if (Vector3.Distance(transform.position, m_Player.transform.position) < 30)
         {
             if (Vector3.Dot(transform.right, m_Player.right) > 0)

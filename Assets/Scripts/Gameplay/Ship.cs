@@ -45,12 +45,18 @@ public class Ship : IDamagable
     [SerializeField]
     private BoxCollider m_BoxCollider;
 
+    [HideInInspector]
+    public bool GameEnded = false;
 
     [SerializeField]
     private List<ICargo> m_Cargo;
     private float m_CummulativeWeight = 0.0f;
     private float m_RelativeWeight = 0.0f;
 
+    public List<ICargo> GetCargo
+    {
+        get { return m_Cargo; }
+    }
 
     private void Start()
     {
@@ -102,6 +108,9 @@ public class Ship : IDamagable
 
     private void OnGameOver()
     {
+        if (GameEnded)
+            return;
+
         //Drop all loot
         for (int i = m_Cargo.Count - 1; i >= 0; --i)
         {
@@ -123,7 +132,6 @@ public class Ship : IDamagable
         _Seq.Append(transform.DOMoveY(-5, 4));
         _Seq.OnComplete(m_UI.StartGameOver);
         _Seq.Play();
-
     }
 
     private void RecalculateSpeed()
