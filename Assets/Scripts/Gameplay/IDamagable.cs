@@ -39,6 +39,9 @@ public abstract class IDamagable : PoolableObject
 
     public void Damage(int _damage)
     {
+        if (Indestructible)
+            return;
+
         m_Health -= _damage;
         if (m_Health <= 0)
         {
@@ -51,12 +54,22 @@ public abstract class IDamagable : PoolableObject
 
     public void Sink()
     {
+        if (Indestructible)
+            return;
+
+        if (m_IsSunk)
+            return;
+
         m_IsSunk = true;
         if (OnSinkEvent != null)
             OnSinkEvent();
 
-        ImpactEffect bubblesFx = (ImpactEffect)ObjectPoolManager.Instance.GetPool(m_BubblePS).ActivateAvailableObject();
-        bubblesFx.Play(transform.position - transform.up, Quaternion.identity);
+        if (m_BubblePS)
+        {
+            ImpactEffect bubblesFx = (ImpactEffect)ObjectPoolManager.Instance.GetPool(m_BubblePS).ActivateAvailableObject();
+            bubblesFx.Play(transform.position - transform.up, Quaternion.identity);
+        }
+
 
         if (m_BubbleSFX)
             m_BubbleSFX.PlayOneShot(m_BubbleSFX.clip);
@@ -64,18 +77,20 @@ public abstract class IDamagable : PoolableObject
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (Indestructible)
+        {
+            if (collision.gameObject.GetComponent<IDamagable>())
+            {
+                collision.gameObject.GetComponent<IDamagable>().Damage(100);
+            }
+            return;
+        }
+
         if (!IsSunk)
         {
             if (collision.transform.GetComponent<Bullet>() || collision.transform.GetComponent<IDamagable>())
             {
                 Damage(1);
-            }
-        }
-        else if (Indestructible)
-        {
-            if (collision.gameObject.GetComponent<IDamagable>())
-            {
-                collision.gameObject.GetComponent<IDamagable>().Damage(100);
             }
         }
     }
