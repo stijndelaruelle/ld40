@@ -117,11 +117,12 @@ public abstract class ICargo : MonoBehaviour
         if (m_Collider == null)
             return;
 
-        Vector3 topPosition = transform.position + m_Collider.center + (Vector3.up * ((transform.localScale.y * m_Collider.size.y) * 0.5f));
-        Vector3 bottomPosition = transform.position + m_Collider.center + (Vector3.down * ((transform.localScale.y * m_Collider.size.y) * 0.5f));
+        Vector3 topPosition = transform.position + m_Collider.center + (GetUp() * ((transform.localScale.y * m_Collider.size.y) * 0.5f));
+        Vector3 bottomPosition = transform.position + m_Collider.center + (GetDown() * ((transform.localScale.y * m_Collider.size.y) * 0.5f));
 
         HandleFloating(topPosition);
         HandleGravity(bottomPosition);
+
         HandleSnapToShip(bottomPosition);
     }
 
@@ -144,8 +145,8 @@ public abstract class ICargo : MonoBehaviour
         RaycastHit hitInfo;
         int waterLayerMask = (1 << LayerMask.NameToLayer("Water"));
 
-        Physics.Raycast(topPosition, Vector3.up, out hitInfo, 100.0f, waterLayerMask);
-        Debug.DrawLine(topPosition, topPosition + (Vector3.up * 100.0f), Color.yellow);
+        Physics.Raycast(topPosition, GetUp(), out hitInfo, 100.0f, waterLayerMask);
+        Debug.DrawLine(topPosition, topPosition + (GetUp() * 100.0f), Color.yellow);
 
         //we hit water
         if (hitInfo.collider != null)
@@ -164,16 +165,17 @@ public abstract class ICargo : MonoBehaviour
         int inverseWaterLayerMask = ~(1 << LayerMask.NameToLayer("Water"));
 
         //Is Grounded Check
-        Physics.Raycast(bottomPosition, Vector3.down, out hitInfo, m_Gravity * 2.0f * Time.deltaTime, inverseWaterLayerMask);
 
-        Debug.DrawLine(bottomPosition, bottomPosition + (Vector3.down * 100.0f), Color.red);
+
+        Physics.Raycast(bottomPosition, GetDown(), out hitInfo, m_Gravity * 2.0f * Time.deltaTime, inverseWaterLayerMask);
+
+        Debug.DrawLine(bottomPosition, bottomPosition + (GetDown() * 100.0f), Color.yellow);
 
         m_IsGrounded = (hitInfo.collider != null && hitInfo.collider != m_Collider);
 
         if (!m_IsGrounded)
         {
-            Vector3 gravity = new Vector3(0.0f, -m_Gravity, 0.0f);
-            transform.position += gravity * Time.deltaTime;
+            transform.position += m_Gravity * GetDown() * Time.deltaTime;
         }
     }
 
@@ -183,7 +185,7 @@ public abstract class ICargo : MonoBehaviour
         if (m_IsGrounded && !m_WasGrounded)
         {
             //Raycast all the way down, because items can stack.
-            RaycastHit[] hits = Physics.RaycastAll(bottomPosition, Vector3.down, 100.0f);
+            RaycastHit[] hits = Physics.RaycastAll(bottomPosition, GetDown(), 100.0f);
 
             for (int i = 0; i < hits.Length; ++i)
             {
@@ -213,7 +215,7 @@ public abstract class ICargo : MonoBehaviour
         }
 
         //Detach
-        transform.parent = null;
+        SetParent(null);
 
         if (StartDragEvent != null)
             StartDragEvent(this);
@@ -274,13 +276,13 @@ public abstract class ICargo : MonoBehaviour
 
         //Check if we are hovering over the ship, if so parent it.
         RaycastHit hitInfo;
-        Physics.Raycast(transform.position, Vector3.down, out hitInfo, 1000.0f);// LayerMask.NameToLayer("Ignore Raycast"));
+        Physics.Raycast(transform.position, GetDown(), out hitInfo, 1000.0f);// LayerMask.NameToLayer("Ignore Raycast"));
 
         if (hitInfo.collider != null)
         {
             if (hitInfo.collider.CompareTag("Player"))
             {
-                transform.parent = hitInfo.collider.transform;
+                SetParent(hitInfo.collider.transform);
             }
         }
 
@@ -296,7 +298,7 @@ public abstract class ICargo : MonoBehaviour
 
         if (collision.collider.CompareTag("Player"))
         {
-            transform.parent = collision.collider.transform;
+            SetParent(collision.gameObject.transform);
         }
 
         ////Average the collision points
@@ -323,6 +325,10 @@ public abstract class ICargo : MonoBehaviour
         if (m_IsFloating)
             return;
 
+        //Only start floating if we are not parented
+        if (transform.parent != null)
+            return;
+
         if (other.gameObject.CompareTag("Water"))
         {
             Vector3 projectedPosition = new Vector3(transform.position.x, other.transform.position.y, transform.position.z);
@@ -343,6 +349,10 @@ public abstract class ICargo : MonoBehaviour
     private void StartFloating(Vector3 projectedPosition)
     {
         if (m_IsFloating)
+            return;
+
+        //Only start floating if we are not parented
+        if (transform.parent != null)
             return;
 
         if (m_CanFloat == true)
@@ -368,5 +378,34 @@ public abstract class ICargo : MonoBehaviour
         //return (m_Position - (-1)) / (1 - (-1)) * (1 - 0) + 0;
 
         return ((position + 1) / 2);
+    }
+
+    private void SetParent(Transform parent)
+    {
+        transform.parent = parent;
+    }
+
+    private Vector3 GetUp()
+    {
+        Vector3 up = transform.up;
+
+        if (transform.parent != null)
+        {
+            up = transform.parent.up;
+        }
+
+        return up;
+    }
+
+    private Vector3 GetDown()
+    {
+        Vector3 down = -transform.up;
+
+        if (transform.parent != null)
+        {
+            down = -transform.parent.up;
+        }
+
+        return down;
     }
 }
