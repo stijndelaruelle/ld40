@@ -16,12 +16,11 @@ public class EnemyShip : IDamagable
 
     [SerializeField]
     private Transform m_Player;
-    [SerializeField]
     private Vector3 m_LeftsidePlayer, m_RightsidePlayer, m_Target;
     private NavMeshAgent m_Agent;
 
     [SerializeField]
-    private GameObject m_Loot;
+    private GameObject[] m_Loot;
 
     public EnemySpawner SpawnParent
     {
@@ -74,12 +73,12 @@ public class EnemyShip : IDamagable
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(-m_Player.forward), 10 * Time.deltaTime);
 
             m_ShootCooldown += Time.deltaTime;
-            if (m_ShootCooldown >= m_ShootPerSecond)
+            if (m_ShootCooldown >= m_ShootPerSecond && Vector3.Distance(transform.position, m_Player.transform.position) <= 17)
             {
                 m_ShootCooldown = 0;
                 foreach (Canon _canon in m_Canons)
                 {
-                    if (Vector3.Dot(_canon.transform.forward, m_Player.transform.position) > 0)
+                    if (Vector3.Dot(_canon.transform.forward, m_Player.transform.position) < 0)
                     {
                         _canon.Fire();
                     }
@@ -89,14 +88,13 @@ public class EnemyShip : IDamagable
 
         m_LeftsidePlayer = m_Player.position + (m_Player.right * 15f);
         m_RightsidePlayer = -m_Player.position - (m_Player.right * 15f);
-
-        Debug.Log(m_Player.right);
     }
 
     private void OnSink()
     {
         m_Agent.isStopped = true;
-        GameObject _loot = Instantiate(m_Loot, transform.position + Vector3.up, Quaternion.identity);
+        int _random = Random.Range(0, m_Loot.Length);
+        GameObject _loot = Instantiate(m_Loot[_random], transform.position + Vector3.up, Quaternion.identity);
         _loot.GetComponent<Rigidbody>().AddForce(Vector3.up, ForceMode.Force);
 
         Sequence _seq = DOTween.Sequence();
