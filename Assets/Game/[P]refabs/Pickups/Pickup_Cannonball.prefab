@@ -203,6 +203,13 @@ MonoBehaviour:
   m_MeshFilter: {fileID: 33653633285542842}
   m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
   m_RotationSpeed: {x: 0, y: 0, z: 0}
+  m_CanFloat: 0
+  m_Buouncy: {fileID: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967279
+  m_WaterImpactEffect: {fileID: 114128505786344550, guid: fbf2c0d0876fedb4dbd0a1d77596c37b,
+    type: 2}
 --- !u!119 &119455627944891666
 Projector:
   m_ObjectHideFlags: 1

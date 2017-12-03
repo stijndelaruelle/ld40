@@ -37,6 +37,8 @@ public class Ship : IDamagable
     [Header("Effects")]
     [SerializeField]
     private ParticleSystem[] m_WaterTrails;
+    [SerializeField]
+    private UIHandler m_UI;
 
     [Header("References")]
     [SerializeField]
@@ -94,12 +96,14 @@ public class Ship : IDamagable
         if (m_RelativeWeight > 0.3f || m_RelativeWeight < -0.3f)
         {
             float zAdd = 180 - transform.rotation.eulerAngles.z;
-            
+
             _Seq.Append(transform.DORotate(new Vector3(0.0f, 0.0f, zAdd), 2, RotateMode.LocalAxisAdd).SetEase(Ease.OutSine));
             _Seq.Insert(0, transform.DOMoveY(1, 1));
         }
         _Seq.Append(transform.DOMoveY(-5, 4));
+        _Seq.OnComplete(m_UI.StartGameOver);
         _Seq.Play();
+
     }
 
     private void RecalculateSpeed()

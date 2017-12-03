@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using Sjabloon;
 using UnityEngine;
 
 public delegate void CargoDelegate(ICargo cargo);
@@ -56,12 +57,26 @@ public abstract class ICargo : MonoBehaviour
     [SerializeField]
     private Vector3 m_RotationSpeed;
 
+    [Header("Water")]
+    [SerializeField]
+    private bool m_CanFloat;
+
+    [SerializeField]
+    private Buouncy m_Buouncy;
+
+    [SerializeField]
+    private LayerMask m_LayerMask;
+
+    [SerializeField]
+    private PoolableObject m_WaterImpactEffect;
+
     private bool m_IsDragged = false;
     public bool IsDragged
     {
         get { return m_IsDragged; }
     }
 
+    private bool m_IsFloating = false;
     private bool m_IsGrounded = false;
     private bool m_WasGrounded = false;
 
@@ -79,6 +94,9 @@ public abstract class ICargo : MonoBehaviour
 
     protected virtual void Start()
     {
+        if (m_Renderer == null)
+            return;
+
         Material[] matArray = m_Renderer.materials;
 
         m_DefaultMaterials = new Material[matArray.Length];
@@ -86,11 +104,20 @@ public abstract class ICargo : MonoBehaviour
         {
             m_DefaultMaterials[i] = matArray[i];
         }
+
+        if (m_Buouncy != null)
+        {
+            m_Buouncy.StopBuoncy();
+            m_Buouncy.enabled = false;
+        }
     }
 
     protected virtual void Update()
     {
         if (m_IsDragged == true)
+            return;
+
+        if (m_Collider == null)
             return;
 
         Vector3 bottomPosition = transform.position + m_Collider.center + (Vector3.down * ((transform.localScale.y * m_Collider.size.y) * 0.5f));
@@ -106,9 +133,12 @@ public abstract class ICargo : MonoBehaviour
 
     private void HandleGravity(Vector3 bottomPosition)
     {
+        if (m_IsFloating)
+            return;
+
         //Is Grounded Check
         RaycastHit hitInfo;
-        Physics.Raycast(bottomPosition, Vector3.down, out hitInfo, m_Gravity * 2.0f * Time.deltaTime);
+        Physics.Raycast(bottomPosition, Vector3.down, out hitInfo, m_Gravity * 2.0f * Time.deltaTime, m_LayerMask);
 
         Debug.DrawLine(bottomPosition, bottomPosition + (Vector3.down * 100.0f), Color.red);
 
@@ -146,7 +176,15 @@ public abstract class ICargo : MonoBehaviour
     public void StartDrag()
     {
         m_IsDragged = true;
+        m_IsFloating = false;
+
         m_Collider.enabled = false;
+
+        if (m_Buouncy != null)
+        {
+            m_Buouncy.StopBuoncy();
+            m_Buouncy.enabled = false;
+        }
 
         //Detach
         transform.parent = null;
@@ -235,7 +273,6 @@ public abstract class ICargo : MonoBehaviour
             transform.parent = collision.collider.transform;
         }
 
-
         ////Average the collision points
         //Vector3 avgContact = Vector3.zero;
         //for (int i = 0; i < collision.contacts.Length; ++i)
@@ -253,6 +290,25 @@ public abstract class ICargo : MonoBehaviour
         //{
         //    transform.position += hitInfo.normal * hitInfo.distance;
         //}
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Water"))
+        {
+            Vector3 projectedPosition = new Vector3(transform.position.x, other.transform.position.y, transform.position.z);
+            if (m_CanFloat == true)
+            {
+                m_Buouncy.enabled = true;
+                m_Buouncy.StartBuoncy(projectedPosition);
+
+                m_IsFloating = true;
+                transform.parent = other.gameObject.transform;
+            }
+
+            ImpactEffect effect = (ImpactEffect)ObjectPoolManager.Instance.GetPool(m_WaterImpactEffect).ActivateAvailableObject();
+            effect.Play(projectedPosition, Quaternion.identity);
+        }
     }
 
     private void OnValidate()
