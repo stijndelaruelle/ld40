@@ -30,6 +30,10 @@ public class Ship : IDamagable
     [SerializeField]
     private float m_MaxWeight; //Higher than this and the ship sinks
 
+    [Header("Effects")]
+    [SerializeField]
+    private ParticleSystem[] m_WaterTrails;
+
     [Header("References")]
     [SerializeField]
     private BoxCollider m_BoxCollider;
@@ -74,6 +78,12 @@ public class Ship : IDamagable
         m_CurrentSpeed = m_MaxSpeed - lostSpeed;
         if (m_CurrentSpeed < 0.0f)
             m_CurrentSpeed = 0.0f;
+
+        foreach (ParticleSystem _fx in m_WaterTrails)
+        {
+            ParticleSystem.EmissionModule _emmission = _fx.emission;
+            _emmission.rateOverTimeMultiplier = Mathf.InverseLerp(0, 10, m_CurrentSpeed) * 10;
+        }
     }
 
     private void RecalculateAngle()
