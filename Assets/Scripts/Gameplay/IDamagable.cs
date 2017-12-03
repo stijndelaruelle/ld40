@@ -30,6 +30,7 @@ public abstract class IDamagable : PoolableObject
     public void Reset()
     {
         m_Health = 1;
+        m_IsSunk = false;
     }
 
     public void Damage(int _damage)

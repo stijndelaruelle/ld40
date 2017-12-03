@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIHandler : MonoBehaviour
 {
@@ -10,6 +11,13 @@ public class UIHandler : MonoBehaviour
     public void StartGameOver()
     {
         foreach (Animator _anim in m_Animators)
+        {
             _anim.SetBool("IsGameOver", true);
+        }
+    }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene("main");
     }
 }

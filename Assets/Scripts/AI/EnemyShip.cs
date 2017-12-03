@@ -53,8 +53,8 @@ public class EnemyShip : IDamagable
 
     public void Spawn()
     {
+        Debug.Log("Spawning enemy");
         transform.position = new Vector3(Random.Range(-120f, 120f), 0, Random.Range(-120f, 120f)) + m_Player.transform.position;
-        StartCoroutine(SteerChange());
     }
 
     private void Update()
@@ -64,6 +64,9 @@ public class EnemyShip : IDamagable
 
         if (!m_Player)
             return;
+
+        if (Input.GetKeyUp(KeyCode.B))
+            Sink();
 
         if (Vector3.Distance(transform.position, m_Player.transform.position) < 30)
         {
@@ -92,20 +95,23 @@ public class EnemyShip : IDamagable
 
     private void OnSink()
     {
-        m_Agent.isStopped = true;
+        //m_Agent.ResetPath();
         int _random = Random.Range(0, m_Loot.Length);
-        GameObject _loot = Instantiate(m_Loot[_random], transform.position + Vector3.up, Quaternion.identity);
-        _loot.GetComponent<Rigidbody>().AddForce(Vector3.up, ForceMode.Force);
+        GameObject _loot = Instantiate(m_Loot[_random], transform.position - (Vector3.up * 2), Quaternion.identity);
 
         Sequence _seq = DOTween.Sequence();
         _seq.Append(transform.DORotate(new Vector3(90, 0, 0), 2));
-        _seq.Append(transform.DOMoveZ(-10, 4));
+        _seq.Append(transform.DOMoveY(-5, 4));
+        _seq.AppendInterval(10);
         _seq.OnComplete(Deactivate);
         _seq.Play();
     }
 
     public void ChangeDirection()
     {
+        if (IsSunk)
+            return;
+
         m_Target = GetNearest();
         m_Agent.SetDestination(m_Target);
     }
@@ -122,6 +128,7 @@ public class EnemyShip : IDamagable
             }
             yield return new WaitForSeconds(3);
         }
+        m_Agent.ResetPath();
     }
 
     private Vector3 GetNearest()
@@ -182,12 +189,18 @@ public class EnemyShip : IDamagable
     public override void Activate()
     {
         gameObject.SetActive(true);
-        Reset();
+        if (m_Agent)
+            StartCoroutine(SteerChange());
     }
 
     public override void Deactivate()
     {
         gameObject.SetActive(false);
+        gameObject.transform.position = Vector3.zero;
+        gameObject.transform.rotation = Quaternion.identity;
+        Reset();
+        if (m_Agent)
+            Start();
     }
 
     public override bool IsAvailable()

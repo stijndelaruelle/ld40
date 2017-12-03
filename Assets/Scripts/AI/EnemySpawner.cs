@@ -35,7 +35,8 @@ public class EnemySpawner : MonoBehaviour
             EnemyShip _enemy = (EnemyShip)m_EnemyPool.ActivateAvailableObject();
             _enemy.SetPlayer(m_Player);
             _enemy.SpawnParent = this;
-            m_Ships.Add(_enemy);
+            if (!m_Ships.Contains(_enemy))
+                m_Ships.Add(_enemy);
         }
     }
 
