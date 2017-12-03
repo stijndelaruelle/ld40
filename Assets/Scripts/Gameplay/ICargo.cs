@@ -2,11 +2,13 @@
 using UnityEngine;
 
 public delegate void CargoDelegate(ICargo cargo);
+public delegate void CargoEndDelegate(ICargo cargo);
+
 
 public abstract class ICargo : MonoBehaviour
 {
     [Header("Cargo stats")]
-    [SerializeField]
+    //[SerializeField]
     [Range(-1.0f, 1.0f)]
     private float m_Position; //-1 to 1
     public float Position
@@ -25,11 +27,8 @@ public abstract class ICargo : MonoBehaviour
     }
 
     [SerializeField]
-    private float m_Gravity;
+    protected float m_Gravity;
     private bool m_UseGravity = true;
-
-    [SerializeField]
-    private bool m_SwapRotation = false;
 
     private bool m_IsDragged = false;
     public bool IsDragged
@@ -37,7 +36,16 @@ public abstract class ICargo : MonoBehaviour
         get { return m_IsDragged; }
     }
 
+    public bool CanUse
+    {
+        get
+        {
+            return (m_IsDragged == false && m_UseGravity == false);
+        }
+    }
+
     public event CargoDelegate StartDragEvent;
+    public event CargoEndDelegate EndDragEvent;
 
     protected virtual void Update()
     {
@@ -63,12 +71,16 @@ public abstract class ICargo : MonoBehaviour
     {
         m_IsDragged = false;
         m_UseGravity = true;
+
+        if (EndDragEvent != null)
+            EndDragEvent(this);
     }
 
     //Unity callback
     public void OnCollisionEnter(Collision collision)
     {
         m_UseGravity = false;
+        transform.parent = collision.collider.transform;
     }
 
     private void OnValidate()

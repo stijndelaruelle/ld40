@@ -16,6 +16,13 @@ public class Canon : ICargo
     [SerializeField]
     private ObjectPool m_BulletPool;
 
+    [Header("Effects")]
+    [SerializeField]
+    private GameObject m_Projection;
+
+    [SerializeField]
+    private List<ParticleSystem> m_Particles;
+
     private void Start()
     {
         m_BulletPool = GameObject.Find("BulletPool").GetComponent<ObjectPool>();
@@ -32,6 +39,7 @@ public class Canon : ICargo
         }
 
         HandleCooldownTimer();
+        HandleDragging();
     }
 
     private void HandleCooldownTimer()
@@ -40,9 +48,44 @@ public class Canon : ICargo
             m_CooldownTimer -= Time.deltaTime;
     }
 
+    private void HandleDragging()
+    {
+        m_Projection.SetActive(IsDragged);
+
+        if (!IsDragged)
+            return;
+
+        RaycastHit hitInfo;
+        Physics.Raycast(transform.position, Vector3.down, out hitInfo, 1000.0f);
+
+        if (hitInfo.collider == null)
+            return;
+
+        //Super cheap.
+        if (hitInfo.collider.gameObject.tag != "Player")
+            return;
+
+        Vector3 diff = transform.position - hitInfo.collider.transform.position;
+        Vector3 right = hitInfo.collider.gameObject.transform.right;
+
+        float dot = Vector3.Dot(right, diff);
+
+        if (dot < 0)
+        {
+            transform.DOLocalRotate(new Vector3(0.0f, -90.0f, 0.0f), 0.5f);
+        }
+        else
+        {
+            transform.DOLocalRotate(new Vector3(0.0f, 90.0f, 0.0f), 0.5f);
+        }
+    }
+
     public void Fire()
     {
         if (m_CooldownTimer > 0.0f)
+            return;
+
+        if (CanUse == false)
             return;
 
         //Fire bullet
@@ -51,5 +94,10 @@ public class Canon : ICargo
 
         //Set cooldown
         m_CooldownTimer = m_Cooldown;
+
+        foreach(ParticleSystem particle in m_Particles)
+        {
+            particle.Play();
+        }
     }
 }
