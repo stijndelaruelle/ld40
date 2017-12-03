@@ -218,7 +218,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1930605467011188}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -10.8, y: 1.15, z: -0.56}
+  m_LocalPosition: {x: 8.5, y: 2.78, z: -4.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4272405545158666}
@@ -353,6 +353,13 @@ MonoBehaviour:
   m_MeshFilter: {fileID: 33362092778461496}
   m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
   m_RotationSpeed: {x: 0, y: 0, z: 0}
+  m_CanFloat: 0
+  m_Buouncy: {fileID: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967279
+  m_WaterImpactEffect: {fileID: 114128505786344550, guid: fbf2c0d0876fedb4dbd0a1d77596c37b,
+    type: 2}
   m_Cooldown: 1
   m_FirePosition: {fileID: 4740954956913950}
   m_Bullet: {fileID: 114230959367164540, guid: bfd1778eef98505428508311fd4e5c69, type: 2}

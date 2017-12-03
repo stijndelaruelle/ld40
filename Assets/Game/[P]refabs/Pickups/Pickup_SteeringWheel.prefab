@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 114267406242957554}
   - component: {fileID: 65064926502201580}
   - component: {fileID: 54626125683633540}
+  - component: {fileID: 114128895239998704}
   m_Layer: 0
   m_Name: Pickup_SteeringWheel
   m_TagString: Untagged
@@ -172,6 +173,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8559818, y: 0.86946285, z: 0.20250607}
   m_Center: {x: -0.007866859, y: -0.00009089708, z: -0.047962427}
+--- !u!114 &114128895239998704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1984422428070490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3910df946c4b6534281bdd563c10532c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Offset: {x: 0, y: 0, z: 0}
 --- !u!114 &114267406242957554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,6 +204,13 @@ MonoBehaviour:
   m_MeshFilter: {fileID: 33275468921953084}
   m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
   m_RotationSpeed: {x: 0, y: 150, z: 0}
+  m_CanFloat: 1
+  m_Buouncy: {fileID: 114128895239998704}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967279
+  m_WaterImpactEffect: {fileID: 114128505786344550, guid: fbf2c0d0876fedb4dbd0a1d77596c37b,
+    type: 2}
 --- !u!114 &114972095068516982
 MonoBehaviour:
   m_ObjectHideFlags: 1

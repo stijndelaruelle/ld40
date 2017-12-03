@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 114320079472675414}
   - component: {fileID: 65647186182084770}
   - component: {fileID: 54084189580159180}
+  - component: {fileID: 114164673027312022}
   m_Layer: 0
   m_Name: Pickup_Loot_Barrel_OnStand
   m_TagString: Untagged
@@ -96,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1677187049523864}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.944, y: 1.096, z: 1.094}
+  m_LocalPosition: {x: 8.476, y: 2.786, z: -3.2510319}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4672257787882362}
@@ -185,6 +186,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Rotation: {x: 0, y: 0, z: 150}
+--- !u!114 &114164673027312022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1677187049523864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3910df946c4b6534281bdd563c10532c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Offset: {x: 0, y: 0, z: 0}
 --- !u!114 &114320079472675414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -204,6 +217,13 @@ MonoBehaviour:
   m_MeshFilter: {fileID: 33994711730887276}
   m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
   m_RotationSpeed: {x: 0, y: 150, z: 0}
+  m_CanFloat: 1
+  m_Buouncy: {fileID: 114164673027312022}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967279
+  m_WaterImpactEffect: {fileID: 114128505786344550, guid: fbf2c0d0876fedb4dbd0a1d77596c37b,
+    type: 2}
   m_Value: 30
 --- !u!119 &119211943067678438
 Projector:
