@@ -342,8 +342,11 @@ public abstract class ICargo : MonoBehaviour
                 ImpactEffect effect = (ImpactEffect)ObjectPoolManager.Instance.GetPool(m_WaterImpactEffect).ActivateAvailableObject();
                 effect.Play(projectedPosition, Quaternion.identity);
 
-                ImpactEffect bubblesFx = (ImpactEffect)ObjectPoolManager.Instance.GetPool(m_BubblesEffect).ActivateAvailableObject();
-                bubblesFx.Play(projectedPosition, Quaternion.identity);
+                if (m_BubblesEffect)
+                {
+                    ImpactEffect bubblesFx = (ImpactEffect)ObjectPoolManager.Instance.GetPool(m_BubblesEffect).ActivateAvailableObject();
+                    bubblesFx.Play(projectedPosition, Quaternion.identity);
+                }
             }
 
         }

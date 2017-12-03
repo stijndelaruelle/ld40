@@ -56,7 +56,7 @@ public abstract class IDamagable : PoolableObject
             OnSinkEvent();
 
         ImpactEffect bubblesFx = (ImpactEffect)ObjectPoolManager.Instance.GetPool(m_BubblePS).ActivateAvailableObject();
-        bubblesFx.Play(transform.position, Quaternion.identity);
+        bubblesFx.Play(transform.position - transform.up, Quaternion.identity);
 
         if (m_BubbleSFX)
             m_BubbleSFX.PlayOneShot(m_BubbleSFX.clip);
