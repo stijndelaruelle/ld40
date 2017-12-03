@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23471891516451828}
   - component: {fileID: 95931778525633442}
   m_Layer: 0
-  m_Name: Pickup_Skull 1
+  m_Name: Pickup_Skull_WIN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
