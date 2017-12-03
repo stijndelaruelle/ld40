@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Loot : ICargo
+public class LootOld : ICargo
 {
     [Header("General settings")]
     [SerializeField]
@@ -68,7 +68,7 @@ public class Loot : ICargo
 
     private new void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.gameObject.GetComponent<Loot>() && m_Gravity == 0)
+        if (collision.collider.gameObject.GetComponent<LootOld>() && m_Gravity == 0)
         {
             Debug.Log(collision.collider.name);
             Destroy(collision.gameObject);

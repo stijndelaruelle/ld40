@@ -45,6 +45,9 @@ public class Ship : IDamagable
 
     private void Start()
     {
+        m_CurrentSpeed = m_MaxSpeed;
+        m_CurrentDirection = new Vector2(transform.forward.x, transform.forward.z);
+
         m_MethodForwarder.CollisionEnterEvent += OnForwardedCollisionEnter;
 
         foreach (ICargo cargo in m_Cargo)
@@ -61,10 +64,6 @@ public class Ship : IDamagable
         transform.position = new Vector3(transform.position.x + addedPosition.x,
                                          transform.position.y,
                                          transform.position.z + addedPosition.y);
-
-        //Visually rotate
-        //float tiltAngle = m_MaxTiltAngle
-        //transform.rotation = Quaternion.Euler(new Vector3(0.0f, m_CurrentSpeed, -m_CummulativeAngle));
     }
 
     private void RecalculateSpeed()
@@ -112,7 +111,7 @@ public class Ship : IDamagable
         cargo.StartDragEvent += OnCargoStartDrag;
         cargo.DestroyEvent += OnCargoDestroy;
 
-        if (cargo.GetType() == typeof(Loot))
+        if (cargo.GetType() == typeof(LootOld))
         {
             if (!HasLoot())
                 m_Cargo.Add(cargo);
@@ -148,7 +147,7 @@ public class Ship : IDamagable
 
     public bool HasLoot()
     {
-        return m_Cargo.OfType<Loot>().Any();
+        return m_Cargo.OfType<LootOld>().Any();
     }
 
     private void NormalizeCargoPosition(ICargo cargo)
