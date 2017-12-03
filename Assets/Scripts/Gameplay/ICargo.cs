@@ -93,8 +93,12 @@ public abstract class ICargo : MonoBehaviour
             return;
 
         //Is Grounded Check
+        Vector3 bottomPosition = transform.position + m_Collider.center + (Vector3.down * ((transform.localScale.y * m_Collider.size.y) * 0.5f));
+
         RaycastHit hitInfo;
-        Physics.Raycast(transform.position, Vector3.down, out hitInfo, m_Gravity * Time.deltaTime);
+        Physics.Raycast(bottomPosition, Vector3.down, out hitInfo, m_Gravity * Time.deltaTime);
+
+        Debug.DrawLine(bottomPosition, bottomPosition + (Vector3.down * 100.0f), Color.red);
 
         m_IsGrounded = (hitInfo.collider != null && hitInfo.collider != m_Collider);
 
