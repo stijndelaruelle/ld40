@@ -153,7 +153,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1977795866406816}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.68, y: 1.89, z: 0}
+  m_LocalPosition: {x: -10.1, y: 1.096, z: 2.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4492406965904308}
@@ -285,16 +285,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5ceb668b65bd794b9fe67d46789cc70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weight: 5
+  m_Weight: 10
   m_Gravity: 5
   m_Collider: {fileID: 65384756883597392}
   m_Projection: {fileID: 1503590891222162}
   m_Renderer: {fileID: 23905328304089630}
   m_MeshFilter: {fileID: 33241839939799270}
-  m_MaterialID: 1
-  m_DefaultMaterial: {fileID: 2100000, guid: f7d2d06c00bd10949b783fe7ca53f31f, type: 2}
-  m_ActiveMaterial: {fileID: 2100000, guid: b064c2e7555d94940a872e1153d91e07, type: 2}
-  m_Value: 100
+  m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
+  m_RotationSpeed: {x: 0, y: 150, z: 0}
+  m_Value: 200
 --- !u!119 &119455285417384232
 Projector:
   m_ObjectHideFlags: 1

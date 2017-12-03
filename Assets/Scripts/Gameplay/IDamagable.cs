@@ -27,19 +27,28 @@ public abstract class IDamagable : PoolableObject
     [SerializeField]
     public bool Indestructible;
 
+    public void Reset()
+    {
+        m_Health = 1;
+    }
+
     public void Damage(int _damage)
     {
         m_Health -= _damage;
         if (m_Health <= 0)
         {
             m_Health = 0;
-            m_IsSunk = true;
-            if (OnSinkEvent != null)
-                OnSinkEvent();
+            Sink();
         }
-
         if (OnDamageEvent != null)
             OnDamageEvent();
+    }
+
+    public void Sink()
+    {
+        m_IsSunk = true;
+        if (OnSinkEvent != null)
+            OnSinkEvent();
     }
 
     private void OnCollisionEnter(Collision collision)

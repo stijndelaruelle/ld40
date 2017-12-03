@@ -50,6 +50,7 @@ ModelImporter:
     100084: Ship_Roer
     100086: Ship_RoerHolder
     100088: ShipSail
+    100090: Ship_Boeg
     400000: pCube1
     400002: pCube2
     400004: //RootNode
@@ -95,6 +96,7 @@ ModelImporter:
     400084: Ship_Roer
     400086: Ship_RoerHolder
     400088: ShipSail
+    400090: Ship_Boeg
     2300000: pCube1
     2300002: pCube2
     2300004: polySurface1
@@ -133,6 +135,7 @@ ModelImporter:
     2300070: Ship_Roer
     2300072: Ship_RoerHolder
     2300074: ShipSail
+    2300076: Ship_Boeg
     3300000: pCube1
     3300002: pCube2
     3300004: polySurface1
@@ -171,6 +174,7 @@ ModelImporter:
     3300070: Ship_Roer
     3300072: Ship_RoerHolder
     3300074: ShipSail
+    3300076: Ship_Boeg
     4300000: pCube1
     4300002: pCube2
     4300004: polySurface1
@@ -211,6 +215,7 @@ ModelImporter:
     4300074: Ship_RoerHolder
     4300076: ShipSail
     4300078: Ship_Mast1
+    4300080: Ship_Boeg
     9500000: //RootNode
   externalObjects:
   - first:
@@ -218,6 +223,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: MAT_Game
     second: {fileID: 2100000, guid: 416515117e6818c4688741f864f08198, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MAT_ShipdeckPlayer
+    second: {fileID: 2100000, guid: 80df5526d93a6c14f8cf8c4a41432dcc, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
