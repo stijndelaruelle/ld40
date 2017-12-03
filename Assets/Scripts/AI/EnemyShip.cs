@@ -42,6 +42,8 @@ public class EnemyShip : IDamagable
         m_Canons = new List<Canon>();
         m_Canons.AddRange(GetComponentsInChildren<Canon>());
         Spawn();
+
+        OnSinkEvent += OnSink;
     }
 
     public void Spawn()
@@ -72,17 +74,25 @@ public class EnemyShip : IDamagable
             }
         }
 
-        if (IsSunk)
-        {
-            //    Deactivate();
-            m_Agent.isStopped = true;
-            Destroy(m_Agent);
-            transform.DOMoveY(-10, 4);
-            Instantiate(m_Loot, transform.position + Vector3.up, Quaternion.identity);
-        }
-
         m_LeftsidePlayer = m_Player.right * 20f;
         m_RightsidePlayer = -m_Player.right * 20f;
+    }
+
+    private void OnSink()
+    {
+        //    Deactivate();
+        m_Agent.isStopped = true;
+        Destroy(m_Agent);
+        //  transform.DORotate()
+        TweenCallback _end = new TweenCallback(DestroyMe);
+        GameObject _loot = Instantiate(m_Loot, transform.position + Vector3.up, Quaternion.identity);
+        _loot.GetComponent<Rigidbody>().AddForce(Vector3.up, ForceMode.Force);
+        transform.DOMoveY(-10, 4).OnComplete(_end);
+    }
+
+    private void DestroyMe()
+    {
+
     }
 
     public void SteerChange()

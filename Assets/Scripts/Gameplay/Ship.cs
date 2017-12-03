@@ -56,6 +56,9 @@ public class Ship : IDamagable
             cargo.StartDragEvent += OnCargoStartDrag;
             cargo.DestroyEvent += OnCargoDestroy;
         }
+
+        OnSinkEvent += OnGameOver;
+        OnDamageEvent += OnDamage;
     }
 
     private void Update()
@@ -69,6 +72,18 @@ public class Ship : IDamagable
         //Visually rotate
         //float tiltAngle = m_MaxTiltAngle
         //transform.rotation = Quaternion.Euler(new Vector3(0.0f, m_CurrentSpeed, -m_CummulativeAngle));
+    }
+
+    private void OnDamage()
+    {
+        Loot_Gold _eject = (Loot_Gold)m_Cargo.FirstOrDefault(c => c is Loot_Gold);
+        _eject.GetComponent<Rigidbody>().AddExplosionForce(10, _eject.transform.position, 1f);
+        m_Cargo.Remove(_eject);
+    }
+
+    private void OnGameOver()
+    {
+        // TODO: restart scene
     }
 
     private void RecalculateSpeed()
