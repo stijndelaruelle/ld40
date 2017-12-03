@@ -55,6 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4701068064337116}
   - component: {fileID: 119657008709570542}
+  - component: {fileID: 114124960861629426}
   m_Layer: 0
   m_Name: Target Circle
   m_TagString: Untagged
@@ -171,6 +172,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8122792, y: 0.86946285, z: 0.6854534}
   m_Center: {x: -0.0024039745, y: -0.00009089708, z: -0.007194519}
+--- !u!114 &114124960861629426
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1855735024880644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154b1216ca371a0429ed2a2f79d8c40e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Rotation: {x: 0, y: 0, z: 150}
 --- !u!114 &114681838227982564
 MonoBehaviour:
   m_ObjectHideFlags: 1
