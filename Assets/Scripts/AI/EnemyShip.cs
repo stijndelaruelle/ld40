@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using DG.Tweening;
 
 public class EnemyShip : IDamagable
 {
@@ -65,7 +66,7 @@ public class EnemyShip : IDamagable
                 {
                     if (Vector3.Dot(_canon.transform.forward, m_Player.transform.position) > 0)
                     {
-                        _canon.Fire();
+                        _canon.Fire(null, null);
                     }
                 }
             }
@@ -73,7 +74,10 @@ public class EnemyShip : IDamagable
 
         if (IsSunk)
         {
-            Deactivate();
+            //    Deactivate();
+            m_Agent.isStopped = true;
+            Destroy(m_Agent);
+            transform.DOMoveY(-10, 4);
             Instantiate(m_Loot, transform.position + Vector3.up, Quaternion.identity);
         }
 
