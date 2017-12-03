@@ -44,12 +44,18 @@ public class Ship : IDamagable
     [SerializeField]
     private BoxCollider m_BoxCollider;
 
+    [HideInInspector]
+    public bool GameEnded = false;
 
     [SerializeField]
     private List<ICargo> m_Cargo;
     private float m_CummulativeWeight = 0.0f;
     private float m_RelativeWeight = 0.0f;
 
+    public List<ICargo> GetCargo
+    {
+        get { return m_Cargo; }
+    }
 
     private void Start()
     {
