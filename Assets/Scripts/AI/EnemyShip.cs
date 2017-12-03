@@ -18,6 +18,9 @@ public class EnemyShip : IDamagable
     private Vector3 m_LeftsidePlayer, m_RightsidePlayer, m_Target;
     private NavMeshAgent m_Agent;
 
+    [SerializeField]
+    private GameObject m_Loot;
+
     public EnemySpawner SpawnParent
     {
         set;
@@ -69,7 +72,10 @@ public class EnemyShip : IDamagable
         }
 
         if (IsSunk)
+        {
             Deactivate();
+            Instantiate(m_Loot, transform.position + Vector3.up, Quaternion.identity);
+        }
 
         m_LeftsidePlayer = m_Player.right * 20f;
         m_RightsidePlayer = -m_Player.right * 20f;
