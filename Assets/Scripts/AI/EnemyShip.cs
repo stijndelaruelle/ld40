@@ -81,7 +81,7 @@ public class EnemyShip : IDamagable
                 {
                     if (Vector3.Dot(_canon.transform.forward, m_Player.transform.position) > 0)
                     {
-                        _canon.Fire(null, null);
+                        _canon.Fire();
                     }
                 }
             }

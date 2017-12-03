@@ -769,7 +769,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d6edec9efddf870469b415101600e9de, type: 2}
+  - {fileID: 0}
   - {fileID: 2100000, guid: 31822d002c38b0b4b8d2c4d0a73e5264, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -872,7 +872,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d6edec9efddf870469b415101600e9de, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -906,7 +906,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d6edec9efddf870469b415101600e9de, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -974,7 +974,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d6edec9efddf870469b415101600e9de, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1204,7 +1204,7 @@ MonoBehaviour:
   m_RotationSpeed: {x: 0, y: 0, z: 0}
   m_Cooldown: 1
   m_FirePosition: {fileID: 4511481798542460}
-  m_BulletPool: {fileID: 0}
+  m_Bullet: {fileID: 114230959367164540, guid: bfd1778eef98505428508311fd4e5c69, type: 2}
   m_Particles:
   - {fileID: 198089630552903184}
   - {fileID: 198353209413708834}
@@ -1229,7 +1229,7 @@ MonoBehaviour:
   m_RotationSpeed: {x: 0, y: 0, z: 0}
   m_Cooldown: 1
   m_FirePosition: {fileID: 4960151410356054}
-  m_BulletPool: {fileID: 0}
+  m_Bullet: {fileID: 114230959367164540, guid: bfd1778eef98505428508311fd4e5c69, type: 2}
   m_Particles:
   - {fileID: 198208598857950200}
   - {fileID: 198865234103037784}
