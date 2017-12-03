@@ -15,6 +15,12 @@ ModelImporter:
     100014: Pier_1
     100016: Pier_2
     100018: Sign
+    100020: Bush_1
+    100022: Bush_3
+    100024: Bush_4
+    100026: Bush_5
+    100028: Bush_6
+    100030: X
     400000: //RootNode
     400002: skull_island
     400004: Palm_1
@@ -25,6 +31,12 @@ ModelImporter:
     400014: Pier_1
     400016: Pier_2
     400018: Sign
+    400020: Bush_1
+    400022: Bush_3
+    400024: Bush_4
+    400026: Bush_5
+    400028: Bush_6
+    400030: X
     2300000: //RootNode
     2300002: skull_island
     2300004: Palm_1
@@ -35,6 +47,12 @@ ModelImporter:
     2300014: Pier_1
     2300016: Pier_2
     2300018: Sign
+    2300020: Bush_1
+    2300022: Bush_3
+    2300024: Bush_4
+    2300026: Bush_5
+    2300028: Bush_6
+    2300030: X
     3300000: //RootNode
     3300002: skull_island
     3300004: Palm_1
@@ -45,6 +63,12 @@ ModelImporter:
     3300014: Pier_1
     3300016: Pier_2
     3300018: Sign
+    3300020: Bush_1
+    3300022: Bush_3
+    3300024: Bush_4
+    3300026: Bush_5
+    3300028: Bush_6
+    3300030: X
     4300000: Island_3
     4300002: skull_island
     4300004: Palm_1
@@ -55,6 +79,13 @@ ModelImporter:
     4300014: Pier_1
     4300016: Pier_2
     4300018: Sign
+    4300020: Island_end
+    4300022: X
+    4300024: Bush_1
+    4300026: Bush_3
+    4300028: Bush_4
+    4300030: Bush_5
+    4300032: Bush_6
     9500000: //RootNode
   externalObjects:
   - first:
