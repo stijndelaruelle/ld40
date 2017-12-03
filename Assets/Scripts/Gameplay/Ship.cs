@@ -38,8 +38,6 @@ public class Ship : IDamagable
     [SerializeField]
     private BoxCollider m_BoxCollider;
 
-    [SerializeField]
-    private UnityMethodsForwarder m_MethodForwarder;
 
     [SerializeField]
     private List<ICargo> m_Cargo;
@@ -52,22 +50,49 @@ public class Ship : IDamagable
         m_CurrentSpeed = m_MaxSpeed;
         m_CurrentDirection = new Vector2(transform.forward.x, transform.forward.z);
 
-        m_MethodForwarder.CollisionEnterEvent += OnForwardedCollisionEnter;
-
         foreach (ICargo cargo in m_Cargo)
         {
             cargo.StartDragEvent += OnCargoStartDrag;
             cargo.DestroyEvent += OnCargoDestroy;
         }
+
+        OnSinkEvent += OnGameOver;
+        OnDamageEvent += OnDamage;
+
     }
 
     private void Update()
     {
-        //Actually move
-        Vector2 addedPosition = (m_CurrentSpeed * m_CurrentDirection) * Time.deltaTime;
-        transform.position = new Vector3(transform.position.x + addedPosition.x,
-                                         transform.position.y,
-                                         transform.position.z + addedPosition.y);
+        if (!IsSunk)
+        {
+            //Actually move
+            Vector2 addedPosition = (m_CurrentSpeed * m_CurrentDirection) * Time.deltaTime;
+            transform.position = new Vector3(transform.position.x + addedPosition.x,
+                                             transform.position.y,
+                                             transform.position.z + addedPosition.y);
+        }
+    }
+
+    private void OnDamage()
+    {
+        Loot_Gold _eject = (Loot_Gold)m_Cargo.FirstOrDefault(c => c is Loot_Gold);
+        _eject.GetComponent<Rigidbody>().AddExplosionForce(10, _eject.transform.position, 1f);
+        m_Cargo.Remove(_eject);
+    }
+
+    private void OnGameOver()
+    {
+        foreach (ParticleSystem _fx in m_WaterTrails)
+            _fx.Stop();
+
+        Sequence _Seq = DOTween.Sequence();
+        if (m_RelativeWeight > 0.3f || m_RelativeWeight < -0.3f)
+        {
+            _Seq.Append(transform.DORotate(new Vector3(0, 0, 180), 10, RotateMode.FastBeyond360).SetEase(Ease.OutSine));
+            _Seq.Insert(0, transform.DOMoveY(1, 10));
+        }
+        _Seq.Append(transform.DOMoveY(-5, 4));
+        _Seq.Play();
     }
 
     private void RecalculateSpeed()
@@ -114,6 +139,9 @@ public class Ship : IDamagable
         if (m_Cargo.Contains(cargo))
             return;
 
+        if (IsSunk)
+            return;
+
         //Attach cargo to ship
         NormalizeCargoPosition(cargo);
 
@@ -134,10 +162,26 @@ public class Ship : IDamagable
 
         RecalculateSpeed();
         RecalculateAngle();
+        CheckWeight();
+    }
+
+    private void CheckWeight()
+    {
+        float _weight = 0;
+        foreach (ICargo _cargo in m_Cargo)
+            _weight += _cargo.Weight;
+
+        if (_weight > m_MaxWeight)
+        {
+            Sink();
+        }
     }
 
     public void RemoveCargo(ICargo cargo)
     {
+        if (IsSunk)
+            return;
+
         //Detach cargo from ship
         //cargo.gameObject.transform.parent = null;
 
@@ -171,7 +215,7 @@ public class Ship : IDamagable
         float distanceS = diff.magnitude; //Distances of the diff
 
         float distanceO = Mathf.Sin(angle * Mathf.Deg2Rad) * distanceS; //SOS
-        //Debug.Log(distanceO);
+                                                                        //Debug.Log(distanceO);
 
         //Left or right?
         float dot = Vector3.Dot(transform.right, diff);
@@ -191,17 +235,17 @@ public class Ship : IDamagable
     }
 
     //Unity callbacks
-    public void OnForwardedCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
-        ICargo cargo = collision.collider.GetComponent<ICargo>();
+        //ICargo cargo = collision.collider.GetComponent<ICargo>();
 
-        if (cargo == null)
-            return;
+        //if (cargo == null)
+        //    return;
 
-        if (cargo.IsDragged)
-            return;
+        //if (cargo.IsDragged)
+        //    return;
 
-        AddCargo(cargo);
+        //AddCargo(cargo);
     }
 
     private void OnDrawGizmos()

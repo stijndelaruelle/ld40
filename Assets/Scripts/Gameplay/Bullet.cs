@@ -33,7 +33,7 @@ public class Bullet : PoolableObject
         else
         {
             m_MeshFilter.mesh = m_DefaultMesh;
-            m_MeshRenderer.materials = materials;
+            m_MeshRenderer.materials = m_DefaultMaterials;
         }
     }
 
