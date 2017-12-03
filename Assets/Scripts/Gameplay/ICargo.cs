@@ -35,6 +35,8 @@ public abstract class ICargo : MonoBehaviour
     [Header("Effects")]
     [SerializeField]
     private GameObject m_Projection;
+    [SerializeField]
+    private AudioSource m_BubblesSFX;
 
     [SerializeField]
     private Renderer m_Renderer;
@@ -66,6 +68,8 @@ public abstract class ICargo : MonoBehaviour
 
     [SerializeField]
     private PoolableObject m_WaterImpactEffect;
+    [SerializeField]
+    private PoolableObject m_BubblesEffect;
 
     private bool m_IsDragged = false;
     public bool IsDragged
@@ -326,6 +330,8 @@ public abstract class ICargo : MonoBehaviour
         if (other.gameObject.CompareTag("Water"))
         {
             Vector3 projectedPosition = new Vector3(transform.position.x, other.transform.position.y, transform.position.z);
+            if (m_BubblesSFX)
+                m_BubblesSFX.PlayOneShot(m_BubblesSFX.clip);
 
             if (m_CanFloat)
             {
@@ -335,6 +341,9 @@ public abstract class ICargo : MonoBehaviour
             {
                 ImpactEffect effect = (ImpactEffect)ObjectPoolManager.Instance.GetPool(m_WaterImpactEffect).ActivateAvailableObject();
                 effect.Play(projectedPosition, Quaternion.identity);
+
+                ImpactEffect bubblesFx = (ImpactEffect)ObjectPoolManager.Instance.GetPool(m_BubblesEffect).ActivateAvailableObject();
+                bubblesFx.Play(projectedPosition, Quaternion.identity);
             }
 
         }
