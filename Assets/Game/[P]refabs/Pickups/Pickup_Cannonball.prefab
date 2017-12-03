@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1988677632606654}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.012, y: 1.293, z: 0.558}
+  m_LocalPosition: {x: -10.944, y: 1.096, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4951511814698346}
@@ -169,8 +169,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.3, z: 0.3}
-  m_Center: {x: 0, y: 0, z: -0.000000014901161}
+  m_Size: {x: 0.4, y: 0.4, z: 0.4}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114742824909811488
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -188,9 +188,8 @@ MonoBehaviour:
   m_Projection: {fileID: 1278544012494558}
   m_Renderer: {fileID: 23783226060244812}
   m_MeshFilter: {fileID: 33653633285542842}
-  m_MaterialID: 0
-  m_DefaultMaterial: {fileID: 2100000, guid: 0046e2fce4354004aa8bcd520c1906d6, type: 2}
   m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
+  m_RotationSpeed: {x: 0, y: 0, z: 0}
 --- !u!119 &119455627944891666
 Projector:
   m_ObjectHideFlags: 1

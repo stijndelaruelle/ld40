@@ -751,7 +751,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1989846556061692}
-  m_Mesh: {fileID: 4300070, guid: 7b02e82bd243a9d4d830364c208ed579, type: 3}
+  m_Mesh: {fileID: 4300000, guid: a4dbed74b53c36c42b8d21a6580db80f, type: 3}
 --- !u!33 &33559365441130506
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -800,10 +800,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Weight: 0
   m_Gravity: 0
+  m_Collider: {fileID: 0}
+  m_Projection: {fileID: 0}
+  m_Renderer: {fileID: 0}
+  m_MeshFilter: {fileID: 0}
+  m_MaterialID: 0
+  m_DefaultMaterial: {fileID: 0}
+  m_ActiveMaterial: {fileID: 0}
   m_Cooldown: 0
   m_FirePosition: {fileID: 0}
   m_BulletPool: {fileID: 0}
-  m_Projection: {fileID: 0}
   m_Particles: []
 --- !u!114 &114462079698117442
 MonoBehaviour:
@@ -839,10 +845,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Weight: 0
   m_Gravity: 0
+  m_Collider: {fileID: 0}
+  m_Projection: {fileID: 0}
+  m_Renderer: {fileID: 0}
+  m_MeshFilter: {fileID: 0}
+  m_MaterialID: 0
+  m_DefaultMaterial: {fileID: 0}
+  m_ActiveMaterial: {fileID: 0}
   m_Cooldown: 0
   m_FirePosition: {fileID: 0}
   m_BulletPool: {fileID: 0}
-  m_Projection: {fileID: 0}
   m_Particles: []
 --- !u!114 &114824618423259350
 MonoBehaviour:
@@ -857,10 +869,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Weight: 0
   m_Gravity: 0
+  m_Collider: {fileID: 0}
+  m_Projection: {fileID: 0}
+  m_Renderer: {fileID: 0}
+  m_MeshFilter: {fileID: 0}
+  m_MaterialID: 0
+  m_DefaultMaterial: {fileID: 0}
+  m_ActiveMaterial: {fileID: 0}
   m_Cooldown: 0
   m_FirePosition: {fileID: 0}
   m_BulletPool: {fileID: 0}
-  m_Projection: {fileID: 0}
   m_Particles: []
 --- !u!114 &114970702133984594
 MonoBehaviour:
@@ -875,10 +893,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Weight: 0
   m_Gravity: 0
+  m_Collider: {fileID: 0}
+  m_Projection: {fileID: 0}
+  m_Renderer: {fileID: 0}
+  m_MeshFilter: {fileID: 0}
+  m_MaterialID: 0
+  m_DefaultMaterial: {fileID: 0}
+  m_ActiveMaterial: {fileID: 0}
   m_Cooldown: 0
   m_FirePosition: {fileID: 0}
   m_BulletPool: {fileID: 0}
-  m_Projection: {fileID: 0}
   m_Particles: []
 --- !u!195 &195516540400146136
 NavMeshAgent:
