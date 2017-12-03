@@ -38,8 +38,6 @@ public class Ship : IDamagable
     [SerializeField]
     private BoxCollider m_BoxCollider;
 
-    [SerializeField]
-    private UnityMethodsForwarder m_MethodForwarder;
 
     [SerializeField]
     private List<ICargo> m_Cargo;
@@ -51,8 +49,6 @@ public class Ship : IDamagable
     {
         m_CurrentSpeed = m_MaxSpeed;
         m_CurrentDirection = new Vector2(transform.forward.x, transform.forward.z);
-
-        m_MethodForwarder.CollisionEnterEvent += OnForwardedCollisionEnter;
 
         foreach (ICargo cargo in m_Cargo)
         {
@@ -191,17 +187,17 @@ public class Ship : IDamagable
     }
 
     //Unity callbacks
-    public void OnForwardedCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
-        ICargo cargo = collision.collider.GetComponent<ICargo>();
+        //ICargo cargo = collision.collider.GetComponent<ICargo>();
 
-        if (cargo == null)
-            return;
+        //if (cargo == null)
+        //    return;
 
-        if (cargo.IsDragged)
-            return;
+        //if (cargo.IsDragged)
+        //    return;
 
-        AddCargo(cargo);
+        //AddCargo(cargo);
     }
 
     private void OnDrawGizmos()

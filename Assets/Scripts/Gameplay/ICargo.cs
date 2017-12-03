@@ -63,6 +63,7 @@ public abstract class ICargo : MonoBehaviour
     }
 
     private bool m_IsGrounded = false;
+    private bool m_WasGrounded = false;
 
     public bool CanUse
     {
@@ -76,7 +77,7 @@ public abstract class ICargo : MonoBehaviour
     public event CargoDelegate EndDragEvent;
     public event CargoDelegate DestroyEvent;
 
-    private void Start()
+    protected virtual void Start()
     {
         Material[] matArray = m_Renderer.materials;
 
@@ -92,11 +93,22 @@ public abstract class ICargo : MonoBehaviour
         if (m_IsDragged == true)
             return;
 
-        //Is Grounded Check
         Vector3 bottomPosition = transform.position + m_Collider.center + (Vector3.down * ((transform.localScale.y * m_Collider.size.y) * 0.5f));
+        HandleGravity(bottomPosition);
+        HandleSnapToShip(bottomPosition);
+    }
 
+    private void OnDestroy()
+    {
+        if (DestroyEvent != null)
+            DestroyEvent(this);
+    }
+
+    private void HandleGravity(Vector3 bottomPosition)
+    {
+        //Is Grounded Check
         RaycastHit hitInfo;
-        Physics.Raycast(bottomPosition, Vector3.down, out hitInfo, m_Gravity * Time.deltaTime);
+        Physics.Raycast(bottomPosition, Vector3.down, out hitInfo, m_Gravity * 2.0f * Time.deltaTime);
 
         Debug.DrawLine(bottomPosition, bottomPosition + (Vector3.down * 100.0f), Color.red);
 
@@ -109,10 +121,26 @@ public abstract class ICargo : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    private void HandleSnapToShip(Vector3 bottomPosition)
     {
-        if (DestroyEvent != null)
-            DestroyEvent(this);
+        //Super lame, but just to make sure the ship knows of every item
+        if (m_IsGrounded && !m_WasGrounded)
+        {
+            //Raycast all the way down, because items can stack.
+            RaycastHit[] hits = Physics.RaycastAll(bottomPosition, Vector3.down, 100.0f);
+
+            for (int i = 0; i < hits.Length; ++i)
+            {
+                Ship ship = hits[i].collider.gameObject.GetComponent<Ship>();
+
+                if (ship != null)
+                {
+                    ship.AddCargo(this);
+                }
+            }
+        }
+
+        m_WasGrounded = m_IsGrounded;
     }
 
     public void StartDrag()
@@ -207,23 +235,23 @@ public abstract class ICargo : MonoBehaviour
         }
 
 
-        //Average the collision points
-        Vector3 avgContact = Vector3.zero;
-        for (int i = 0; i < collision.contacts.Length; ++i)
-        {
-            avgContact += collision.contacts[i].point;
-        }
+        ////Average the collision points
+        //Vector3 avgContact = Vector3.zero;
+        //for (int i = 0; i < collision.contacts.Length; ++i)
+        //{
+        //    avgContact += collision.contacts[i].point;
+        //}
 
-        avgContact /= collision.contacts.Length;
+        //avgContact /= collision.contacts.Length;
 
-        //Cast from there a ray down to find the distance we are in the ground
-        RaycastHit hitInfo;
-        Physics.Raycast(avgContact, Vector3.down, out hitInfo, 10.0f * Time.deltaTime);
+        ////Cast from there a ray down to find the distance we are in the ground
+        //RaycastHit hitInfo;
+        //Physics.Raycast(avgContact, Vector3.down, out hitInfo, 10.0f * Time.deltaTime);
 
-        if (hitInfo.collider == m_Collider)
-        {
-            transform.position += hitInfo.normal * hitInfo.distance;
-        }
+        //if (hitInfo.collider == m_Collider)
+        //{
+        //    transform.position += hitInfo.normal * hitInfo.distance;
+        //}
     }
 
     private void OnValidate()
