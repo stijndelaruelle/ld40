@@ -21,6 +21,7 @@ ModelImporter:
     100026: Bush_5
     100028: Bush_6
     100030: X
+    100032: Spikes
     400000: //RootNode
     400002: skull_island
     400004: Palm_1
@@ -37,6 +38,7 @@ ModelImporter:
     400026: Bush_5
     400028: Bush_6
     400030: X
+    400032: Spikes
     2300000: //RootNode
     2300002: skull_island
     2300004: Palm_1
@@ -53,6 +55,7 @@ ModelImporter:
     2300026: Bush_5
     2300028: Bush_6
     2300030: X
+    2300032: Spikes
     3300000: //RootNode
     3300002: skull_island
     3300004: Palm_1
@@ -69,6 +72,7 @@ ModelImporter:
     3300026: Bush_5
     3300028: Bush_6
     3300030: X
+    3300032: Spikes
     4300000: Island_3
     4300002: skull_island
     4300004: Palm_1
@@ -86,6 +90,7 @@ ModelImporter:
     4300028: Bush_4
     4300030: Bush_5
     4300032: Bush_6
+    4300034: Spikes
     9500000: //RootNode
   externalObjects:
   - first:
