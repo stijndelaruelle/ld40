@@ -95,13 +95,20 @@ public class Ship : IDamagable
 
     private void OnDamage()
     {
-        Loot_Gold _eject = (Loot_Gold)m_Cargo.FirstOrDefault(c => c is Loot_Gold);
-        _eject.GetComponent<Rigidbody>().AddExplosionForce(10, _eject.transform.position, 1f);
-        m_Cargo.Remove(_eject);
+        //Loot_Gold _eject = (Loot_Gold)m_Cargo.FirstOrDefault(c => c is Loot_Gold);
+        //_eject.GetComponent<Rigidbody>().AddExplosionForce(10, _eject.transform.position, 1f);
+        //m_Cargo.Remove(_eject);
     }
 
     private void OnGameOver()
     {
+        //Drop all loot
+        for (int i = m_Cargo.Count - 1; i >= 0; --i)
+        {
+            m_Cargo[i].SetParent(null);
+            RemoveCargo(m_Cargo[i]);
+        }
+
         foreach (ParticleSystem _fx in m_WaterTrails)
             _fx.Stop();
 

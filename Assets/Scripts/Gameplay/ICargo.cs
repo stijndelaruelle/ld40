@@ -71,6 +71,8 @@ public abstract class ICargo : MonoBehaviour
     [SerializeField]
     private PoolableObject m_BubblesEffect;
 
+    private float m_TempDot;
+
     private bool m_IsDragged = false;
     public bool IsDragged
     {
@@ -300,10 +302,15 @@ public abstract class ICargo : MonoBehaviour
         //Doesn't work 100% but good enough for us        //RaycastHit hitInfo;
         //Physics.Raycast
 
-        if (collision.collider.CompareTag("Player"))
-        {
-            SetParent(collision.gameObject.transform);
-        }
+        Ship ship = collision.collider.GetComponent<Ship>();
+
+        if (ship == null)
+            return;
+
+        if (ship.IsSunk)
+            return;
+
+        SetParent(collision.gameObject.transform);
 
         ////Average the collision points
         //Vector3 avgContact = Vector3.zero;
@@ -392,7 +399,7 @@ public abstract class ICargo : MonoBehaviour
         return ((position + 1) / 2);
     }
 
-    private void SetParent(Transform parent)
+    public void SetParent(Transform parent)
     {
         transform.parent = parent;
     }
@@ -411,12 +418,16 @@ public abstract class ICargo : MonoBehaviour
 
     private Vector3 GetDown()
     {
-        Vector3 down = -transform.up;
-
         if (transform.parent != null)
         {
-            down = -transform.parent.up;
+            return -transform.parent.up;
         }
+
+
+        Vector3 down = -transform.up;
+
+        m_TempDot = Vector3.Dot(down, Vector3.up);
+        //Debug.Log(dot);
 
         return down;
     }
