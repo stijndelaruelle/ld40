@@ -799,7 +799,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1869645666279172}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.1688, y: 0, z: 0}
+  m_LocalPosition: {x: 0.284, y: -0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4224434475351358}
@@ -1515,8 +1515,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9676847, y: 1.0093168, z: 1.666013}
-  m_Center: {x: -0.0018871991, y: 0.49999994, z: 0.08496666}
+  m_Size: {x: 0.9676847, y: 1.0093168, z: 1.4232394}
+  m_Center: {x: -0.0018872023, y: 0.49999994, z: -0.036420107}
 --- !u!65 &65325563419813460
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1703,7 +1703,7 @@ MonoBehaviour:
   m_RotationSpeed: {x: 0, y: 0, z: 0}
   m_Cooldown: 1
   m_FirePosition: {fileID: 4675829686229348}
-  m_BulletPool: {fileID: 0}
+  m_Bullet: {fileID: 114230959367164540, guid: bfd1778eef98505428508311fd4e5c69, type: 2}
   m_Particles:
   - {fileID: 198950646803111350}
   - {fileID: 198876494193234204}
