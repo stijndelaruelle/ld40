@@ -108,6 +108,9 @@ public class Ship : IDamagable
 
     private void OnGameOver()
     {
+        if (GameEnded)
+            return;
+
         //Drop all loot
         for (int i = m_Cargo.Count - 1; i >= 0; --i)
         {
@@ -129,7 +132,6 @@ public class Ship : IDamagable
         _Seq.Append(transform.DOMoveY(-5, 4));
         _Seq.OnComplete(m_UI.StartGameOver);
         _Seq.Play();
-
     }
 
     private void RecalculateSpeed()

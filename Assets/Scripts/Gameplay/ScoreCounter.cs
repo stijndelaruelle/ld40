@@ -30,31 +30,8 @@ public class ScoreCounter : MonoBehaviour
         {
             m_ScoreText.text = m_Score.ToString();
             m_Score++;
-            if (m_Score % 100 == 0)
-            {
-                StartCoroutine(QuickScale());
-            }
             yield return new WaitForEndOfFrame();
         }
         m_Score = m_TotalScore;
-    }
-
-    IEnumerator QuickScale()
-    {
-        float _time = 0;
-        while (_time <= 1f)
-        {
-            if (_time < 0.5f)
-            {
-                m_ScoreText.rectTransform.localScale.Set(2f * Time.deltaTime, 2f * Time.deltaTime, 2f * Time.deltaTime);
-            }
-            else
-            {
-                m_ScoreText.rectTransform.localScale.Set(1f * Time.deltaTime, 1f * Time.deltaTime, 1f * Time.deltaTime);
-            }
-            _time += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
-        m_ScoreText.rectTransform.sizeDelta = new Vector2(1, 1);
     }
 }
