@@ -36,6 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4127231998489406}
   - component: {fileID: 119455285417384232}
+  - component: {fileID: 114002863657240520}
   m_Layer: 0
   m_Name: Target Circle
   m_TagString: Untagged
@@ -274,6 +275,18 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114002863657240520
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1503590891222162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154b1216ca371a0429ed2a2f79d8c40e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Rotation: {x: 0, y: 0, z: 150}
 --- !u!114 &114525580261027174
 MonoBehaviour:
   m_ObjectHideFlags: 1
