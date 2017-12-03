@@ -13,6 +13,8 @@ public class Buouncy : MonoBehaviour
 
     public void StartBuoncy(Vector3 position)
     {
+        position -= m_Offset;
+
         StopBuoncy();
         m_StartPosition = position;
         transform.DOMove(position, 1.0f).OnComplete(StartLooping);

@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3910df946c4b6534281bdd563c10532c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Offset: {x: 0, y: 0, z: 0}
+  m_Offset: {x: 0, y: 0.2, z: 0}
 --- !u!114 &114328866071096728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -225,9 +225,6 @@ MonoBehaviour:
   m_RotationSpeed: {x: 0, y: 150, z: 0}
   m_CanFloat: 1
   m_Buouncy: {fileID: 114273155566612828}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967279
   m_WaterImpactEffect: {fileID: 114128505786344550, guid: fbf2c0d0876fedb4dbd0a1d77596c37b,
     type: 2}
   m_Value: 100

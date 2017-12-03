@@ -737,7 +737,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1101772806504182}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.9699998, y: 2.52, z: 0.35000038}
+  m_LocalPosition: {x: -0.667, y: 1.82, z: 0.35000038}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4892056863522414}
@@ -1650,6 +1650,11 @@ MonoBehaviour:
   m_RotationSpeed: {x: 0, y: 150, z: 0}
   m_CanFloat: 1
   m_Buouncy: {fileID: 114188841572511142}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967279
+  m_WaterImpactEffect: {fileID: 114128505786344550, guid: fbf2c0d0876fedb4dbd0a1d77596c37b,
+    type: 2}
 --- !u!114 &114088588081444490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1671,6 +1676,11 @@ MonoBehaviour:
   m_RotationSpeed: {x: 0, y: 150, z: 0}
   m_CanFloat: 1
   m_Buouncy: {fileID: 114145991649467118}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967279
+  m_WaterImpactEffect: {fileID: 114128505786344550, guid: fbf2c0d0876fedb4dbd0a1d77596c37b,
+    type: 2}
 --- !u!114 &114145991649467118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1682,6 +1692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3910df946c4b6534281bdd563c10532c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Offset: {x: 0, y: 0.2, z: 0}
 --- !u!114 &114188841572511142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1693,6 +1704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3910df946c4b6534281bdd563c10532c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Offset: {x: 0, y: 0.2, z: 0}
 --- !u!114 &114323265627085134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1704,6 +1716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3910df946c4b6534281bdd563c10532c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Offset: {x: 0, y: 0.2, z: 0}
 --- !u!114 &114327605977899802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1725,6 +1738,11 @@ MonoBehaviour:
   m_RotationSpeed: {x: 0, y: 150, z: 0}
   m_CanFloat: 1
   m_Buouncy: {fileID: 114323265627085134}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967279
+  m_WaterImpactEffect: {fileID: 114128505786344550, guid: fbf2c0d0876fedb4dbd0a1d77596c37b,
+    type: 2}
 --- !u!114 &114342698196661404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1746,6 +1764,11 @@ MonoBehaviour:
   m_RotationSpeed: {x: 0, y: 0, z: 0}
   m_CanFloat: 0
   m_Buouncy: {fileID: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967279
+  m_WaterImpactEffect: {fileID: 114128505786344550, guid: fbf2c0d0876fedb4dbd0a1d77596c37b,
+    type: 2}
   m_Cooldown: 1
   m_FirePosition: {fileID: 4675829686229348}
   m_Bullet: {fileID: 114230959367164540, guid: bfd1778eef98505428508311fd4e5c69, type: 2}
@@ -1773,6 +1796,11 @@ MonoBehaviour:
   m_RotationSpeed: {x: 0, y: 150, z: 0}
   m_CanFloat: 0
   m_Buouncy: {fileID: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967279
+  m_WaterImpactEffect: {fileID: 114128505786344550, guid: fbf2c0d0876fedb4dbd0a1d77596c37b,
+    type: 2}
 --- !u!114 &114476617499022298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1794,6 +1822,11 @@ MonoBehaviour:
   m_RotationSpeed: {x: 0, y: 150, z: 0}
   m_CanFloat: 1
   m_Buouncy: {fileID: 114560689853553110}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967279
+  m_WaterImpactEffect: {fileID: 114128505786344550, guid: fbf2c0d0876fedb4dbd0a1d77596c37b,
+    type: 2}
 --- !u!114 &114560689853553110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1805,6 +1838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3910df946c4b6534281bdd563c10532c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Offset: {x: 0, y: 0.2, z: 0}
 --- !u!114 &114649777490755008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1865,6 +1899,7 @@ MonoBehaviour:
   - {fileID: 198164254549829244}
   - {fileID: 198073591810933104}
   - {fileID: 198548176396519872}
+  m_UI: {fileID: 0}
   m_BoxCollider: {fileID: 65717058278665416}
   m_Cargo: []
 --- !u!114 &114829648826100888
@@ -1900,6 +1935,11 @@ MonoBehaviour:
   m_RotationSpeed: {x: 0, y: 150, z: 0}
   m_CanFloat: 0
   m_Buouncy: {fileID: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967279
+  m_WaterImpactEffect: {fileID: 114128505786344550, guid: fbf2c0d0876fedb4dbd0a1d77596c37b,
+    type: 2}
 --- !u!119 &119329044386245270
 Projector:
   m_ObjectHideFlags: 1
