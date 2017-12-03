@@ -687,6 +687,10 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   m_MaxWeight: 0
+  m_WaterTrails:
+  - {fileID: 198164254549829244}
+  - {fileID: 198073591810933104}
+  - {fileID: 198548176396519872}
   m_BoxCollider: {fileID: 65144045476434826}
   m_MethodForwarder: {fileID: 114668603581776054}
   m_Cargo: []
