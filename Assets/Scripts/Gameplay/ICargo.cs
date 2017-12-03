@@ -206,6 +206,7 @@ public abstract class ICargo : MonoBehaviour
     {
         m_IsDragged = false;
         m_Collider.enabled = true;
+        m_Projection.SetActive(false);
 
         //Check if we are hovering over the ship, if so parent it.
         RaycastHit hitInfo;
