@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using Sjabloon;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,18 +15,15 @@ public class Canon : ICargo
     private Transform m_FirePosition;
 
     [SerializeField]
-    private ObjectPool m_BulletPool;
+    private PoolableObject m_Bullet;
 
     [Header("Effects")]
-
     [SerializeField]
     private List<ParticleSystem> m_Particles;
 
     protected override void Start()
     {
         base.Start();
-
-        m_BulletPool = GameObject.Find("BulletPool").GetComponent<ObjectPool>();
     }
 
     protected override void Update()
@@ -92,7 +90,7 @@ public class Canon : ICargo
             return;
 
         //Fire bullet
-        Bullet bullet = (Bullet)m_BulletPool.ActivateAvailableObject();
+        Bullet bullet = (Bullet)ObjectPoolManager.Instance.GetPool(m_Bullet).ActivateAvailableObject();
         bullet.StartFlying(m_FirePosition.position, transform.forward, mesh, materials);
 
         //Set cooldown

@@ -147,7 +147,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1238040315178928}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: 0.71997106, z: -0, w: 0.6940042}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
@@ -155,7 +155,7 @@ Transform:
   - {fileID: 4478253280002256}
   m_Father: {fileID: 4982602861500334}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 92.104004, z: 0}
 --- !u!4 &4395513636730374
 Transform:
   m_ObjectHideFlags: 1
@@ -203,7 +203,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1875032149367478}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.1688, y: 0, z: 0}
+  m_LocalPosition: {x: 0.256, y: -0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4043389581539714}
@@ -218,7 +218,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1930605467011188}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.9699998, y: 3.944, z: -0.3499996}
+  m_LocalPosition: {x: -10.8, y: 1.15, z: -0.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4272405545158666}
@@ -332,8 +332,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1, y: 1.1, z: 1.7}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Size: {x: 0.9676847, y: 1.0093168, z: 1.666013}
+  m_Center: {x: -0.0018871991, y: 0.49999994, z: 0.08496666}
 --- !u!114 &114981049392511776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -349,13 +349,13 @@ MonoBehaviour:
   m_Gravity: 5
   m_Collider: {fileID: 65273272247806922}
   m_Projection: {fileID: 1403124886444210}
-  m_Renderer: {fileID: 0}
-  m_MeshFilter: {fileID: 0}
-  m_ActiveMaterial: {fileID: 0}
+  m_Renderer: {fileID: 23657194126990172}
+  m_MeshFilter: {fileID: 33362092778461496}
+  m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
   m_RotationSpeed: {x: 0, y: 0, z: 0}
   m_Cooldown: 1
   m_FirePosition: {fileID: 4740954956913950}
-  m_BulletPool: {fileID: 0}
+  m_Bullet: {fileID: 114230959367164540, guid: bfd1778eef98505428508311fd4e5c69, type: 2}
   m_Particles:
   - {fileID: 198640321223406594}
   - {fileID: 198837101871657246}

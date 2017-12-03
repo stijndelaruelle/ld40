@@ -51,7 +51,8 @@ public class ObjectPool : MonoBehaviour
 
     private void Awake()
     {
-        Initialize(m_Definition);    
+        if (m_Definition != null)
+            Initialize(m_Definition);    
     }
 
     public void Initialize(ObjectPoolDefinition definition)

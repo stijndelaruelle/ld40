@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4302432536946812}
   - component: {fileID: 119771526733501704}
+  - component: {fileID: 114326466282410800}
   m_Layer: 0
   m_Name: Target Circle
   m_TagString: Untagged
@@ -191,6 +192,18 @@ MonoBehaviour:
   m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
   m_RotationSpeed: {x: 0, y: 150, z: 0}
   m_Value: 50
+--- !u!114 &114326466282410800
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1428940996692774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154b1216ca371a0429ed2a2f79d8c40e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Rotation: {x: 0, y: 0, z: 150}
 --- !u!119 &119771526733501704
 Projector:
   m_ObjectHideFlags: 1
