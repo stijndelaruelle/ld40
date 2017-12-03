@@ -1,7 +1,11 @@
 fileFormatVersion: 2
 guid: 3f6a785da46fa0447a91099913d10672
 folderAsset: yes
+<<<<<<< HEAD:Assets/Game/[M]odels/[M]Environment/Island_end.fbm.meta
 timeCreated: 1512334144
+=======
+timeCreated: 1512334249
+>>>>>>> a480ea2dadaae30b031655202449cab11cda7483:Assets/Game/[M]odels/[M]Environment/Island_end.fbm.meta
 licenseType: Free
 DefaultImporter:
   externalObjects: {}
