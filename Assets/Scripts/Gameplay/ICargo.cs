@@ -65,9 +65,6 @@ public abstract class ICargo : MonoBehaviour
     private Buouncy m_Buouncy;
 
     [SerializeField]
-    private LayerMask m_LayerMask;
-
-    [SerializeField]
     private PoolableObject m_WaterImpactEffect;
 
     private bool m_IsDragged = false;
@@ -120,7 +117,10 @@ public abstract class ICargo : MonoBehaviour
         if (m_Collider == null)
             return;
 
+        Vector3 topPosition = transform.position + m_Collider.center + (Vector3.up * ((transform.localScale.y * m_Collider.size.y) * 0.5f));
         Vector3 bottomPosition = transform.position + m_Collider.center + (Vector3.down * ((transform.localScale.y * m_Collider.size.y) * 0.5f));
+
+        HandleFloating(topPosition);
         HandleGravity(bottomPosition);
         HandleSnapToShip(bottomPosition);
     }
@@ -131,14 +131,40 @@ public abstract class ICargo : MonoBehaviour
             DestroyEvent(this);
     }
 
+    private void HandleFloating(Vector3 topPosition)
+    {
+        if (m_IsFloating)
+            return;
+
+        if (m_CanFloat == false)
+            return;
+
+        //First check if there is water above us
+
+        RaycastHit hitInfo;
+        int waterLayerMask = (1 << LayerMask.NameToLayer("Water"));
+
+        Physics.Raycast(topPosition, Vector3.up, out hitInfo, 100.0f, waterLayerMask);
+        Debug.DrawLine(topPosition, topPosition + (Vector3.up * 100.0f), Color.yellow);
+
+        //we hit water
+        if (hitInfo.collider != null)
+        {
+            Vector3 projectedPosition = new Vector3(transform.position.x, hitInfo.collider.gameObject.transform.position.y, transform.position.z);
+            StartFloating(projectedPosition);
+        }
+    }
+
     private void HandleGravity(Vector3 bottomPosition)
     {
         if (m_IsFloating)
             return;
 
-        //Is Grounded Check
         RaycastHit hitInfo;
-        Physics.Raycast(bottomPosition, Vector3.down, out hitInfo, m_Gravity * 2.0f * Time.deltaTime, m_LayerMask);
+        int inverseWaterLayerMask = ~(1 << LayerMask.NameToLayer("Water"));
+
+        //Is Grounded Check
+        Physics.Raycast(bottomPosition, Vector3.down, out hitInfo, m_Gravity * 2.0f * Time.deltaTime, inverseWaterLayerMask);
 
         Debug.DrawLine(bottomPosition, bottomPosition + (Vector3.down * 100.0f), Color.red);
 
@@ -294,17 +320,37 @@ public abstract class ICargo : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (m_IsFloating)
+            return;
+
         if (other.gameObject.CompareTag("Water"))
         {
             Vector3 projectedPosition = new Vector3(transform.position.x, other.transform.position.y, transform.position.z);
-            if (m_CanFloat == true)
-            {
-                m_Buouncy.enabled = true;
-                m_Buouncy.StartBuoncy(projectedPosition);
 
-                m_IsFloating = true;
-                transform.parent = other.gameObject.transform;
+            if (m_CanFloat)
+            {
+                StartFloating(projectedPosition);
             }
+            else
+            {
+                ImpactEffect effect = (ImpactEffect)ObjectPoolManager.Instance.GetPool(m_WaterImpactEffect).ActivateAvailableObject();
+                effect.Play(projectedPosition, Quaternion.identity);
+            }
+
+        }
+    }
+
+    private void StartFloating(Vector3 projectedPosition)
+    {
+        if (m_IsFloating)
+            return;
+
+        if (m_CanFloat == true)
+        {
+            m_Buouncy.enabled = true;
+            m_Buouncy.StartBuoncy(projectedPosition);
+
+            m_IsFloating = true;
 
             ImpactEffect effect = (ImpactEffect)ObjectPoolManager.Instance.GetPool(m_WaterImpactEffect).ActivateAvailableObject();
             effect.Play(projectedPosition, Quaternion.identity);
