@@ -10,33 +10,58 @@ ModelImporter:
     100004: Palm_2
     100006: Palm_3
     100008: Palm_4
+    100010: Bush_1
+    100012: Bush_10
+    100014: Bush_11
+    100016: Bush_8
+    100018: Bush_9
     400000: //RootNode
     400002: Palm_1
     400004: Palm_2
     400006: Palm_3
     400008: Palm_4
+    400010: Bush_1
+    400012: Bush_10
+    400014: Bush_11
+    400016: Bush_8
+    400018: Bush_9
     2300000: //RootNode
     2300002: Palm_1
     2300004: Palm_2
     2300006: Palm_3
     2300008: Palm_4
+    2300010: Bush_1
+    2300012: Bush_10
+    2300014: Bush_11
+    2300016: Bush_8
+    2300018: Bush_9
     3300000: //RootNode
     3300002: Palm_1
     3300004: Palm_2
     3300006: Palm_3
     3300008: Palm_4
+    3300010: Bush_1
+    3300012: Bush_10
+    3300014: Bush_11
+    3300016: Bush_8
+    3300018: Bush_9
     4300000: Island_2
     4300002: Palm_1
     4300004: Palm_2
     4300006: Palm_3
     4300008: Palm_4
+    4300010: Bush_1
+    4300012: Bush_8
+    4300014: Bush_9
+    4300016: Bush_10
+    4300018: Bush_11
     9500000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: MAT_Game
-    second: {fileID: 2100000, guid: 6c470b0bbedc1f542ac86def1da64e93, type: 2}
+    second: {fileID: 2100000, guid: c32e1d749f7c18d4aaca14799d362afa, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
