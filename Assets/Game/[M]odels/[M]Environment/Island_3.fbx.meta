@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: c1fd4a461db039d4f9f4cabe5642d9e7
-timeCreated: 1512250087
+guid: b0c90be785a35024e8c05f61d9084066
+timeCreated: 1512321472
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -8,69 +8,73 @@ ModelImporter:
     100000: //RootNode
     100002: Palm_1
     100004: Palm_2
-    100006: Bush_1
-    100008: Bush_12
-    100010: Bush_13
-    100012: Bush_14
-    100014: Bush_15
-    100016: Bush_16
-    100018: Rock_1
-    100020: Rock_7
-    100022: Rock_8
-    100024: Bush_17
+    100006: Palm_3
+    100008: Palm_4
+    100010: Pier_1
+    100012: Sign
+    100014: Skull
+    100016: X
+    100018: Bush_1
+    100020: Bush_3
+    100022: Bush_4
+    100024: Bush_5
+    100026: Bush_6
     400000: //RootNode
     400002: Palm_1
     400004: Palm_2
-    400006: Bush_1
-    400008: Bush_12
-    400010: Bush_13
-    400012: Bush_14
-    400014: Bush_15
-    400016: Bush_16
-    400018: Rock_1
-    400020: Rock_7
-    400022: Rock_8
-    400024: Bush_17
+    400006: Palm_3
+    400008: Palm_4
+    400010: Pier_1
+    400012: Sign
+    400014: Skull
+    400016: X
+    400018: Bush_1
+    400020: Bush_3
+    400022: Bush_4
+    400024: Bush_5
+    400026: Bush_6
     2300000: //RootNode
     2300002: Palm_1
     2300004: Palm_2
-    2300006: Bush_1
-    2300008: Bush_12
-    2300010: Bush_13
-    2300012: Bush_14
-    2300014: Bush_15
-    2300016: Bush_16
-    2300018: Rock_1
-    2300020: Rock_7
-    2300022: Rock_8
-    2300024: Bush_17
+    2300006: Palm_3
+    2300008: Palm_4
+    2300010: Pier_1
+    2300012: Sign
+    2300014: Skull
+    2300016: X
+    2300018: Bush_1
+    2300020: Bush_3
+    2300022: Bush_4
+    2300024: Bush_5
+    2300026: Bush_6
     3300000: //RootNode
     3300002: Palm_1
     3300004: Palm_2
-    3300006: Bush_1
-    3300008: Bush_12
-    3300010: Bush_13
-    3300012: Bush_14
-    3300014: Bush_15
-    3300016: Bush_16
-    3300018: Rock_1
-    3300020: Rock_7
-    3300022: Rock_8
-    3300024: Bush_17
-    4300000: Island_1
+    3300006: Palm_3
+    3300008: Palm_4
+    3300010: Pier_1
+    3300012: Sign
+    3300014: Skull
+    3300016: X
+    3300018: Bush_1
+    3300020: Bush_3
+    3300022: Bush_4
+    3300024: Bush_5
+    3300026: Bush_6
+    4300000: Island_3
     4300002: Palm_1
     4300004: Palm_2
-    4300006: Bush_1
-    4300008: Bush_12
-    4300010: Bush_13
-    4300012: Bush_14
-    4300014: Bush_15
-    4300016: Bush_16
-    4300018: Rock_1
-    4300020: Rock_7
-    4300022: Rock_8
-    4300024: Bush_17
-    9500000: //RootNode
+    4300006: Palm_3
+    4300008: Palm_4
+    4300010: Skull
+    4300012: Pier_1
+    4300014: Sign
+    4300016: X
+    4300018: Bush_1
+    4300020: Bush_3
+    4300022: Bush_4
+    4300024: Bush_5
+    4300026: Bush_6
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -148,7 +152,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
