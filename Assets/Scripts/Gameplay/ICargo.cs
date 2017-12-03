@@ -37,6 +37,20 @@ public abstract class ICargo : MonoBehaviour
 
     [SerializeField]
     private Renderer m_Renderer;
+    public Renderer Renderer
+    {
+        get { return m_Renderer; }
+    }
+
+    [SerializeField]
+    private MeshFilter m_MeshFilter;
+    public MeshFilter MeshFilter
+    {
+        get { return m_MeshFilter; }
+    }
+
+    [SerializeField]
+    private int m_MaterialID;
 
     [SerializeField]
     private Material m_DefaultMaterial;
@@ -113,7 +127,7 @@ public abstract class ICargo : MonoBehaviour
                 m_Projection.SetActive(false);
 
                 if (m_Renderer != null)
-                    m_Renderer.material = m_ActiveMaterial;
+                    m_Renderer.materials[m_MaterialID] = m_ActiveMaterial;
                 return;
             }
         }
@@ -122,7 +136,7 @@ public abstract class ICargo : MonoBehaviour
         m_Projection.SetActive(true);
 
         if (m_Renderer != null)
-            m_Renderer.material = m_DefaultMaterial;
+            m_Renderer.materials[m_MaterialID] = m_DefaultMaterial;
     }
 
     public void StopDrag()

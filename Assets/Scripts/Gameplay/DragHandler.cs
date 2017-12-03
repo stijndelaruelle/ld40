@@ -85,7 +85,7 @@ public class DragHandler : MonoBehaviour
 
             if (canon != null)
             {
-                canon.Fire();
+                canon.Fire(m_CurrentCargo.MeshFilter.mesh, m_CurrentCargo.Renderer.materials);
                 GameObject.Destroy(m_CurrentCargo.gameObject); //POOL!
                 return;
             }
