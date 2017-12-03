@@ -65,9 +65,6 @@ public class EnemyShip : IDamagable
         if (!m_Player)
             return;
 
-        if (Input.GetKeyUp(KeyCode.B))
-            Sink();
-
         if (Vector3.Distance(transform.position, m_Player.transform.position) < 30)
         {
             if (Vector3.Dot(transform.right, m_Player.right) > 0)

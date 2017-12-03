@@ -19,6 +19,7 @@ public class Ship : IDamagable
     private float m_MaxTiltAngle; //Higher than this and the ship sinks
     private Vector2 m_CurrentDirection;
     private float m_CummulativeAngle;
+    private float m_CurrentAngle;
 
     [SerializeField]
     private float m_WeightToAngleRatio; //F.e.: if this is 5, it means:  5kg = add 1 degree per second
@@ -72,6 +73,18 @@ public class Ship : IDamagable
     {
         if (!IsSunk)
         {
+            //Change movement
+            Vector2 addedDirection = Vector2.zero;
+            addedDirection = addedDirection.DegreeToVector2(m_CummulativeAngle);
+            addedDirection.Normalize();
+
+            m_CurrentAngle = Mathf.Atan2(addedDirection.y, addedDirection.x) * Mathf.Rad2Deg;
+
+            m_CurrentDirection.x += addedDirection.y * Time.deltaTime;
+            m_CurrentDirection.y += addedDirection.x * Time.deltaTime;
+
+            m_CurrentDirection.Normalize();
+
             //Actually move
             Vector2 addedPosition = (m_CurrentSpeed * m_CurrentDirection) * Time.deltaTime;
             transform.position = new Vector3(transform.position.x + addedPosition.x,
@@ -128,18 +141,7 @@ public class Ship : IDamagable
         m_CummulativeAngle = 0;
         if (m_WeightToAngleRatio > 0) { m_CummulativeAngle = m_RelativeWeight / m_WeightToAngleRatio; }
 
-        Vector2 addedDirection = Vector2.zero;
-        addedDirection = addedDirection.DegreeToVector2(m_CummulativeAngle);
-        addedDirection.Normalize();
-
-        float currentAngle = Mathf.Atan2(addedDirection.y, addedDirection.x) * Mathf.Rad2Deg;
-
-        m_CurrentDirection.x += addedDirection.y * Time.deltaTime;
-        m_CurrentDirection.y += addedDirection.x * Time.deltaTime;
-
-        m_CurrentDirection.Normalize();
-
-        Quaternion targetRotation = Quaternion.Euler(new Vector3(0.0f, currentAngle, -m_CummulativeAngle));
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(0.0f, m_CurrentAngle, -m_CummulativeAngle));
 
         Tweener tweener = transform.DORotateQuaternion(targetRotation, 1.0f);
         tweener.SetEase(m_RotationAnimationCurve);
@@ -182,6 +184,7 @@ public class Ship : IDamagable
         foreach (ICargo _cargo in m_Cargo)
             _weight += _cargo.Weight;
 
+        //Check if we die from going overweight
         if (_weight > m_MaxWeight)
         {
             Sink();
@@ -194,6 +197,12 @@ public class Ship : IDamagable
 
             Tweener tweener = transform.DOMoveY(lerp, 1.0f);
             tweener.SetEase(m_RotationAnimationCurve);
+        }
+
+        //Check if we die from tilting too much to one side
+        if (Mathf.Abs(m_CurrentAngle) > m_MaxTiltAngle)
+        {
+            Sink();
         }
     }
 
