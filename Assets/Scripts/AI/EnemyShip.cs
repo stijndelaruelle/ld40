@@ -8,10 +8,11 @@ public class EnemyShip : IDamagable
 {
     public enum TargettedSide
     {
+        NONE,
         LEFT,
         RIGHT
     }
-    public TargettedSide TargetSide;
+    public TargettedSide TargetSide = TargettedSide.NONE;
 
     [SerializeField]
     private Transform m_Player;
@@ -36,7 +37,6 @@ public class EnemyShip : IDamagable
 
     private void Start()
     {
-        m_Player = GameObject.FindGameObjectWithTag("Player").transform;
         m_Agent = GetComponent<NavMeshAgent>();
 
         m_Canons = new List<Canon>();
@@ -44,23 +44,35 @@ public class EnemyShip : IDamagable
         Spawn();
 
         OnSinkEvent += OnSink;
-        Invoke("Sink", 2);
+    }
+
+    public void SetPlayer(GameObject _player)
+    {
+        Debug.Log("Setting player");
+        m_Player = _player.transform;
     }
 
     public void Spawn()
     {
         transform.position = new Vector3(Random.Range(-120f, 120f), 0, Random.Range(-120f, 120f)) + m_Player.transform.position;
-        InvokeRepeating("SteerChange", 0, 2);
+        StartCoroutine(SteerChange());
     }
 
     private void Update()
     {
+        if (IsSunk)
+            return;
+
+        if (!m_Player)
+            return;
+
         if (Vector3.Distance(transform.position, m_Player.transform.position) < 30)
         {
             if (Vector3.Dot(transform.right, m_Player.right) > 0)
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(m_Player.forward), 10 * Time.deltaTime);
             else
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(-m_Player.forward), 10 * Time.deltaTime);
+
             m_ShootCooldown += Time.deltaTime;
             if (m_ShootCooldown >= m_ShootPerSecond)
             {
@@ -75,8 +87,10 @@ public class EnemyShip : IDamagable
             }
         }
 
-        m_LeftsidePlayer = m_Player.right * 20f;
-        m_RightsidePlayer = -m_Player.right * 20f;
+        m_LeftsidePlayer = m_Player.position + (m_Player.right * 15f);
+        m_RightsidePlayer = -m_Player.position - (m_Player.right * 15f);
+
+        Debug.Log(m_Player.right);
     }
 
     private void OnSink()
@@ -88,60 +102,70 @@ public class EnemyShip : IDamagable
         Sequence _seq = DOTween.Sequence();
         _seq.Append(transform.DORotate(new Vector3(90, 0, 0), 2));
         _seq.Append(transform.DOMoveZ(-10, 4));
-        _seq.OnComplete(DestroyMe);
+        _seq.OnComplete(Deactivate);
         _seq.Play();
     }
-    private void DestroyMe()
+
+    public void ChangeDirection()
     {
-        Deactivate();
+        m_Target = GetNearest();
+        m_Agent.SetDestination(m_Target);
     }
 
-    public void SteerChange()
+    IEnumerator SteerChange()
     {
-        if (!IsSunk)
+        yield return new WaitForSeconds(3);
+        while (!IsSunk)
         {
-            m_Target = GetNearest();
-            m_Agent.SetDestination(m_Target);
+            if (m_Player)
+            {
+                m_Target = GetNearest();
+                m_Agent.SetDestination(m_Target);
+            }
+            yield return new WaitForSeconds(3);
         }
     }
 
     private Vector3 GetNearest()
     {
         float _distance = Vector3.Distance(m_LeftsidePlayer, transform.position);
+        int _side = 0;
+        TargettedSide _old = TargetSide;
         if (Vector3.Distance(m_RightsidePlayer, transform.position) < _distance)
         {
-            if (SpawnParent.SideUsed == TargettedSide.LEFT)
+            if (SpawnParent.SideUsed == TargettedSide.LEFT && _old == TargettedSide.NONE)
             {
                 SpawnParent.SideUsed = TargettedSide.RIGHT;
-                TargetSide = SpawnParent.SideUsed;
-                SpawnParent.AlertRedirection(this);
-                return m_RightsidePlayer;
+                _side = 1;
             }
             else
             {
                 SpawnParent.SideUsed = TargettedSide.LEFT;
-                TargetSide = SpawnParent.SideUsed;
-                SpawnParent.AlertRedirection(this);
-                return m_LeftsidePlayer;
+                _side = -1;
             }
         }
         else
         {
-            if (SpawnParent.SideUsed == TargettedSide.LEFT)
+            if (SpawnParent.SideUsed == TargettedSide.LEFT && _old == TargettedSide.NONE)
             {
                 SpawnParent.SideUsed = TargettedSide.RIGHT;
-                TargetSide = SpawnParent.SideUsed;
-                SpawnParent.AlertRedirection(this);
-                return m_RightsidePlayer;
+                _side = 1;
             }
             else
             {
                 SpawnParent.SideUsed = TargettedSide.LEFT;
-                TargetSide = SpawnParent.SideUsed;
-                SpawnParent.AlertRedirection(this);
-                return m_LeftsidePlayer;
+                _side = -1;
             }
         }
+        TargetSide = SpawnParent.SideUsed;
+        if (_old != TargetSide)
+            SpawnParent.AlertRedirection(this);
+
+        if (_side == -1)
+            return m_LeftsidePlayer;
+        else
+            return m_RightsidePlayer;
+
     }
 
     private void OnDrawGizmos()

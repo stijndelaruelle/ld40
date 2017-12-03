@@ -79,6 +79,9 @@ public abstract class ICargo : MonoBehaviour
 
     protected virtual void Start()
     {
+        if (m_Renderer == null)
+            return;
+
         Material[] matArray = m_Renderer.materials;
 
         m_DefaultMaterials = new Material[matArray.Length];
@@ -91,6 +94,9 @@ public abstract class ICargo : MonoBehaviour
     protected virtual void Update()
     {
         if (m_IsDragged == true)
+            return;
+
+        if (m_Collider == null)
             return;
 
         Vector3 bottomPosition = transform.position + m_Collider.center + (Vector3.down * ((transform.localScale.y * m_Collider.size.y) * 0.5f));
