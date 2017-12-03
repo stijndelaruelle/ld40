@@ -2,8 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public delegate void DamageDelegate();
+public delegate void SinkDelegate();
+
 public abstract class IDamagable : PoolableObject
 {
+    public event DamageDelegate OnDamageEvent;
+    public event SinkDelegate OnSinkEvent;
+
     [SerializeField]
     private int m_Health;
     public int GetHealth
@@ -21,14 +27,28 @@ public abstract class IDamagable : PoolableObject
     [SerializeField]
     public bool Indestructible;
 
+    public void Reset()
+    {
+        m_Health = 1;
+    }
+
     public void Damage(int _damage)
     {
         m_Health -= _damage;
         if (m_Health <= 0)
         {
             m_Health = 0;
-            m_IsSunk = true;
+            Sink();
         }
+        if (OnDamageEvent != null)
+            OnDamageEvent();
+    }
+
+    public void Sink()
+    {
+        m_IsSunk = true;
+        if (OnSinkEvent != null)
+            OnSinkEvent();
     }
 
     private void OnCollisionEnter(Collision collision)

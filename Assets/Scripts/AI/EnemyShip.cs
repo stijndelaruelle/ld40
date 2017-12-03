@@ -42,6 +42,9 @@ public class EnemyShip : IDamagable
         m_Canons = new List<Canon>();
         m_Canons.AddRange(GetComponentsInChildren<Canon>());
         Spawn();
+
+        OnSinkEvent += OnSink;
+        Invoke("Sink", 2);
     }
 
     public void Spawn()
@@ -72,23 +75,34 @@ public class EnemyShip : IDamagable
             }
         }
 
-        if (IsSunk)
-        {
-            //    Deactivate();
-            m_Agent.isStopped = true;
-            Destroy(m_Agent);
-            transform.DOMoveY(-10, 4);
-            Instantiate(m_Loot, transform.position + Vector3.up, Quaternion.identity);
-        }
-
         m_LeftsidePlayer = m_Player.right * 20f;
         m_RightsidePlayer = -m_Player.right * 20f;
     }
 
+    private void OnSink()
+    {
+        m_Agent.isStopped = true;
+        GameObject _loot = Instantiate(m_Loot, transform.position + Vector3.up, Quaternion.identity);
+        _loot.GetComponent<Rigidbody>().AddForce(Vector3.up, ForceMode.Force);
+
+        Sequence _seq = DOTween.Sequence();
+        _seq.Append(transform.DORotate(new Vector3(90, 0, 0), 2));
+        _seq.Append(transform.DOMoveZ(-10, 4));
+        _seq.OnComplete(DestroyMe);
+        _seq.Play();
+    }
+    private void DestroyMe()
+    {
+        Deactivate();
+    }
+
     public void SteerChange()
     {
-        m_Target = GetNearest();
-        m_Agent.SetDestination(m_Target);
+        if (!IsSunk)
+        {
+            m_Target = GetNearest();
+            m_Agent.SetDestination(m_Target);
+        }
     }
 
     private Vector3 GetNearest()
@@ -146,6 +160,7 @@ public class EnemyShip : IDamagable
     public override void Activate()
     {
         gameObject.SetActive(true);
+        Reset();
     }
 
     public override void Deactivate()
