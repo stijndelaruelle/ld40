@@ -15,6 +15,9 @@ public class FreeLookCameraOverride : MonoBehaviour
     [SerializeField]
     private DragHandler m_DragHandler;
 
+    [SerializeField]
+    private Ship m_Ship;
+
     private void Start()
     {
         m_InputAxisNameX = m_FreeLookCamera.m_XAxis.m_InputAxisName;
@@ -23,6 +26,11 @@ public class FreeLookCameraOverride : MonoBehaviour
 
     private void Update()
     {
+        if (m_Ship.IsSunk)
+        {
+            m_FreeLookCamera.Follow = null;
+        }
+
         if (Input.GetMouseButton(1) && m_DragHandler.IsDragging == false)
         {
             m_FreeLookCamera.m_XAxis.m_InputAxisName = m_InputAxisNameX;
