@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Sjabloon;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,9 @@ public abstract class IDamagable : PoolableObject
 {
     public event DamageDelegate OnDamageEvent;
     public event SinkDelegate OnSinkEvent;
+
+    public AudioSource m_BubbleSFX;
+    public ImpactEffect m_BubblePS;
 
     [SerializeField]
     private int m_Health;
@@ -50,6 +54,12 @@ public abstract class IDamagable : PoolableObject
         m_IsSunk = true;
         if (OnSinkEvent != null)
             OnSinkEvent();
+
+        ImpactEffect bubblesFx = (ImpactEffect)ObjectPoolManager.Instance.GetPool(m_BubblePS).ActivateAvailableObject();
+        bubblesFx.Play(transform.position - transform.up, Quaternion.identity);
+
+        if (m_BubbleSFX)
+            m_BubbleSFX.PlayOneShot(m_BubbleSFX.clip);
     }
 
     private void OnCollisionEnter(Collision collision)

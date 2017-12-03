@@ -16,8 +16,18 @@ public class UIHandler : MonoBehaviour
         }
     }
 
+    public void StartGame()
+    {
+        Retry();
+    }
+
     public void Retry()
     {
         SceneManager.LoadScene("main");
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

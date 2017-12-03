@@ -20,6 +20,8 @@ public class Canon : ICargo
     [Header("Effects")]
     [SerializeField]
     private List<ParticleSystem> m_Particles;
+    [SerializeField]
+    private AudioClip[] m_ShootSFX;
 
     protected override void Start()
     {
@@ -96,9 +98,12 @@ public class Canon : ICargo
         //Set cooldown
         m_CooldownTimer = m_Cooldown;
 
-        foreach(ParticleSystem particle in m_Particles)
+        foreach (ParticleSystem particle in m_Particles)
         {
             particle.Play();
         }
+
+        int _r = Random.Range(0, m_ShootSFX.Length);
+        GetComponent<AudioSource>().PlayOneShot(m_ShootSFX[_r]);
     }
 }
