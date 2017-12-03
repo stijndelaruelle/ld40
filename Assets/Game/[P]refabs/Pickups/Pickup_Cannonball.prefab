@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 65472104662178454}
   - component: {fileID: 54243400940385118}
   m_Layer: 0
-  m_Name: Cannonball_Pickup
+  m_Name: Pickup_Cannonball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

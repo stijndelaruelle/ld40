@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23950670733748026}
   - component: {fileID: 96102840202735370}
   m_Layer: 0
-  m_Name: Cannonball_NoParticles
+  m_Name: Cannonball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

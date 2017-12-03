@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 65384756883597392}
   - component: {fileID: 54556952252634910}
   m_Layer: 0
-  m_Name: Loot_Pickup_OpenChest
+  m_Name: Pickup_Loot_OpenChest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

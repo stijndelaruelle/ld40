@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 65669911270427228}
   - component: {fileID: 54976785134520870}
   m_Layer: 0
-  m_Name: Loot
+  m_Name: Loot_Growing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1653,10 +1653,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c68d9194b0f205a42bf8969905e96d1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Position: 0
   m_Weight: 28.4
   m_Gravity: 0
-  m_SwapRotation: 0
+  m_Collider: {fileID: 0}
+  m_Projection: {fileID: 0}
+  m_Renderer: {fileID: 0}
+  m_MeshFilter: {fileID: 0}
+  m_MaterialID: 0
+  m_DefaultMaterial: {fileID: 0}
+  m_ActiveMaterial: {fileID: 0}
   m_State: 1
   StateSmall: {fileID: 1896317047074152}
   StateMedium: {fileID: 1525801412030824}
