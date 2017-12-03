@@ -50,7 +50,8 @@ public class Canon : ICargo
 
     private void HandleDragging()
     {
-        m_Projection.SetActive(IsDragged);
+        if (m_Projection)
+            m_Projection.SetActive(IsDragged);
 
         if (!IsDragged)
             return;
@@ -95,7 +96,7 @@ public class Canon : ICargo
         //Set cooldown
         m_CooldownTimer = m_Cooldown;
 
-        foreach(ParticleSystem particle in m_Particles)
+        foreach (ParticleSystem particle in m_Particles)
         {
             particle.Play();
         }

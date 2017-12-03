@@ -74,5 +74,14 @@ public class Loot : ICargo
             Destroy(collision.gameObject);
             MakeBigger();
         }
+
+        if (collision.collider.gameObject.CompareTag("Water"))
+        {
+            if (!gameObject.GetComponent<Buouncy>())
+            {
+                m_Gravity = 0;
+                gameObject.AddComponent<Buouncy>();
+            }
+        }
     }
 }

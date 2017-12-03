@@ -751,7 +751,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1989846556061692}
-  m_Mesh: {fileID: 4300066, guid: 7b02e82bd243a9d4d830364c208ed579, type: 3}
+  m_Mesh: {fileID: 4300070, guid: 7b02e82bd243a9d4d830364c208ed579, type: 3}
 --- !u!33 &33559365441130506
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -798,12 +798,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab902dfafac16544a899fdc45063c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Position: 0
   m_Weight: 0
   m_Gravity: 0
-  m_SwapRotation: 0
   m_Cooldown: 0
+  m_FirePosition: {fileID: 0}
   m_BulletPool: {fileID: 0}
+  m_Projection: {fileID: 0}
+  m_Particles: []
 --- !u!114 &114462079698117442
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -815,7 +816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b0b308924234e647918b91323cfdf86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Health: 0
+  m_Health: 1
   m_IsSunk: 0
   Indestructible: 0
   TargetSide: 0
@@ -823,6 +824,7 @@ MonoBehaviour:
   m_LeftsidePlayer: {x: 0, y: 0, z: 0}
   m_RightsidePlayer: {x: 0, y: 0, z: 0}
   m_Target: {x: 0, y: 0, z: 0}
+  m_Loot: {fileID: 1630290914628674, guid: 7027431051e26ff4c8b6e2f5ed9d408c, type: 2}
   m_ShootPerSecond: 0
 --- !u!114 &114658917932777746
 MonoBehaviour:
@@ -835,12 +837,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab902dfafac16544a899fdc45063c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Position: 0
   m_Weight: 0
   m_Gravity: 0
-  m_SwapRotation: 0
   m_Cooldown: 0
+  m_FirePosition: {fileID: 0}
   m_BulletPool: {fileID: 0}
+  m_Projection: {fileID: 0}
+  m_Particles: []
 --- !u!114 &114824618423259350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -852,12 +855,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab902dfafac16544a899fdc45063c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Position: 0
   m_Weight: 0
   m_Gravity: 0
-  m_SwapRotation: 0
   m_Cooldown: 0
+  m_FirePosition: {fileID: 0}
   m_BulletPool: {fileID: 0}
+  m_Projection: {fileID: 0}
+  m_Particles: []
 --- !u!114 &114970702133984594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -869,12 +873,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab902dfafac16544a899fdc45063c888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Position: 0
   m_Weight: 0
   m_Gravity: 0
-  m_SwapRotation: 0
   m_Cooldown: 0
+  m_FirePosition: {fileID: 0}
   m_BulletPool: {fileID: 0}
+  m_Projection: {fileID: 0}
+  m_Particles: []
 --- !u!195 &195516540400146136
 NavMeshAgent:
   m_ObjectHideFlags: 1
