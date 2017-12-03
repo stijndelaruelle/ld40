@@ -182,5 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a22aff1bae5514880b455fce540cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_MeshFilter: {fileID: 33967288335535812}
+  m_MeshRenderer: {fileID: 23950670733748026}
   m_Speed: 50
   m_Gravity: 1

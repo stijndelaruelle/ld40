@@ -78,6 +78,11 @@ public class Canon : ICargo
 
     public void Fire()
     {
+        Fire(null, null);
+    }
+
+    public void Fire(Mesh mesh, Material[] materials)
+    {
         if (m_CooldownTimer > 0.0f)
             return;
 
@@ -86,7 +91,7 @@ public class Canon : ICargo
 
         //Fire bullet
         Bullet bullet = (Bullet)m_BulletPool.ActivateAvailableObject();
-        bullet.StartFlying(m_FirePosition.position, transform.forward);
+        bullet.StartFlying(m_FirePosition.position, transform.forward, mesh, materials);
 
         //Set cooldown
         m_CooldownTimer = m_Cooldown;

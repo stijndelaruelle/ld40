@@ -43,7 +43,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1469687974125750
 GameObject:
   m_ObjectHideFlags: 1
@@ -347,7 +347,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Weight: 20
   m_Gravity: 5
+  m_Collider: {fileID: 65273272247806922}
   m_Projection: {fileID: 1403124886444210}
+  m_Renderer: {fileID: 0}
+  m_DefaultMaterial: {fileID: 0}
+  m_ActiveMaterial: {fileID: 0}
   m_Cooldown: 1
   m_FirePosition: {fileID: 4740954956913950}
   m_BulletPool: {fileID: 0}

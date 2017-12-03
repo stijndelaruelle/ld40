@@ -5,16 +5,36 @@ using UnityEngine;
 public class Bullet : PoolableObject
 {
     [SerializeField]
+    private MeshFilter m_MeshFilter;
+    private Mesh m_DefaultMesh;
+
+    [SerializeField]
+    private MeshRenderer m_MeshRenderer;
+    private Material[] m_DefaultMaterials;
+
+    [SerializeField]
     private float m_Speed;
 
     [SerializeField]
     private float m_Gravity;
     private Vector3 m_Direction;
 
-    public void StartFlying(Vector3 postion, Vector3 direction)
+
+    public void StartFlying(Vector3 postion, Vector3 direction, Mesh mesh, Material[] materials)
     {
         transform.position = postion;
         m_Direction = direction;
+
+        if (mesh != null)
+        {
+            m_MeshFilter.mesh = mesh;
+            m_MeshRenderer.materials = materials;
+        }
+        else
+        {
+            m_MeshFilter.mesh = m_DefaultMesh;
+            m_MeshRenderer.materials = materials;
+        }
     }
 
     private void Update()
@@ -35,7 +55,10 @@ public class Bullet : PoolableObject
     #region PoolableObject
     public override void Initialize()
     {
+        m_DefaultMesh = m_MeshFilter.mesh;
 
+        m_DefaultMaterials = new Material[m_MeshRenderer.materials.Length];
+        m_MeshRenderer.materials.CopyTo(m_DefaultMaterials, 0);
     }
 
     public override void Activate()
