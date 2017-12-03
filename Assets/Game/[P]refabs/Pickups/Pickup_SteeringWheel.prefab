@@ -53,9 +53,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4792444021735468}
   - component: {fileID: 114267406242957554}
-  - component: {fileID: 114406924683159312}
-  - component: {fileID: 54626125683633540}
   - component: {fileID: 65064926502201580}
+  - component: {fileID: 54626125683633540}
   m_Layer: 0
   m_Name: Pickup_SteeringWheel
   m_TagString: Untagged
@@ -83,8 +82,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1984422428070490}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
-  m_LocalPosition: {x: 0, y: 3.0180001, z: -2.582}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: 0, y: 3.429277, z: -2.065}
+  m_LocalScale: {x: 1.3813789, y: 1.3813791, z: 1.3813791}
   m_Children:
   - {fileID: 4936430373523688}
   - {fileID: 4752191403749450}
@@ -98,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1006804073903864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.009, y: 0, z: 0.649}
+  m_LocalPosition: {x: 0, y: 0, z: 0.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4792444021735468}
@@ -184,25 +183,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Weight: 0
-  m_Gravity: 0
-  m_Collider: {fileID: 65064926502201580}
-  m_Projection: {fileID: 1705403374781994}
-  m_Renderer: {fileID: 23172579565548302}
-  m_MeshFilter: {fileID: 33275468921953084}
-  m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
-  m_RotationSpeed: {x: 0, y: 150, z: 0}
---- !u!114 &114406924683159312
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1984422428070490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5ceb668b65bd794b9fe67d46789cc70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Weight: 1
   m_Gravity: 5
   m_Collider: {fileID: 65064926502201580}
   m_Projection: {fileID: 1705403374781994}
@@ -210,7 +190,6 @@ MonoBehaviour:
   m_MeshFilter: {fileID: 33275468921953084}
   m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
   m_RotationSpeed: {x: 0, y: 150, z: 0}
-  m_Value: 50
 --- !u!119 &119551337089339868
 Projector:
   m_ObjectHideFlags: 1

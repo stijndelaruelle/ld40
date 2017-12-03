@@ -21,8 +21,10 @@ public class Canon : ICargo
     [SerializeField]
     private List<ParticleSystem> m_Particles;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+
         m_BulletPool = GameObject.Find("BulletPool").GetComponent<ObjectPool>();
     }
 
