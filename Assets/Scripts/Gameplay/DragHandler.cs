@@ -66,13 +66,30 @@ public class DragHandler : MonoBehaviour
         Ray ray = m_Camera.ScreenPointToRay(Input.mousePosition);
         Vector3 worldSpace = ray.origin + (ray.direction * m_ObjectDistance);
 
-        m_CurrentCargo.transform.position = worldSpace;
+        m_CurrentCargo.HandleDrag(worldSpace, ray);
     }
 
     private void HandleEndDrag()
     {
         if (m_CurrentCargo == null)
             return;
+
+        //Check if we are over an object that uses cargo (so far only the canon)
+        RaycastHit hitInfo;
+        Ray ray = m_Camera.ScreenPointToRay(Input.mousePosition);
+        Physics.Raycast(ray, out hitInfo, 1000.0f);// LayerMask.NameToLayer("Ignore Raycast"));
+
+        if (hitInfo.collider != null)
+        {
+            Canon canon = hitInfo.collider.GetComponent<Canon>();
+
+            if (canon != null)
+            {
+                canon.Fire();
+                GameObject.Destroy(m_CurrentCargo.gameObject); //POOL!
+                return;
+            }
+        }
 
         m_CurrentCargo.StopDrag();
         m_CurrentCargo = null;

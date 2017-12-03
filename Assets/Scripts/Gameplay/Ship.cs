@@ -50,6 +50,7 @@ public class Ship : IDamagable
         foreach (ICargo cargo in m_Cargo)
         {
             cargo.StartDragEvent += OnCargoStartDrag;
+            cargo.DestroyEvent += OnCargoDestroy;
         }
     }
 
@@ -109,6 +110,7 @@ public class Ship : IDamagable
 
         //cargo.gameObject.transform.parent = transform;
         cargo.StartDragEvent += OnCargoStartDrag;
+        cargo.DestroyEvent += OnCargoDestroy;
 
         if (cargo.GetType() == typeof(Loot))
         {
@@ -132,6 +134,7 @@ public class Ship : IDamagable
 
         //Stop listening for events
         cargo.StartDragEvent -= OnCargoStartDrag;
+        cargo.DestroyEvent -= OnCargoDestroy;
 
         //Remove from list
         m_Cargo.Remove(cargo);
@@ -203,6 +206,11 @@ public class Ship : IDamagable
 
     //Custom callbacks
     private void OnCargoStartDrag(ICargo cargo)
+    {
+        RemoveCargo(cargo);
+    }
+
+    private void OnCargoDestroy(ICargo cargo)
     {
         RemoveCargo(cargo);
     }

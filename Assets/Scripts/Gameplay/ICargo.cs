@@ -2,7 +2,6 @@
 using UnityEngine;
 
 public delegate void CargoDelegate(ICargo cargo);
-public delegate void CargoEndDelegate(ICargo cargo);
 
 
 public abstract class ICargo : MonoBehaviour
@@ -30,6 +29,22 @@ public abstract class ICargo : MonoBehaviour
     protected float m_Gravity;
     private bool m_UseGravity = true;
 
+    [SerializeField]
+    private Collider m_Collider;
+
+    [Header("Effects")]
+    [SerializeField]
+    private GameObject m_Projection;
+
+    [SerializeField]
+    private Renderer m_Renderer;
+
+    [SerializeField]
+    private Material m_DefaultMaterial;
+
+    [SerializeField]
+    private Material m_ActiveMaterial;
+
     private bool m_IsDragged = false;
     public bool IsDragged
     {
@@ -45,7 +60,8 @@ public abstract class ICargo : MonoBehaviour
     }
 
     public event CargoDelegate StartDragEvent;
-    public event CargoEndDelegate EndDragEvent;
+    public event CargoDelegate EndDragEvent;
+    public event CargoDelegate DestroyEvent;
 
     protected virtual void Update()
     {
@@ -59,18 +75,56 @@ public abstract class ICargo : MonoBehaviour
         transform.position += gravity * Time.deltaTime;
     }
 
+    private void OnDestroy()
+    {
+        if (DestroyEvent != null)
+            DestroyEvent(this);
+    }
+
     public void StartDrag()
     {
         m_IsDragged = true;
+        m_Collider.enabled = false;
 
         if (StartDragEvent != null)
             StartDragEvent(this);
+    }
+
+    public void HandleDrag(Vector3 newWorldSpace, Ray ray)
+    {
+        transform.position = newWorldSpace;
+
+        //Check if we are over an object that uses cargo (so far only the canon)
+        RaycastHit hitInfo;
+        Physics.Raycast(ray, out hitInfo, 1000.0f);// LayerMask.NameToLayer("Ignore Raycast"));
+
+        if (hitInfo.collider != null)
+        {
+            Canon canon = hitInfo.collider.GetComponent<Canon>();
+
+            if (canon != null)
+            {
+                m_Projection.SetActive(false);
+
+                if (m_Renderer != null)
+                    m_Renderer.material = m_ActiveMaterial;
+                return;
+            }
+        }
+
+        //We didn't hit a canon
+        m_Projection.SetActive(true);
+
+        if (m_Renderer != null)
+            m_Renderer.material = m_DefaultMaterial;
     }
 
     public void StopDrag()
     {
         m_IsDragged = false;
         m_UseGravity = true;
+
+        m_Collider.enabled = true;
 
         if (EndDragEvent != null)
             EndDragEvent(this);

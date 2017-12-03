@@ -17,8 +17,6 @@ public class Canon : ICargo
     private ObjectPool m_BulletPool;
 
     [Header("Effects")]
-    [SerializeField]
-    private GameObject m_Projection;
 
     [SerializeField]
     private List<ParticleSystem> m_Particles;
@@ -33,10 +31,10 @@ public class Canon : ICargo
         base.Update();
 
         //Debug
-        if (Input.GetMouseButtonDown(0))
-        {
-            Fire();
-        }
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    Fire();
+        //}
 
         HandleCooldownTimer();
         HandleDragging();
@@ -50,8 +48,6 @@ public class Canon : ICargo
 
     private void HandleDragging()
     {
-        m_Projection.SetActive(IsDragged);
-
         if (!IsDragged)
             return;
 
