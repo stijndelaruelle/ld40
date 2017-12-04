@@ -169,6 +169,13 @@ public abstract class ICargo : MonoBehaviour
             DestroyEvent(this);
     }
 
+    public void RemoveAudio()
+    {
+        m_HitWaterSFX = null;
+        m_HitDeckSFX = null;
+        m_GrabbedSFX = null;
+    }
+
     private void HandleFloating(Vector3 topPosition)
     {
         if (m_IsFloating)

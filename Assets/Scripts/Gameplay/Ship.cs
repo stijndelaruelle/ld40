@@ -123,6 +123,7 @@ public class Ship : IDamagable
         //Drop all loot
         for (int i = m_Cargo.Count - 1; i >= 0; --i)
         {
+            m_Cargo[i].RemoveAudio();
             m_Cargo[i].SetParent(null);
             RemoveCargo(m_Cargo[i]);
         }
@@ -268,7 +269,7 @@ public class Ship : IDamagable
     {
         int cummulativeValue = 0;
 
-        foreach(ICargo cargo in m_Cargo)
+        foreach (ICargo cargo in m_Cargo)
         {
             cummulativeValue += cargo.Value;
         }
