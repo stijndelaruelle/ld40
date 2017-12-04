@@ -81,6 +81,15 @@ public abstract class ICargo : MonoBehaviour
     [SerializeField]
     private PoolableObject m_BubblesEffect;
 
+    [Header("Sounds")]
+    private AudioSource m_AudioSource;
+    [SerializeField]
+    private AudioClip m_GrabbedSFX;
+    [SerializeField]
+    private AudioClip m_HitDeckSFX;
+    [SerializeField]
+    private AudioClip m_HitWaterSFX;
+
     private float m_TempDot;
 
     private bool m_IsDragged = false;
@@ -109,6 +118,8 @@ public abstract class ICargo : MonoBehaviour
     {
         if (m_Renderer == null)
             return;
+
+        m_AudioSource = GetComponent<AudioSource>();
 
         Material[] matArray = m_Renderer.materials;
 
@@ -210,6 +221,9 @@ public abstract class ICargo : MonoBehaviour
                 if (ship != null)
                 {
                     ship.AddCargo(this);
+                    if (m_HitDeckSFX && !ship.IsSunk)
+                        m_AudioSource.PlayOneShot(m_HitDeckSFX);
+
                 }
             }
         }
@@ -260,6 +274,9 @@ public abstract class ICargo : MonoBehaviour
 
         if (StartDragEvent != null)
             StartDragEvent(this);
+
+        if (m_GrabbedSFX)
+            m_AudioSource.PlayOneShot(m_GrabbedSFX);
     }
 
     public void HandleDrag(Vector3 newWorldSpace, Ray ray)
@@ -347,6 +364,7 @@ public abstract class ICargo : MonoBehaviour
 
         SetParent(collision.gameObject.transform);
 
+
         ////Average the collision points
         //Vector3 avgContact = Vector3.zero;
         //for (int i = 0; i < collision.contacts.Length; ++i)
@@ -384,6 +402,7 @@ public abstract class ICargo : MonoBehaviour
             if (m_CanFloat)
             {
                 StartFloating(projectedPosition);
+
             }
             else
             {
@@ -396,7 +415,8 @@ public abstract class ICargo : MonoBehaviour
                     bubblesFx.Play(projectedPosition, Quaternion.identity);
                 }
             }
-
+            if (m_HitWaterSFX)
+                m_AudioSource.PlayOneShot(m_HitWaterSFX);
         }
     }
 
