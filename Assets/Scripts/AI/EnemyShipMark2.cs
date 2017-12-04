@@ -24,6 +24,9 @@ public class EnemyShipMark2 : IDamagable
     [SerializeField]
     private float m_Duration;
 
+    [SerializeField]
+    private Ease m_Ease = Ease.InOutQuad;
+
     private void Start()
     {
         OnSinkEvent += OnSink;
@@ -84,7 +87,7 @@ public class EnemyShipMark2 : IDamagable
             m_HasSeenPlayer = true;
 
             //Start moving
-            transform.DOMove(m_TargetPosition.position, m_Duration).SetEase(Ease.InOutQuad);
+            transform.DOMove(m_TargetPosition.position, m_Duration).SetEase(m_Ease);
         }
     }
 
