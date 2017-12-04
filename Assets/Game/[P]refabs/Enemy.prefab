@@ -1393,6 +1393,7 @@ MonoBehaviour:
   - {fileID: 1028706457509272, guid: 6740adc8584111e4bbb803fc789d1c9e, type: 2}
   - {fileID: 1489870918401654, guid: 7af972ce91f3d7a48901ba2d64953e97, type: 2}
   m_ShootPerSecond: 0
+  m_ActivationRange: 75
 --- !u!114 &114761419942609592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1405,12 +1406,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Weight: 10
+  m_DubloonValue: 0
   m_Gravity: 5
   m_Collider: {fileID: 65013787925976300}
   m_Projection: {fileID: 1382656198743886}
   m_BubblesSFX: {fileID: 0}
   m_Renderer: {fileID: 0}
   m_MeshFilter: {fileID: 0}
+  m_HoverMaterial: {fileID: 0}
   m_ActiveMaterial: {fileID: 0}
   m_RotationSpeed: {x: 0, y: 0, z: 0}
   m_CanFloat: 0
@@ -1436,12 +1439,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Weight: 10
+  m_DubloonValue: 0
   m_Gravity: 5
   m_Collider: {fileID: 65293522833693518}
   m_Projection: {fileID: 1835981116942290}
   m_BubblesSFX: {fileID: 0}
   m_Renderer: {fileID: 0}
   m_MeshFilter: {fileID: 0}
+  m_HoverMaterial: {fileID: 0}
   m_ActiveMaterial: {fileID: 0}
   m_RotationSpeed: {x: 0, y: 0, z: 0}
   m_CanFloat: 0

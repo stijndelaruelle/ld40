@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.19982699, g: 0.2705763, b: 0.35294116, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.001
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.31541142, g: 0.34719908, b: 0.38459352, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -88,7 +88,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000002, guid: 97ebf52aeda6c6644ad883682a9d30db,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -334,6 +335,7 @@ MonoBehaviour:
   m_BubblesSFX: {fileID: 0}
   m_Renderer: {fileID: 1770087555}
   m_MeshFilter: {fileID: 1770087556}
+  m_HoverMaterial: {fileID: 0}
   m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
   m_RotationSpeed: {x: 0, y: 150, z: 0}
   m_CanFloat: 1
@@ -8841,6 +8843,7 @@ MonoBehaviour:
   m_BubblesSFX: {fileID: 0}
   m_Renderer: {fileID: 1320772331}
   m_MeshFilter: {fileID: 1320772332}
+  m_HoverMaterial: {fileID: 0}
   m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
   m_RotationSpeed: {x: 0, y: 150, z: 0}
   m_CanFloat: 1
@@ -9126,6 +9129,7 @@ MonoBehaviour:
   m_BubblesSFX: {fileID: 0}
   m_Renderer: {fileID: 880024248}
   m_MeshFilter: {fileID: 880024249}
+  m_HoverMaterial: {fileID: 0}
   m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
   m_RotationSpeed: {x: 0, y: 150, z: 0}
   m_CanFloat: 1
@@ -9326,12 +9330,12 @@ Prefab:
     - target: {fileID: 224230537507713506, guid: 6fe26305554477a489526187af5fee3c,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 405
+      value: 380.5
       objectReference: {fileID: 0}
     - target: {fileID: 224230537507713506, guid: 6fe26305554477a489526187af5fee3c,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 236.5
+      value: 297
       objectReference: {fileID: 0}
     - target: {fileID: 224230537507713506, guid: 6fe26305554477a489526187af5fee3c,
         type: 2}
@@ -16323,6 +16327,7 @@ MonoBehaviour:
   m_BubblesSFX: {fileID: 0}
   m_Renderer: {fileID: 1436412834}
   m_MeshFilter: {fileID: 1436412835}
+  m_HoverMaterial: {fileID: 0}
   m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
   m_RotationSpeed: {x: 0, y: 150, z: 0}
   m_CanFloat: 1
@@ -17388,6 +17393,7 @@ MonoBehaviour:
   m_BubblesSFX: {fileID: 0}
   m_Renderer: {fileID: 2023606152}
   m_MeshFilter: {fileID: 2023606153}
+  m_HoverMaterial: {fileID: 0}
   m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
   m_RotationSpeed: {x: 0, y: 0, z: 0}
   m_CanFloat: 0
@@ -17427,7 +17433,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1545387564}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -375.2, z: 0}
+  m_LocalPosition: {x: 0, y: -461.1117, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1406144929}
@@ -17562,7 +17568,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1595516965}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -274.99994, y: 95, z: 0}
+  m_LocalPosition: {x: -275, y: 95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1607728813}
@@ -17780,8 +17786,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1621853801}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 405, y: 236.5, z: 0}
-  m_LocalScale: {x: 0.4298437, y: 0.4298437, z: 0.4298437}
+  m_LocalPosition: {x: 380.5, y: 297, z: 0}
+  m_LocalScale: {x: 0.46689913, y: 0.46689913, z: 0.46689913}
   m_Children:
   - {fileID: 605542071}
   m_Father: {fileID: 0}
@@ -21995,7 +22001,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.2
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -22118,6 +22124,7 @@ MonoBehaviour:
   m_BubblesSFX: {fileID: 0}
   m_Renderer: {fileID: 1206183766}
   m_MeshFilter: {fileID: 1206183767}
+  m_HoverMaterial: {fileID: 0}
   m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
   m_RotationSpeed: {x: 0, y: 150, z: 0}
   m_CanFloat: 0

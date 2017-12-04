@@ -12,27 +12,24 @@ public class EnemyShip : IDamagable
         LEFT,
         RIGHT
     }
-    public TargettedSide TargetSide = TargettedSide.NONE;
-
     [SerializeField]
     private Transform m_Player;
-    private Vector3 m_LeftsidePlayer, m_RightsidePlayer, m_Target;
+    [SerializeField]
+    private Vector3 m_LeftsidePlayer, m_RightsidePlayer;
     private NavMeshAgent m_Agent;
 
     [SerializeField]
     private GameObject[] m_Loot;
-
-    public EnemySpawner SpawnParent
-    {
-        set;
-        private get;
-    }
 
     [SerializeField]
     private float m_ShootPerSecond;
     private float m_ShootCooldown;
 
     private List<Canon> m_Canons;
+
+    [SerializeField]
+    private float m_ActivationRange;
+    private bool m_SeenPlayer;
 
     private void Start()
     {
@@ -48,7 +45,6 @@ public class EnemyShip : IDamagable
     {
         transform.position = position; //new Vector3(Random.Range(-120f, 120f), 0, Random.Range(-120f, 120f)) + m_Player.transform.position;
         m_Player = player.transform;
-        SpawnParent = spawnParent;
     }
 
     private void Update()
@@ -63,6 +59,17 @@ public class EnemyShip : IDamagable
         {
             Sink();
             return;
+        }
+
+        m_LeftsidePlayer = m_Player.position + (m_Player.right * 15f);
+        m_LeftsidePlayer.y = 0;
+        m_RightsidePlayer = m_Player.position - (m_Player.right * 15f);
+        m_RightsidePlayer.y = 0;
+
+        if (Vector3.Distance(transform.position, m_Player.transform.position) < m_ActivationRange)
+        {
+            if (!m_SeenPlayer)
+                StartCoroutine(SteerChange());
         }
 
         if (Vector3.Distance(transform.position, m_Player.transform.position) < 30)
@@ -85,9 +92,6 @@ public class EnemyShip : IDamagable
                 }
             }
         }
-
-        m_LeftsidePlayer = m_Player.position + (m_Player.right * 15f);
-        m_RightsidePlayer = -m_Player.position - (m_Player.right * 15f);
     }
 
     private void OnSink()
@@ -104,70 +108,31 @@ public class EnemyShip : IDamagable
         _seq.Play();
     }
 
-    public void ChangeDirection()
-    {
-        if (IsSunk)
-            return;
-
-        m_Target = GetNearest();
-        m_Agent.SetDestination(m_Target);
-    }
-
     IEnumerator SteerChange()
     {
-        yield return new WaitForSeconds(3);
+        m_SeenPlayer = true;
+        yield return new WaitForSeconds(1);
         while (!IsSunk)
         {
             if (m_Player)
             {
-                m_Target = GetNearest();
-                m_Agent.SetDestination(m_Target);
+                m_Agent.SetDestination(GetNearest());
             }
-            yield return new WaitForSeconds(3);
+            yield return new WaitForEndOfFrame();
         }
-        m_Agent.ResetPath();
     }
 
     private Vector3 GetNearest()
     {
         float _distance = Vector3.Distance(m_LeftsidePlayer, transform.position);
-        int _side = 0;
-        TargettedSide _old = TargetSide;
         if (Vector3.Distance(m_RightsidePlayer, transform.position) < _distance)
         {
-            if (SpawnParent.SideUsed == TargettedSide.LEFT && _old == TargettedSide.NONE)
-            {
-                SpawnParent.SideUsed = TargettedSide.RIGHT;
-                _side = 1;
-            }
-            else
-            {
-                SpawnParent.SideUsed = TargettedSide.LEFT;
-                _side = -1;
-            }
+            return m_LeftsidePlayer;
         }
         else
         {
-            if (SpawnParent.SideUsed == TargettedSide.LEFT && _old == TargettedSide.NONE)
-            {
-                SpawnParent.SideUsed = TargettedSide.RIGHT;
-                _side = 1;
-            }
-            else
-            {
-                SpawnParent.SideUsed = TargettedSide.LEFT;
-                _side = -1;
-            }
-        }
-        TargetSide = SpawnParent.SideUsed;
-        if (_old != TargetSide)
-            SpawnParent.AlertRedirection(this);
-
-        if (_side == -1)
-            return m_LeftsidePlayer;
-        else
             return m_RightsidePlayer;
-
+        }
     }
 
     private void OnDrawGizmos()
@@ -175,6 +140,8 @@ public class EnemyShip : IDamagable
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(m_LeftsidePlayer, 0.5f);
         Gizmos.DrawSphere(m_RightsidePlayer, 0.5f);
+
+        Gizmos.DrawWireSphere(transform.position, m_ActivationRange);
     }
 
     #region PoolableObject
