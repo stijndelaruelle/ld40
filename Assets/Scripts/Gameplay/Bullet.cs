@@ -82,6 +82,29 @@ public class Bullet : PoolableObject
         Deactivate();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        ImpactEffect effect = null;
+
+        if (other.gameObject.tag == "Water")
+        {
+            //Water effect
+            ObjectPool pool = ObjectPoolManager.Instance.GetPool(m_ImpactWater);
+            effect = (ImpactEffect)pool.ActivateAvailableObject();
+        }
+        else
+        {
+            //Other effect
+            ObjectPool pool = ObjectPoolManager.Instance.GetPool(m_ImpactExplosion);
+            effect = (ImpactEffect)pool.ActivateAvailableObject();
+        }
+
+        if (effect != null)
+            effect.Play(transform.position, Quaternion.identity);
+
+        Deactivate();
+    }
+
     #region PoolableObject
     public override void Initialize()
     {

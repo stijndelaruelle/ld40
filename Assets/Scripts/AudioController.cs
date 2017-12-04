@@ -4,29 +4,30 @@ using UnityEngine;
 
 public class AudioController : MonoBehaviour
 {
-    private bool m_IsMainBGM;
+    [SerializeField]
+    private AudioSource m_AudioSource;
 
     [SerializeField]
-    private float m_LoopFromSec;
+    private AudioClip m_Intro;
 
-    public AudioSource m_Intro, m_Main;
+    [SerializeField]
+    private AudioClip m_Main;
 
-    private AudioSource m_Source;
-
-    // Use this for initialization
-    void Start()
+    private void Start()
     {
-        m_Source = GetComponent<AudioSource>();
-        m_Intro.Play();
+        m_AudioSource.clip = m_Intro;
+        m_AudioSource.loop = false;
+        m_AudioSource.Play();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (m_Intro.time >= m_LoopFromSec && !m_IsMainBGM)
+        if (m_AudioSource.isPlaying == false &&
+            m_AudioSource.clip == m_Intro)
         {
-            m_IsMainBGM = true;
-            m_Main.Play();
+            m_AudioSource.clip = m_Main;
+            m_AudioSource.loop = true;
+            m_AudioSource.Play();
         }
     }
 }
