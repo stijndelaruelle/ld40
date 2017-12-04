@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,6 +58,8 @@ public class Ship : IDamagable
     {
         get { return m_Cargo; }
     }
+
+    public event Action DeathEvent;
 
     private void Start()
     {
@@ -129,9 +132,15 @@ public class Ship : IDamagable
             _Seq.Append(transform.DORotate(new Vector3(0.0f, 0.0f, zAdd), 2, RotateMode.LocalAxisAdd).SetEase(Ease.OutSine));
             _Seq.Insert(0, transform.DOMoveY(1, 1));
         }
-        _Seq.Append(transform.DOMoveY(-5, 4));
-        _Seq.OnComplete(m_UI.StartGameOver);
+        _Seq.Append(transform.DOMoveY(-2, 2));
+        _Seq.OnComplete(OnGameOverAnimComplete);
         _Seq.Play();
+    }
+
+    private void OnGameOverAnimComplete()
+    {
+        if (DeathEvent != null)
+            DeathEvent();
     }
 
     private void RecalculateSpeed()

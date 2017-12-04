@@ -103,7 +103,10 @@ public class Canon : ICargo
             particle.Play();
         }
 
-        int _r = Random.Range(0, m_ShootSFX.Length);
-        GetComponent<AudioSource>().PlayOneShot(m_ShootSFX[_r]);
+        if (m_ShootSFX.Length > 0)
+        {
+            int _r = Random.Range(0, m_ShootSFX.Length);
+            GetComponent<AudioSource>().PlayOneShot(m_ShootSFX[_r]);
+        }
     }
 }
