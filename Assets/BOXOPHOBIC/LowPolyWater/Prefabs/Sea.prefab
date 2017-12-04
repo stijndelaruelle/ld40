@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 4946656791401536}
   - component: {fileID: 33814664230293680}
   - component: {fileID: 23729382995745614}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Navmesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,9 +414,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4179422108294980}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Sea
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
