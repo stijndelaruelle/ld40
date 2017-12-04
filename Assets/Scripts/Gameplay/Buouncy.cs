@@ -6,10 +6,21 @@ using DG.Tweening;
 public class Buouncy : MonoBehaviour
 {
     [SerializeField]
+    private bool m_PlayOnAwake = false;
+
+    [SerializeField]
     private Vector3 m_Offset;
     private Vector3 m_StartPosition;
 
     private Sequence m_HoverSequence;
+
+    private void Start()
+    {
+        if (m_PlayOnAwake)
+        {
+            StartBuoncy(transform.position);
+        }
+    }
 
     public void StartBuoncy(Vector3 position)
     {
