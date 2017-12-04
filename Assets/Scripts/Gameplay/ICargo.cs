@@ -27,6 +27,13 @@ public abstract class ICargo : MonoBehaviour
     }
 
     [SerializeField]
+    private int m_DubloonValue;
+    public int Value
+    {
+        get { return m_DubloonValue; }
+    }
+
+    [SerializeField]
     protected float m_Gravity;
 
     [SerializeField]

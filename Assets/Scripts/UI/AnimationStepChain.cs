@@ -5,13 +5,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public struct AnimationStep
+public class AnimationStep
 {
     [SerializeField]
     private Vector2 m_Position;
     public Vector2 Position
     {
         get { return m_Position; }
+        set { m_Position = value; }
     }
 
     [SerializeField]
@@ -63,6 +64,14 @@ public class AnimationStepChain : MonoBehaviour
     {
         if (m_PlayOnAwake)
             Play();
+    }
+
+    public AnimationStep GetAnimationStep(int animationStep)
+    {
+        if (animationStep < 0 || animationStep >= m_AnimationSteps.Count)
+            return null;
+
+        return m_AnimationSteps[animationStep];
     }
 
     public void Play()
