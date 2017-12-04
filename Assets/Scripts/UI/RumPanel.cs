@@ -14,17 +14,11 @@ public class RumPanel : MonoBehaviour
     [SerializeField]
     private float m_BuyRumSpeed;
 
-    private GameObject m_RumObject;
+    [SerializeField]
+    private AnimationStepChain m_RumBottlePrefab;
 
-    private void Start()
-    {
-        if (transform.childCount <= 0)
-        {
-            Debug.LogWarning("RumPanel needs at least 1 child to be used as 'prefab'");
-        }
-
-        m_RumObject = transform.GetChild(0).gameObject;
-    }
+    [SerializeField]
+    private Vector3 m_PerBottleOffset;
 
     public void StartBuying(float money)
     {
@@ -33,17 +27,27 @@ public class RumPanel : MonoBehaviour
 
     private IEnumerator BuyRumRoutine(float currentValue)
     {
+        float amountOfBottles = (int)(currentValue / m_RumPrice);
+        Debug.Log(amountOfBottles);
+        Vector3 startPosition = Vector3.zero;
+        startPosition -= (amountOfBottles * (m_PerBottleOffset * 0.5f)) - (m_PerBottleOffset * 0.5f);
+
+        Vector3 nextBottlePosition = startPosition;
+
         while (currentValue >= m_RumPrice)
         {
-            yield return new WaitForSeconds(m_BuyRumSpeed);
-
             //Create more rum
-            //...
+            AnimationStepChain bottle = Instantiate(m_RumBottlePrefab, transform.position, Quaternion.identity, transform);
+            bottle.GetAnimationStep(1).Position = nextBottlePosition;
+            bottle.Play();
 
+            nextBottlePosition += m_PerBottleOffset;
 
             //Pay for it
             currentValue -= m_RumPrice;
-            m_Text.text = ((int)currentValue).ToString();
+            m_Text.text = ((int)currentValue).ToString("00000");
+
+            yield return new WaitForSeconds(m_BuyRumSpeed);
         }
     }
 }
