@@ -89,6 +89,7 @@ public abstract class ICargo : MonoBehaviour
     private AudioClip m_HitDeckSFX;
     [SerializeField]
     private AudioClip m_HitWaterSFX;
+    private bool m_FirstHitIgnored = false;
 
     private float m_TempDot;
 
@@ -221,9 +222,13 @@ public abstract class ICargo : MonoBehaviour
                 if (ship != null)
                 {
                     ship.AddCargo(this);
-                    if (m_HitDeckSFX && !ship.IsSunk)
-                        m_AudioSource.PlayOneShot(m_HitDeckSFX);
-
+                    if (m_FirstHitIgnored)
+                    {
+                        if (m_HitDeckSFX && !ship.IsSunk)
+                            m_AudioSource.PlayOneShot(m_HitDeckSFX);
+                    }
+                    else
+                        m_FirstHitIgnored = true;
                 }
             }
         }
@@ -415,8 +420,13 @@ public abstract class ICargo : MonoBehaviour
                     bubblesFx.Play(projectedPosition, Quaternion.identity);
                 }
             }
-            if (m_HitWaterSFX)
-                m_AudioSource.PlayOneShot(m_HitWaterSFX);
+            if (m_FirstHitIgnored)
+            {
+                if (m_HitWaterSFX)
+                    m_AudioSource.PlayOneShot(m_HitWaterSFX);
+            }
+            else
+                m_FirstHitIgnored = true;
         }
     }
 
