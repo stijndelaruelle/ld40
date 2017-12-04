@@ -264,6 +264,18 @@ public class Ship : IDamagable
         return m_Cargo.OfType<LootOld>().Any();
     }
 
+    public int GetLootValue()
+    {
+        int cummulativeValue = 0;
+
+        foreach(ICargo cargo in m_Cargo)
+        {
+            cummulativeValue += cargo.Value;
+        }
+
+        return cummulativeValue;
+    }
+
     private void NormalizeCargoPosition(ICargo cargo)
     {
         //Terrible calculation, sorry.

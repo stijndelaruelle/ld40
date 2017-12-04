@@ -16,7 +16,8 @@ public class VictoryPanelUI : MonoBehaviour
 
     private void Start()
     {
-        m_EndEvent.LevelEndEvent += OnLevelEnd;
+        if (m_EndEvent != null)
+            m_EndEvent.LevelEndEvent += OnLevelEnd;
     }
 
     private void OnLevelEnd()

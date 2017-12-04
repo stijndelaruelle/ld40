@@ -4,12 +4,5 @@ using UnityEngine;
 
 public class Loot_Gold : ICargo
 {
-    [Header("Loot")]
-    [SerializeField]
-    private float m_Value;
-
-    public float GetValue
-    {
-        get { return m_Value; }
-    }
+    //Why didn't i made ICargo just non abstract..
 }

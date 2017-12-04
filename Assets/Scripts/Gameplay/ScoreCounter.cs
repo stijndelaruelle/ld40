@@ -17,7 +17,7 @@ public class ScoreCounter : MonoBehaviour
 
         foreach (Loot_Gold _cargo in m_Player.GetCargo)
         {
-            m_TotalScore += (int)_cargo.GetValue;
+            m_TotalScore += (int)_cargo.Value;
         }
         m_TotalScore = 1000;
         StartCoroutine(DrawScore());
