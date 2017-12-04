@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using Sjabloon;
+using System.Collections;
 using UnityEngine;
 
 public delegate void CargoDelegate(ICargo cargo);
@@ -135,6 +136,14 @@ public abstract class ICargo : MonoBehaviour
             m_Buouncy.StopBuoncy();
             m_Buouncy.enabled = false;
         }
+
+        StartCoroutine(AudioFix());
+    }
+
+    private IEnumerator AudioFix()
+    {
+        yield return new WaitForSeconds(1);
+        m_FirstHitIgnored = true;
     }
 
     protected virtual void Update()
@@ -227,8 +236,6 @@ public abstract class ICargo : MonoBehaviour
                         if (m_HitDeckSFX && !ship.IsSunk)
                             m_AudioSource.PlayOneShot(m_HitDeckSFX);
                     }
-                    else
-                        m_FirstHitIgnored = true;
                 }
             }
         }
@@ -425,8 +432,6 @@ public abstract class ICargo : MonoBehaviour
                 if (m_HitWaterSFX)
                     m_AudioSource.PlayOneShot(m_HitWaterSFX);
             }
-            else
-                m_FirstHitIgnored = true;
         }
     }
 
