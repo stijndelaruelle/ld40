@@ -100,8 +100,8 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 0.12
-        threshold: 1.8
+        intensity: 0.04
+        threshold: 1.88
         softKnee: 0.5
         radius: 4
         antiFlicker: 0
@@ -153,8 +153,8 @@ MonoBehaviour:
               outSlope: 0
               tangentMode: 0
             - serializedVersion: 2
-              time: 0.22122762
-              value: 0.16010499
+              time: 0.20716113
+              value: 0.20997375
               inSlope: 0.9770374
               outSlope: 0.9770374
               tangentMode: 0
