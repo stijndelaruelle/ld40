@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 212643980305115430}
   - component: {fileID: 114775792533927442}
   - component: {fileID: 114897747831434618}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Grab Tooltip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
