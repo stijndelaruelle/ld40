@@ -25,7 +25,7 @@ MonoBehaviour:
         motionVectorsResolution: 24
         motionVectorsAmplitude: 64
   fog:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       excludeSkybox: 1
   antialiasing:
@@ -40,7 +40,7 @@ MonoBehaviour:
         stationaryBlending: 0.95
         motionBlending: 0.85
   ambientOcclusion:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       intensity: 1
       radius: 0.2
@@ -100,7 +100,7 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 0.15
+        intensity: 0.12
         threshold: 1.8
         softKnee: 0.5
         radius: 4
@@ -112,7 +112,7 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       tonemapping:
-        tonemapper: 2
+        tonemapper: 1
         neutralBlackIn: 0.02
         neutralWhiteIn: 10
         neutralBlackOut: 0
@@ -120,12 +120,12 @@ MonoBehaviour:
         neutralWhiteLevel: 5.3
         neutralWhiteClip: 10
       basic:
-        postExposure: 0
-        temperature: 5
-        tint: 20
+        postExposure: 0.5
+        temperature: 8.4
+        tint: 16.1
         hueShift: 0
         saturation: 1.2
-        contrast: 1
+        contrast: 0.6
       channelMixer:
         red: {x: 1, y: 0, z: 0}
         green: {x: 0, y: 1, z: 0}
@@ -134,8 +134,8 @@ MonoBehaviour:
       colorWheels:
         mode: 1
         log:
-          slope: {r: 1, g: 1, b: 1, a: 0}
-          power: {r: 1, g: 1, b: 1, a: 0}
+          slope: {r: 0.9651357, g: 1, b: 0.74930036, a: 0}
+          power: {r: 0.75904644, g: 0.6976676, b: 1, a: 0}
           offset: {r: 1, g: 1, b: 1, a: 0}
         linear:
           lift: {r: 0, g: 0, b: 0, a: 0}
@@ -148,15 +148,27 @@ MonoBehaviour:
             m_Curve:
             - serializedVersion: 2
               time: 0
-              value: 0
-              inSlope: 1
-              outSlope: 1
+              value: 0.020997405
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+            - serializedVersion: 2
+              time: 0.22122762
+              value: 0.16010499
+              inSlope: 0.9770374
+              outSlope: 0.9770374
+              tangentMode: 0
+            - serializedVersion: 2
+              time: 0.5345268
+              value: 0.7427821
+              inSlope: 1.0767419
+              outSlope: 1.0767419
               tangentMode: 0
             - serializedVersion: 2
               time: 1
-              value: 1
-              inSlope: 1
-              outSlope: 1
+              value: 0.96062994
+              inSlope: 0.040245265
+              outSlope: 0.040245265
               tangentMode: 0
             m_PreInfinity: 2
             m_PostInfinity: 2
