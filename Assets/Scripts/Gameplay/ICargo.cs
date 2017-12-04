@@ -86,7 +86,7 @@ public abstract class ICargo : MonoBehaviour
     [SerializeField]
     private AudioClip m_GrabbedSFX;
     [SerializeField]
-    private AudioClip m_ReleasedSFX;
+    private AudioClip m_HitDeckSFX;
     [SerializeField]
     private AudioClip m_HitWaterSFX;
 
@@ -221,6 +221,9 @@ public abstract class ICargo : MonoBehaviour
                 if (ship != null)
                 {
                     ship.AddCargo(this);
+                    if (m_HitDeckSFX)
+                        m_AudioSource.PlayOneShot(m_HitDeckSFX);
+
                 }
             }
         }
@@ -361,6 +364,7 @@ public abstract class ICargo : MonoBehaviour
 
         SetParent(collision.gameObject.transform);
 
+
         ////Average the collision points
         //Vector3 avgContact = Vector3.zero;
         //for (int i = 0; i < collision.contacts.Length; ++i)
@@ -398,6 +402,7 @@ public abstract class ICargo : MonoBehaviour
             if (m_CanFloat)
             {
                 StartFloating(projectedPosition);
+
             }
             else
             {
@@ -410,7 +415,8 @@ public abstract class ICargo : MonoBehaviour
                     bubblesFx.Play(projectedPosition, Quaternion.identity);
                 }
             }
-
+            if (m_HitWaterSFX)
+                m_AudioSource.PlayOneShot(m_HitWaterSFX);
         }
     }
 

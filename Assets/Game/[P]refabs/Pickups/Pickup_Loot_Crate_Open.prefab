@@ -315,8 +315,8 @@ MonoBehaviour:
     type: 2}
   m_BubblesEffect: {fileID: 0}
   m_GrabbedSFX: {fileID: 8300000, guid: 2f39db226ad713547a64a203a4f8e5bd, type: 3}
-  m_ReleasedSFX: {fileID: 0}
-  m_HitWaterSFX: {fileID: 0}
+  m_HitDeckSFX: {fileID: 8300000, guid: 9661d91bbed4eba4cb8cbc457b34ebf6, type: 3}
+  m_HitWaterSFX: {fileID: 8300000, guid: 20028312f861c7c4b8a96823e009a54b, type: 3}
 --- !u!119 &119262219478875242
 Projector:
   m_ObjectHideFlags: 1

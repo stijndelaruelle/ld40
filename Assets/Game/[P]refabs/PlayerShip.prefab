@@ -2310,8 +2310,8 @@ MonoBehaviour:
     type: 2}
   m_BubblesEffect: {fileID: 0}
   m_GrabbedSFX: {fileID: 8300000, guid: 2f39db226ad713547a64a203a4f8e5bd, type: 3}
-  m_ReleasedSFX: {fileID: 0}
-  m_HitWaterSFX: {fileID: 0}
+  m_HitDeckSFX: {fileID: 8300000, guid: 9661d91bbed4eba4cb8cbc457b34ebf6, type: 3}
+  m_HitWaterSFX: {fileID: 8300000, guid: e91be27414c968d42b19eed8e95afb4c, type: 3}
 --- !u!114 &114088588081444490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2340,7 +2340,7 @@ MonoBehaviour:
     type: 2}
   m_BubblesEffect: {fileID: 0}
   m_GrabbedSFX: {fileID: 0}
-  m_ReleasedSFX: {fileID: 0}
+  m_HitDeckSFX: {fileID: 0}
   m_HitWaterSFX: {fileID: 0}
 --- !u!114 &114089252518646856
 MonoBehaviour:
@@ -2421,8 +2421,8 @@ MonoBehaviour:
     type: 2}
   m_BubblesEffect: {fileID: 0}
   m_GrabbedSFX: {fileID: 8300000, guid: 2f39db226ad713547a64a203a4f8e5bd, type: 3}
-  m_ReleasedSFX: {fileID: 0}
-  m_HitWaterSFX: {fileID: 0}
+  m_HitDeckSFX: {fileID: 8300000, guid: 9661d91bbed4eba4cb8cbc457b34ebf6, type: 3}
+  m_HitWaterSFX: {fileID: 8300000, guid: 20028312f861c7c4b8a96823e009a54b, type: 3}
 --- !u!114 &114420995019601676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2451,8 +2451,8 @@ MonoBehaviour:
     type: 2}
   m_BubblesEffect: {fileID: 0}
   m_GrabbedSFX: {fileID: 8300000, guid: 2f39db226ad713547a64a203a4f8e5bd, type: 3}
-  m_ReleasedSFX: {fileID: 0}
-  m_HitWaterSFX: {fileID: 0}
+  m_HitDeckSFX: {fileID: 8300000, guid: 9661d91bbed4eba4cb8cbc457b34ebf6, type: 3}
+  m_HitWaterSFX: {fileID: 8300000, guid: 20028312f861c7c4b8a96823e009a54b, type: 3}
   m_Cooldown: 1
   m_FirePosition: {fileID: 4972422823516538}
   m_Bullet: {fileID: 114230959367164540, guid: bfd1778eef98505428508311fd4e5c69, type: 2}
@@ -2488,8 +2488,8 @@ MonoBehaviour:
     type: 2}
   m_BubblesEffect: {fileID: 0}
   m_GrabbedSFX: {fileID: 8300000, guid: 2f39db226ad713547a64a203a4f8e5bd, type: 3}
-  m_ReleasedSFX: {fileID: 0}
-  m_HitWaterSFX: {fileID: 0}
+  m_HitDeckSFX: {fileID: 8300000, guid: 9661d91bbed4eba4cb8cbc457b34ebf6, type: 3}
+  m_HitWaterSFX: {fileID: 8300000, guid: e91be27414c968d42b19eed8e95afb4c, type: 3}
 --- !u!114 &114560689853553110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2610,8 +2610,8 @@ MonoBehaviour:
     type: 2}
   m_BubblesEffect: {fileID: 0}
   m_GrabbedSFX: {fileID: 8300000, guid: 2f39db226ad713547a64a203a4f8e5bd, type: 3}
-  m_ReleasedSFX: {fileID: 0}
-  m_HitWaterSFX: {fileID: 0}
+  m_HitDeckSFX: {fileID: 8300000, guid: 9661d91bbed4eba4cb8cbc457b34ebf6, type: 3}
+  m_HitWaterSFX: {fileID: 8300000, guid: e91be27414c968d42b19eed8e95afb4c, type: 3}
 --- !u!114 &114934596650964680
 MonoBehaviour:
   m_ObjectHideFlags: 1
