@@ -22,13 +22,10 @@ public class Canon : ICargo
     private List<ParticleSystem> m_Particles;
     [SerializeField]
     private AudioClip[] m_ShootSFX;
-    private Animator m_Animator;
-
 
     protected override void Start()
     {
         base.Start();
-        m_Animator = GetComponent<Animator>();
     }
 
     protected override void Update()
@@ -84,7 +81,6 @@ public class Canon : ICargo
     public void Fire()
     {
         Fire(null, null);
-        m_Animator.SetTrigger("Shoot");
     }
 
     public void Fire(Mesh mesh, Material[] materials)
