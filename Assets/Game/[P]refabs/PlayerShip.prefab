@@ -807,7 +807,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1907154360944258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.37, y: 0, z: 809.22}
+  m_LocalPosition: {x: 12.7, y: 0, z: -132.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4520386482973138}
@@ -1171,7 +1171,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 95fde9c1f7027314aa12361977e61b05, type: 2}
+  - {fileID: 2100000, guid: e8e791bf42832d849b470fdcfe427d50, type: 2}
   - {fileID: 2100000, guid: be0ca08c303e9f54abed9007dcecbe1c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -1949,6 +1949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3910df946c4b6534281bdd563c10532c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_PlayOnAwake: 0
   m_Offset: {x: 0, y: 0.2, z: 0}
 --- !u!114 &114188841572511142
 MonoBehaviour:
@@ -1961,6 +1962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3910df946c4b6534281bdd563c10532c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_PlayOnAwake: 0
   m_Offset: {x: 0, y: 0.2, z: 0}
 --- !u!114 &114323265627085134
 MonoBehaviour:
@@ -1973,6 +1975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3910df946c4b6534281bdd563c10532c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_PlayOnAwake: 0
   m_Offset: {x: 0, y: 0.2, z: 0}
 --- !u!114 &114327605977899802
 MonoBehaviour:
@@ -2073,6 +2076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3910df946c4b6534281bdd563c10532c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_PlayOnAwake: 0
   m_Offset: {x: 0, y: 0.2, z: 0}
 --- !u!114 &114649777490755008
 MonoBehaviour:
