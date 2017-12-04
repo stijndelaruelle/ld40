@@ -221,7 +221,7 @@ public abstract class ICargo : MonoBehaviour
                 if (ship != null)
                 {
                     ship.AddCargo(this);
-                    if (m_HitDeckSFX)
+                    if (m_HitDeckSFX && !ship.IsSunk)
                         m_AudioSource.PlayOneShot(m_HitDeckSFX);
 
                 }

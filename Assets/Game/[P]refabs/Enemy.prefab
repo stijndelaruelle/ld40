@@ -1384,8 +1384,9 @@ MonoBehaviour:
   m_Health: 1
   m_IsSunk: 0
   Indestructible: 0
-  TargetSide: 0
   m_Player: {fileID: 0}
+  m_LeftsidePlayer: {x: 0, y: 0, z: 0}
+  m_RightsidePlayer: {x: 0, y: 0, z: 0}
   m_Loot:
   - {fileID: 1624539100675182, guid: 6c3fe088b136acf4f8bdc57dec13b938, type: 2}
   - {fileID: 1825281257433818, guid: 52271e9981f270340b4d29d884db94a7, type: 2}
@@ -1420,13 +1421,19 @@ MonoBehaviour:
   m_Buouncy: {fileID: 0}
   m_WaterImpactEffect: {fileID: 0}
   m_BubblesEffect: {fileID: 0}
+  m_GrabbedSFX: {fileID: 0}
+  m_HitDeckSFX: {fileID: 0}
+  m_HitWaterSFX: {fileID: 0}
   m_Cooldown: 1
   m_FirePosition: {fileID: 4511481798542460}
   m_Bullet: {fileID: 114230959367164540, guid: bfd1778eef98505428508311fd4e5c69, type: 2}
   m_Particles:
   - {fileID: 198089630552903184}
   - {fileID: 198353209413708834}
-  m_ShootSFX: []
+  m_ShootSFX:
+  - {fileID: 8300000, guid: fcc9182761298284cb758ba6beac3d3f, type: 3}
+  - {fileID: 8300000, guid: d64d8eb0103cda94fb7228a0d5482dab, type: 3}
+  - {fileID: 8300000, guid: 77a6c76647a51fe45b5ea96c4e2a3d7a, type: 3}
 --- !u!114 &114948241303724688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1453,13 +1460,19 @@ MonoBehaviour:
   m_Buouncy: {fileID: 0}
   m_WaterImpactEffect: {fileID: 0}
   m_BubblesEffect: {fileID: 0}
+  m_GrabbedSFX: {fileID: 0}
+  m_HitDeckSFX: {fileID: 0}
+  m_HitWaterSFX: {fileID: 0}
   m_Cooldown: 1
   m_FirePosition: {fileID: 4960151410356054}
   m_Bullet: {fileID: 114230959367164540, guid: bfd1778eef98505428508311fd4e5c69, type: 2}
   m_Particles:
   - {fileID: 198208598857950200}
   - {fileID: 198865234103037784}
-  m_ShootSFX: []
+  m_ShootSFX:
+  - {fileID: 8300000, guid: fcc9182761298284cb758ba6beac3d3f, type: 3}
+  - {fileID: 8300000, guid: d64d8eb0103cda94fb7228a0d5482dab, type: 3}
+  - {fileID: 8300000, guid: 77a6c76647a51fe45b5ea96c4e2a3d7a, type: 3}
 --- !u!119 &119124284338082704
 Projector:
   m_ObjectHideFlags: 1
