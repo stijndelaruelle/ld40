@@ -266,7 +266,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -660,7 +660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b5995f21f25794d899c1f9d359e122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SceneName: MainMenu
+  m_SceneName: main
   m_ImageFader: {fileID: 0}
   m_AudioFader: {fileID: 0}
 --- !u!114 &114553530830976480
@@ -805,7 +805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Text: {fileID: 114271886894941492}
-  m_RumPrice: 500
+  m_RumPrice: 100
   m_BuyRumSpeed: 0.5
   m_RumBottlePrefab: {fileID: 114525374252422648, guid: 578678e3194d2104f91adf961b521618,
     type: 2}
@@ -876,7 +876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b5995f21f25794d899c1f9d359e122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SceneName: main
+  m_SceneName: MainMenu
   m_ImageFader: {fileID: 0}
   m_AudioFader: {fileID: 0}
 --- !u!114 &114913289556567034

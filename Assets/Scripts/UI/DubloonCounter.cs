@@ -34,7 +34,7 @@ public class DubloonCounter : MonoBehaviour
         yield return new WaitForSeconds(m_StartDelay);
 
         float currentValue = 0.0f;
-        float targetValue = m_Ship.GetLootValue();
+        float targetValue = m_Ship.GetLootValue() + 100; //Always at least 1 bottle of rum!
         float timer = 0.0f;
 
         while (targetValue > currentValue)
