@@ -63,14 +63,24 @@ public class Bullet : PoolableObject
     {
         ImpactEffect effect = null;
 
+        //We hit the water
         if (collision.collider.gameObject.tag == "Water")
         {
             //Water effect
             ObjectPool pool = ObjectPoolManager.Instance.GetPool(m_ImpactWater);
             effect = (ImpactEffect)pool.ActivateAvailableObject();
         }
+
+        //We hit something else
         else
         {
+            //If that's a damageable object, deal damage
+            IDamagable damageAble = collision.gameObject.GetComponent<IDamagable>();
+            if (damageAble != null)
+            {
+                damageAble.Damage(1);
+            }
+
             //Other effect
             ObjectPool pool = ObjectPoolManager.Instance.GetPool(m_ImpactExplosion);
             effect = (ImpactEffect)pool.ActivateAvailableObject();

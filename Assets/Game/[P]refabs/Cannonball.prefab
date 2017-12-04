@@ -40,7 +40,7 @@ Transform:
   m_GameObject: {fileID: 1605341797460124}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -213,8 +213,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MeshFilter: {fileID: 33967288335535812}
   m_MeshRenderer: {fileID: 23950670733748026}
-  m_Speed: 50
-  m_Gravity: 1
+  m_Speed: 10
+  m_Gravity: 0.2
   m_ImpactExplosion: {fileID: 114084544851271308, guid: 0749e3ef1f03a2741b955d80942359b0,
     type: 2}
   m_ImpactWater: {fileID: 114128505786344550, guid: fbf2c0d0876fedb4dbd0a1d77596c37b,
