@@ -45,22 +45,4 @@ public class EnemySpawner : MonoBehaviour
         if (!m_Ships.Contains(_enemy))
             m_Ships.Add(_enemy);
     }
-
-    public void AlertRedirection(EnemyShip _instigator)
-    {
-        foreach (EnemyShip _ship in m_Ships)
-        {
-            if (!_ship.gameObject.activeSelf)
-                return;
-
-            if (_ship.Equals(_instigator))
-                continue;
-
-            if (_ship.IsSunk)
-                continue;
-
-            if (_ship.TargetSide == _instigator.TargetSide)
-                _ship.ChangeDirection();
-        }
-    }
 }
