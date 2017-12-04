@@ -28,7 +28,6 @@ public class RumPanel : MonoBehaviour
     private IEnumerator BuyRumRoutine(float currentValue)
     {
         float amountOfBottles = (int)(currentValue / m_RumPrice);
-        Debug.Log(amountOfBottles);
         Vector3 startPosition = Vector3.zero;
         startPosition -= (amountOfBottles * (m_PerBottleOffset * 0.5f)) - (m_PerBottleOffset * 0.5f);
 

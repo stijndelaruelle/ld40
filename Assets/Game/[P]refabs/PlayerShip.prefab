@@ -807,7 +807,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1907154360944258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.7, y: 0, z: -33.7}
+  m_LocalPosition: {x: -6.37, y: 0, z: 809.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4520386482973138}
@@ -1884,12 +1884,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Weight: 2
+  m_DubloonValue: 0
   m_Gravity: 5
   m_Collider: {fileID: 65969792925844414}
   m_Projection: {fileID: 1219663017237440}
   m_BubblesSFX: {fileID: 0}
   m_Renderer: {fileID: 23189863496223126}
   m_MeshFilter: {fileID: 33721068469698712}
+  m_HoverMaterial: {fileID: 2100000, guid: 1e02f89e19d0c9f4ca4ae92bd056b272, type: 2}
   m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
   m_RotationSpeed: {x: 0, y: 150, z: 0}
   m_CanFloat: 1
@@ -1909,12 +1911,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Weight: 1
+  m_DubloonValue: 0
   m_Gravity: 5
   m_Collider: {fileID: 65325563419813460}
   m_Projection: {fileID: 1393886302838606}
   m_BubblesSFX: {fileID: 0}
   m_Renderer: {fileID: 23394891405815410}
   m_MeshFilter: {fileID: 33853599141620822}
+  m_HoverMaterial: {fileID: 2100000, guid: 1e02f89e19d0c9f4ca4ae92bd056b272, type: 2}
   m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
   m_RotationSpeed: {x: 0, y: 150, z: 0}
   m_CanFloat: 1
@@ -1982,12 +1986,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Weight: 3
+  m_DubloonValue: 0
   m_Gravity: 5
   m_Collider: {fileID: 65861578074359282}
   m_Projection: {fileID: 1480427046337284}
   m_BubblesSFX: {fileID: 0}
   m_Renderer: {fileID: 23757713939940244}
   m_MeshFilter: {fileID: 33411991090968128}
+  m_HoverMaterial: {fileID: 2100000, guid: 1e02f89e19d0c9f4ca4ae92bd056b272, type: 2}
   m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
   m_RotationSpeed: {x: 0, y: 150, z: 0}
   m_CanFloat: 1
@@ -2007,12 +2013,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Weight: 10
+  m_DubloonValue: 0
   m_Gravity: 10
   m_Collider: {fileID: 65960697556220380}
   m_Projection: {fileID: 1508713705193632}
   m_BubblesSFX: {fileID: 0}
   m_Renderer: {fileID: 23298294095564080}
   m_MeshFilter: {fileID: 33950486567503870}
+  m_HoverMaterial: {fileID: 2100000, guid: 1e02f89e19d0c9f4ca4ae92bd056b272, type: 2}
   m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
   m_RotationSpeed: {x: 0, y: 0, z: 0}
   m_CanFloat: 0
@@ -2039,12 +2047,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Weight: 1
+  m_DubloonValue: 0
   m_Gravity: 5
   m_Collider: {fileID: 65460925328301796}
   m_Projection: {fileID: 1510336412696926}
   m_BubblesSFX: {fileID: 0}
   m_Renderer: {fileID: 23609633890110746}
   m_MeshFilter: {fileID: 33221296795432136}
+  m_HoverMaterial: {fileID: 2100000, guid: 1e02f89e19d0c9f4ca4ae92bd056b272, type: 2}
   m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
   m_RotationSpeed: {x: 0, y: 150, z: 0}
   m_CanFloat: 1
@@ -2155,12 +2165,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Weight: 1
+  m_DubloonValue: 0
   m_Gravity: 5
   m_Collider: {fileID: 65509578226137988}
   m_Projection: {fileID: 1147344845950592}
   m_BubblesSFX: {fileID: 0}
   m_Renderer: {fileID: 23314946104714106}
   m_MeshFilter: {fileID: 33416930794613846}
+  m_HoverMaterial: {fileID: 2100000, guid: 1e02f89e19d0c9f4ca4ae92bd056b272, type: 2}
   m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
   m_RotationSpeed: {x: 0, y: 150, z: 0}
   m_CanFloat: 0
