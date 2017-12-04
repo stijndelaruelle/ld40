@@ -349,8 +349,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1489585013269792}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 0.18795557, z: -0, w: 0.98217756}
+  m_LocalPosition: {x: -54.6, y: 0, z: 59.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4884772188800086}
@@ -360,7 +360,7 @@ Transform:
   - {fileID: 4698379408513648}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 21.667002, z: 0}
 --- !u!4 &4386629530810630
 Transform:
   m_ObjectHideFlags: 1
@@ -461,14 +461,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1036297823505862}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.687, y: 0.939, z: -0.575}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.87, y: 0.939, z: -0.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4955874197792900}
   m_Father: {fileID: 4369624441260884}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4926608135112298
 Transform:
   m_ObjectHideFlags: 1
@@ -1060,12 +1060,12 @@ MonoBehaviour:
   m_Health: 1
   m_IsSunk: 0
   Indestructible: 0
-  m_Range: 20
+  m_Range: 60
   m_Player: {fileID: 0}
   m_Canons:
   - {fileID: 114959953094166646}
   m_TargetPosition: {fileID: 0}
-  m_Duration: 5
+  m_Duration: 100
 --- !u!114 &114159690784114142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1105,6 +1105,9 @@ MonoBehaviour:
   m_WaterImpactEffect: {fileID: 114128505786344550, guid: fbf2c0d0876fedb4dbd0a1d77596c37b,
     type: 2}
   m_BubblesEffect: {fileID: 0}
+  m_GrabbedSFX: {fileID: 0}
+  m_HitDeckSFX: {fileID: 0}
+  m_HitWaterSFX: {fileID: 0}
   m_Cooldown: 5
   m_FirePosition: {fileID: 4856186668248180}
   m_Bullet: {fileID: 114230959367164540, guid: bfd1778eef98505428508311fd4e5c69, type: 2}
