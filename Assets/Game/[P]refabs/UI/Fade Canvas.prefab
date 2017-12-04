@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_FadeOutOnAwake: 1
-  m_FadeSpeed: 3
+  m_FadeSpeed: 2
   m_Image: {fileID: 114945874552090976}
 --- !u!114 &114945874552090976
 MonoBehaviour:
