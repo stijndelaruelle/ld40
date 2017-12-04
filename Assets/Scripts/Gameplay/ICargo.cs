@@ -81,6 +81,15 @@ public abstract class ICargo : MonoBehaviour
     [SerializeField]
     private PoolableObject m_BubblesEffect;
 
+    [Header("Sounds")]
+    private AudioSource m_AudioSource;
+    [SerializeField]
+    private AudioClip m_GrabbedSFX;
+    [SerializeField]
+    private AudioClip m_ReleasedSFX;
+    [SerializeField]
+    private AudioClip m_HitWaterSFX;
+
     private float m_TempDot;
 
     private bool m_IsDragged = false;
@@ -109,6 +118,8 @@ public abstract class ICargo : MonoBehaviour
     {
         if (m_Renderer == null)
             return;
+
+        m_AudioSource = GetComponent<AudioSource>();
 
         Material[] matArray = m_Renderer.materials;
 
@@ -260,6 +271,9 @@ public abstract class ICargo : MonoBehaviour
 
         if (StartDragEvent != null)
             StartDragEvent(this);
+
+        if (m_GrabbedSFX)
+            m_AudioSource.PlayOneShot(m_GrabbedSFX);
     }
 
     public void HandleDrag(Vector3 newWorldSpace, Ray ray)
