@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Weight: 0
-  m_DubloonValue: 0
+  m_DubloonValue: 50
   m_Gravity: 5
   m_Collider: {fileID: 65064926502201580}
   m_Projection: {fileID: 1705403374781994}
@@ -296,7 +296,7 @@ MonoBehaviour:
     type: 2}
   m_BubblesEffect: {fileID: 0}
   m_GrabbedSFX: {fileID: 8300000, guid: 2f39db226ad713547a64a203a4f8e5bd, type: 3}
-  m_ReleasedSFX: {fileID: 0}
+  m_HitDeckSFX: {fileID: 0}
   m_HitWaterSFX: {fileID: 0}
 --- !u!114 &114972095068516982
 MonoBehaviour:
