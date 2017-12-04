@@ -3,8 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PressEscape : MonoBehaviour
+public class ChangeSceneOnKeyPress : MonoBehaviour
 {
+    [SerializeField]
+    private KeyCode m_KeyCode;
+
+    [SerializeField]
+    private string m_SceneName;
+
     [SerializeField]
     private ImageFader m_ImageFader;
 
@@ -13,7 +19,7 @@ public class PressEscape : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(m_KeyCode))
         {
             ToMainMenu();
         }
@@ -27,6 +33,6 @@ public class PressEscape : MonoBehaviour
 
     private void OnFadeInComplete()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(m_SceneName);
     }
 }
