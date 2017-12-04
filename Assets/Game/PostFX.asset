@@ -69,10 +69,10 @@ MonoBehaviour:
       screenEdgeMask:
         intensity: 0.03
   depthOfField:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
-      focusDistance: 6
-      aperture: 13.6
+      focusDistance: 0.68
+      aperture: 3.24
       focalLength: 50
       useCameraFov: 1
       kernelSize: 1
@@ -129,7 +129,7 @@ MonoBehaviour:
       channelMixer:
         red: {x: 1, y: 0, z: 0}
         green: {x: 0, y: 1, z: 0}
-        blue: {x: 0, y: 0, z: 1}
+        blue: {x: 0, y: 0, z: 0.947}
         currentEditingChannel: 2
       colorWheels:
         mode: 1
@@ -153,14 +153,14 @@ MonoBehaviour:
               outSlope: 0
               tangentMode: 0
             - serializedVersion: 2
-              time: 0.26214835
-              value: 0.34120733
-              inSlope: 0.9985097
-              outSlope: 0.9985097
+              time: 0.2634271
+              value: 0.26771653
+              inSlope: 1.3157009
+              outSlope: 1.3157009
               tangentMode: 0
             - serializedVersion: 2
-              time: 0.5294118
-              value: 0.71653545
+              time: 0.6265985
+              value: 0.7585302
               inSlope: 1.0767419
               outSlope: 1.0767419
               tangentMode: 0
