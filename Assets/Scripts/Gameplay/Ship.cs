@@ -39,8 +39,6 @@ public class Ship : IDamagable
     [Header("Effects")]
     [SerializeField]
     private ParticleSystem[] m_WaterTrails;
-    [SerializeField]
-    private UIHandler m_UI;
 
     [Header("References")]
     [SerializeField]
@@ -107,6 +105,14 @@ public class Ship : IDamagable
         //Loot_Gold _eject = (Loot_Gold)m_Cargo.FirstOrDefault(c => c is Loot_Gold);
         //_eject.GetComponent<Rigidbody>().AddExplosionForce(10, _eject.transform.position, 1f);
         //m_Cargo.Remove(_eject);
+    }
+
+    public void OnVictory()
+    {
+        m_MaxSpeed = 0.0f;
+        RecalculateSpeed();
+
+        GameEnded = true;
     }
 
     private void OnGameOver()

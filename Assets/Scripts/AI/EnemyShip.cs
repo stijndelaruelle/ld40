@@ -40,21 +40,15 @@ public class EnemyShip : IDamagable
 
         m_Canons = new List<Canon>();
         m_Canons.AddRange(GetComponentsInChildren<Canon>());
-        Spawn();
 
         OnSinkEvent += OnSink;
     }
 
-    public void SetPlayer(GameObject _player)
+    public void Spawn(Vector3 position, GameObject player, EnemySpawner spawnParent)
     {
-        Debug.Log("Setting player");
-        m_Player = _player.transform;
-    }
-
-    public void Spawn()
-    {
-        Debug.Log("Spawning enemy");
-        transform.position = new Vector3(Random.Range(-120f, 120f), 0, Random.Range(-120f, 120f)) + m_Player.transform.position;
+        transform.position = position; //new Vector3(Random.Range(-120f, 120f), 0, Random.Range(-120f, 120f)) + m_Player.transform.position;
+        m_Player = player.transform;
+        SpawnParent = spawnParent;
     }
 
     private void Update()

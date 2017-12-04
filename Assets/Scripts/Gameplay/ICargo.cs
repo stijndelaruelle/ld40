@@ -370,8 +370,8 @@ public abstract class ICargo : MonoBehaviour
         if (m_IsFloating)
             return;
 
-        //Only start floating if we are not parented
-        if (transform.parent.CompareTag("Player"))
+        //Only start floating if we are not parented to the player
+        if (transform.parent != null && transform.parent.CompareTag("Player"))
             return;
 
         if (m_CanFloat == true)

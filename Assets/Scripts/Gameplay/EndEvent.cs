@@ -1,18 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EndEvent : MonoBehaviour
 {
-
-    public UIHandler m_InterfaceHandler;
+    public event Action LevelEndEvent;
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Ship>())
+        Ship ship = other.GetComponent<Ship>();
+        if (ship != null)
         {
-            other.GetComponent<Ship>().GameEnded = true;
-            m_InterfaceHandler.StartGameEnd();
+            ship.OnVictory();
+
+            if (LevelEndEvent != null)
+                LevelEndEvent();
         }
     }
 }

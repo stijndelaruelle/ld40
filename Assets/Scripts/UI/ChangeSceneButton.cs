@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RetryButton : MonoBehaviour
+public class ChangeSceneButton : MonoBehaviour
 {
+    [SerializeField]
+    private string m_SceneName;
+
     [SerializeField]
     private ImageFader m_ImageFader;
     public void Retry()
@@ -14,6 +17,6 @@ public class RetryButton : MonoBehaviour
 
     private void OnFadeInComplete()
     {
-        SceneManager.LoadScene("main");
+        SceneManager.LoadScene(m_SceneName);
     }
 }

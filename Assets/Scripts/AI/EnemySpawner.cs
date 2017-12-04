@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Sjabloon;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [Header("Pool reference")]
     [SerializeField]
-    private ObjectPool m_EnemyPool;
+    private PoolableObject m_Enemy;
 
     [Header("Spawn interval")]
     [SerializeField]
@@ -32,12 +33,17 @@ public class EnemySpawner : MonoBehaviour
         if (m_Time >= m_SpawnInterval)
         {
             m_Time = 0;
-            EnemyShip _enemy = (EnemyShip)m_EnemyPool.ActivateAvailableObject();
-            _enemy.SetPlayer(m_Player);
-            _enemy.SpawnParent = this;
-            if (!m_Ships.Contains(_enemy))
-                m_Ships.Add(_enemy);
+            SpawnEnemy();
         }
+    }
+
+    private void SpawnEnemy()
+    {
+        EnemyShip _enemy = (EnemyShip)ObjectPoolManager.Instance.GetPool(m_Enemy).ActivateAvailableObject();
+        _enemy.Spawn(transform.position, m_Player, this);
+
+        if (!m_Ships.Contains(_enemy))
+            m_Ships.Add(_enemy);
     }
 
     public void AlertRedirection(EnemyShip _instigator)
