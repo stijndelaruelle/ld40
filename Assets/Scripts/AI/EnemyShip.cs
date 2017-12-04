@@ -34,6 +34,9 @@ public class EnemyShip : IDamagable
 
     private List<Canon> m_Canons;
 
+    [SerializeField]
+    private float m_ActivationRange;
+
     private void Start()
     {
         m_Agent = GetComponent<NavMeshAgent>();
@@ -63,6 +66,12 @@ public class EnemyShip : IDamagable
         {
             Sink();
             return;
+        }
+
+        if (Vector3.Distance(transform.position, m_Player.transform.position) < m_ActivationRange)
+        {
+            if (m_Agent.path == null)
+                StartCoroutine(SteerChange());
         }
 
         if (Vector3.Distance(transform.position, m_Player.transform.position) < 30)
@@ -175,6 +184,8 @@ public class EnemyShip : IDamagable
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(m_LeftsidePlayer, 0.5f);
         Gizmos.DrawSphere(m_RightsidePlayer, 0.5f);
+
+        Gizmos.DrawWireSphere(transform.position, m_ActivationRange);
     }
 
     #region PoolableObject
