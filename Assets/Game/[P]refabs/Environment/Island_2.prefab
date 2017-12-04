@@ -157,7 +157,9 @@ GameObject:
   - component: {fileID: 4677810095087198}
   - component: {fileID: 33335651617055526}
   - component: {fileID: 23568906769820730}
-  - component: {fileID: 95621429921990154}
+  - component: {fileID: 64365620343916322}
+  - component: {fileID: 114946838736048066}
+  - component: {fileID: 208364204326460420}
   m_Layer: 0
   m_Name: Island_2
   m_TagString: Untagged
@@ -731,20 +733,48 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1542270779110930}
   m_Mesh: {fileID: 4300018, guid: 80efad75d66a4cc4c97499c63f422aba, type: 3}
---- !u!95 &95621429921990154
-Animator:
-  serializedVersion: 3
+--- !u!64 &64365620343916322
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1720874891764088}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 80efad75d66a4cc4c97499c63f422aba, type: 3}
+--- !u!114 &114946838736048066
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1720874891764088}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 80efad75d66a4cc4c97499c63f422aba, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ceb63f7dc3ea14ea6becb1908d6802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BubbleSFX: {fileID: 0}
+  m_BubblePS: {fileID: 0}
+  m_Health: 1
+  m_IsSunk: 0
+  Indestructible: 1
+--- !u!208 &208364204326460420
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1720874891764088}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 24.908, y: 4.478, z: 21.756}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 1.4670001, y: -1.5690001, z: -0.032}
+  m_TimeToStationary: 0.5

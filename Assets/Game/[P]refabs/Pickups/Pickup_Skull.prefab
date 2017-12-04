@@ -199,17 +199,17 @@ MonoBehaviour:
   m_Gravity: 5
   m_Collider: {fileID: 65696971393532294}
   m_Projection: {fileID: 1855735024880644}
+  m_BubblesSFX: {fileID: 0}
   m_Renderer: {fileID: 23667707333963176}
   m_MeshFilter: {fileID: 33556762062295832}
+  m_HoverMaterial: {fileID: 2100000, guid: 1e02f89e19d0c9f4ca4ae92bd056b272, type: 2}
   m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
   m_RotationSpeed: {x: 0, y: 150, z: 0}
   m_CanFloat: 0
   m_Buouncy: {fileID: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967279
   m_WaterImpactEffect: {fileID: 114128505786344550, guid: fbf2c0d0876fedb4dbd0a1d77596c37b,
     type: 2}
+  m_BubblesEffect: {fileID: 0}
 --- !u!119 &119657008709570542
 Projector:
   m_ObjectHideFlags: 1
