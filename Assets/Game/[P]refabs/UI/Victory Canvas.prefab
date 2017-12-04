@@ -81,6 +81,7 @@ GameObject:
   - component: {fileID: 114553530830976480}
   - component: {fileID: 114621289349548248}
   - component: {fileID: 114427174659389212}
+  - component: {fileID: 82863761354622674}
   m_Layer: 5
   m_Name: Victory Canvas
   m_TagString: Untagged
@@ -107,6 +108,87 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!82 &82863761354622674
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1506125299302758}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243589837042582380, guid: a8821e062e4a4d84a80d082216d0f6f9,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 0268d8256aba9f04da94cb9ca433dd46, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114048315268400532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -292,11 +374,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EndEvent: {fileID: 0}
-  m_Ship: {fileID: 0}
+  m_AudioSource: {fileID: 82863761354622674}
   m_Animations:
   - {fileID: 114196539046863534}
   - {fileID: 114782480557777660}
   - {fileID: 114750724177821406}
+  - {fileID: 114048315268400532}
 --- !u!114 &114479375257283764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -337,6 +420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SceneName: MainMenu
   m_ImageFader: {fileID: 0}
+  m_AudioFader: {fileID: 0}
 --- !u!114 &114553530830976480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -513,6 +597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SceneName: main
   m_ImageFader: {fileID: 0}
+  m_AudioFader: {fileID: 0}
 --- !u!222 &222431210893152872
 CanvasRenderer:
   m_ObjectHideFlags: 1

@@ -10,9 +10,14 @@ public class ChangeSceneButton : MonoBehaviour
 
     [SerializeField]
     private ImageFader m_ImageFader;
+
+    [SerializeField]
+    private AudioFader m_AudioFader;
+
     public void Retry()
     {
         m_ImageFader.FadeIn(OnFadeInComplete);
+        m_AudioFader.FadeOut();
     }
 
     private void OnFadeInComplete()

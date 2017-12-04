@@ -9325,11 +9325,6 @@ Prefab:
     m_Modifications:
     - target: {fileID: 224230537507713506, guid: 6fe26305554477a489526187af5fee3c,
         type: 2}
-      propertyPath: m_RootOrder
-      value: 31
-      objectReference: {fileID: 0}
-    - target: {fileID: 224230537507713506, guid: 6fe26305554477a489526187af5fee3c,
-        type: 2}
       propertyPath: m_LocalPosition.x
       value: 960
       objectReference: {fileID: 0}
@@ -9417,21 +9412,6 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224230537507713506, guid: 6fe26305554477a489526187af5fee3c,
-        type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224230537507713506, guid: 6fe26305554477a489526187af5fee3c,
-        type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224230537507713506, guid: 6fe26305554477a489526187af5fee3c,
-        type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6fe26305554477a489526187af5fee3c, type: 2}
@@ -16482,6 +16462,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1069242602 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114125702570206478, guid: 6fe26305554477a489526187af5fee3c,
+    type: 2}
+  m_PrefabInternal: {fileID: 910496820}
+  m_Script: {fileID: 11500000, guid: 47507a05792329744b82b212038ac0ef, type: 3}
+--- !u!114 &1069242605 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114074140209473092, guid: 6fe26305554477a489526187af5fee3c,
+    type: 2}
+  m_PrefabInternal: {fileID: 910496820}
+  m_Script: {fileID: 11500000, guid: c3ab909abde7d894487d1d284708d3bf, type: 3}
 --- !u!1 &1096263293
 GameObject:
   m_ObjectHideFlags: 0
@@ -17055,7 +17047,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1406144933}
-        m_MethodName: StartGame
+        m_MethodName: Retry
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17108,11 +17100,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1406144928}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2a95067f6904a242b153ab72236ea2b, type: 3}
+  m_Script: {fileID: 11500000, guid: 48b5995f21f25794d899c1f9d359e122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Animators: []
-  m_Panel: {fileID: 0}
+  m_SceneName: main
+  m_ImageFader: {fileID: 1069242602}
+  m_AudioFader: {fileID: 1069242605}
 --- !u!1 &1436412832
 GameObject:
   m_ObjectHideFlags: 0

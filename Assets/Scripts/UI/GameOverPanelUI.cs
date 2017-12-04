@@ -8,6 +8,9 @@ public class GameOverPanelUI : MonoBehaviour
     private Ship m_Ship;
 
     [SerializeField]
+    private AudioSource m_AudioSource;
+
+    [SerializeField]
     private List<AnimationStepChain> m_Animations;
 
     private void Start()
@@ -17,7 +20,11 @@ public class GameOverPanelUI : MonoBehaviour
 
     private void OnShipDeath()
     {
-        foreach(AnimationStepChain animation in m_Animations)
+        //Play sound
+        m_AudioSource.Play();
+
+        //Trigger animation
+        foreach (AnimationStepChain animation in m_Animations)
         {
             animation.Play();
         }

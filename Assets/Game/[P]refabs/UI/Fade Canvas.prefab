@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 222751330511668492}
   - component: {fileID: 114945874552090976}
   - component: {fileID: 114125702570206478}
+  - component: {fileID: 114074140209473092}
   m_Layer: 5
   m_Name: Fade
   m_TagString: Untagged
@@ -46,6 +47,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114074140209473092
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1339993775869010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3ab909abde7d894487d1d284708d3bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Original: {fileID: 245946137198870912, guid: a8821e062e4a4d84a80d082216d0f6f9,
+    type: 2}
+  m_FadedOut: {fileID: 245654305162069912, guid: a8821e062e4a4d84a80d082216d0f6f9,
+    type: 2}
+  m_FadeInSpeed: 0
+  m_FadeOutSpeed: 1
+  m_FadeInOnAwake: 1
 --- !u!114 &114097504575832736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -79,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_FadeOutOnAwake: 1
-  m_FadeSpeed: 2
+  m_FadeSpeed: 1
   m_Image: {fileID: 114945874552090976}
 --- !u!114 &114945874552090976
 MonoBehaviour:

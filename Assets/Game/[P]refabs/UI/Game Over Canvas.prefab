@@ -156,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SceneName: MainMenu
   m_ImageFader: {fileID: 0}
+  m_AudioFader: {fileID: 0}
 --- !u!114 &114159637887433426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -296,6 +297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SceneName: main
   m_ImageFader: {fileID: 0}
+  m_AudioFader: {fileID: 0}
 --- !u!114 &114585831995055108
 MonoBehaviour:
   m_ObjectHideFlags: 1
