@@ -215,6 +215,7 @@ MonoBehaviour:
   m_BubblesSFX: {fileID: 0}
   m_Renderer: {fileID: 23761529957441348}
   m_MeshFilter: {fileID: 33569242187731078}
+  m_HoverMaterial: {fileID: 2100000, guid: 1e02f89e19d0c9f4ca4ae92bd056b272, type: 2}
   m_ActiveMaterial: {fileID: 2100000, guid: bc0e3ff848b341a438bf71bff34c358a, type: 2}
   m_RotationSpeed: {x: 0, y: 150, z: 0}
   m_CanFloat: 1

@@ -53,6 +53,9 @@ public abstract class ICargo : MonoBehaviour
     }
 
     [SerializeField]
+    private Material m_HoverMaterial;
+
+    [SerializeField]
     private Material m_ActiveMaterial;
     private Material[] m_DefaultMaterials;
 
@@ -205,6 +208,31 @@ public abstract class ICargo : MonoBehaviour
         }
 
         m_WasGrounded = m_IsGrounded;
+    }
+
+    //DragHandler callbacks
+    public void StartHover()
+    {
+        if (m_Renderer != null)
+        {
+            Material[] matArray = m_Renderer.materials;
+            for (int i = 0; i < matArray.Length; ++i)
+            {
+                matArray[i] = m_HoverMaterial;
+            }
+
+            m_Renderer.materials = matArray;
+        }
+    }
+
+    public void StopHover()
+    {
+        if (m_Renderer != null)
+        {
+            Material[] matArray = m_Renderer.materials;
+            matArray = m_DefaultMaterials;
+            m_Renderer.materials = matArray;
+        }
     }
 
     public void StartDrag()

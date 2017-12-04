@@ -6,10 +6,12 @@ public class DragHandler : MonoBehaviour
 {
     [SerializeField]
     private Camera m_Camera;
-    private ICargo m_CurrentCargo;
+    private ICargo m_CurrentDraggingCargo;
+    private ICargo m_CurrentHoverCargo;
+
     public bool IsDragging
     {
-        get { return (m_CurrentCargo != null); }
+        get { return (m_CurrentDraggingCargo != null); }
     }
 
     [SerializeField]
@@ -25,16 +27,25 @@ public class DragHandler : MonoBehaviour
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
+        {
             HandleBeginDrag();
+            return;
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            HandleEndDrag();
+            return;
+        }
 
         if (Input.GetMouseButton(0))
         {
             HandleDrag();
             HandleScroll();
+            return;
         }
 
-        if (Input.GetMouseButtonUp(0))
-            HandleEndDrag();
+        HandleHover();
     }
 
     private void HandleBeginDrag()
@@ -52,26 +63,26 @@ public class DragHandler : MonoBehaviour
         if (cargo == null)
             return;
 
-        m_CurrentCargo = cargo;
+        m_CurrentDraggingCargo = cargo;
         m_ObjectDistance = hitInfo.distance;
 
-        m_CurrentCargo.StartDrag();
+        m_CurrentDraggingCargo.StartDrag();
     }
 
     private void HandleDrag()
     {
-        if (m_CurrentCargo == null)
+        if (m_CurrentDraggingCargo == null)
             return;
 
         Ray ray = m_Camera.ScreenPointToRay(Input.mousePosition);
         Vector3 worldSpace = ray.origin + (ray.direction * m_ObjectDistance);
 
-        m_CurrentCargo.HandleDrag(worldSpace, ray);
+        m_CurrentDraggingCargo.HandleDrag(worldSpace, ray);
     }
 
     private void HandleEndDrag()
     {
-        if (m_CurrentCargo == null)
+        if (m_CurrentDraggingCargo == null)
             return;
 
         //Check if we are over an object that uses cargo (so far only the canon)
@@ -85,19 +96,19 @@ public class DragHandler : MonoBehaviour
 
             if (canon != null)
             {
-                canon.Fire(m_CurrentCargo.MeshFilter.mesh, m_CurrentCargo.Renderer.materials);
-                GameObject.Destroy(m_CurrentCargo.gameObject); //POOL!
+                canon.Fire(m_CurrentDraggingCargo.MeshFilter.mesh, m_CurrentDraggingCargo.Renderer.materials);
+                GameObject.Destroy(m_CurrentDraggingCargo.gameObject); //POOL!
                 return;
             }
         }
 
-        m_CurrentCargo.StopDrag();
-        m_CurrentCargo = null;
+        m_CurrentDraggingCargo.StopDrag();
+        m_CurrentDraggingCargo = null;
     }
 
     private void HandleScroll()
     {
-        if (m_CurrentCargo == null)
+        if (m_CurrentDraggingCargo == null)
             return;
 
         float scrollWheel = Input.GetAxis("Mouse ScrollWheel");
@@ -108,5 +119,28 @@ public class DragHandler : MonoBehaviour
 
         if (m_ObjectDistance > m_MaxDistance)
             m_ObjectDistance = m_MaxDistance;
+    }
+
+    private void HandleHover()
+    {
+        Ray ray = m_Camera.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit hitInfo;
+        Physics.Raycast(ray, out hitInfo, m_MaxDistance);
+
+        if (hitInfo.collider == null)
+            return;
+
+        ICargo cargo = hitInfo.collider.GetComponent<ICargo>();
+
+        if (m_CurrentHoverCargo != null && m_CurrentHoverCargo != cargo)
+        {
+            m_CurrentHoverCargo.StopHover();
+        }
+
+        m_CurrentHoverCargo = cargo;
+
+        if (cargo != null)
+            m_CurrentHoverCargo.StartHover();
     }
 }
