@@ -197,7 +197,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3910df946c4b6534281bdd563c10532c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Offset: {x: 0, y: 0, z: 0}
+  m_PlayOnAwake: 0
+  m_Offset: {x: 0, y: 0.2, z: 0}
 --- !u!114 &114320079472675414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -210,6 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Weight: 3
+  m_DubloonValue: 0
   m_Gravity: 5
   m_Collider: {fileID: 65647186182084770}
   m_Projection: {fileID: 1923842002989398}
@@ -224,7 +226,6 @@ MonoBehaviour:
   m_WaterImpactEffect: {fileID: 114128505786344550, guid: fbf2c0d0876fedb4dbd0a1d77596c37b,
     type: 2}
   m_BubblesEffect: {fileID: 0}
-  m_Value: 30
 --- !u!119 &119211943067678438
 Projector:
   m_ObjectHideFlags: 1

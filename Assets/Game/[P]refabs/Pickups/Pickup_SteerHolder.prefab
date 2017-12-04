@@ -185,6 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Weight: 0
+  m_DubloonValue: 0
   m_Gravity: 5
   m_Collider: {fileID: 65331011635092400}
   m_Projection: {fileID: 1757151628410786}
@@ -222,7 +223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3910df946c4b6534281bdd563c10532c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Offset: {x: 0, y: 0, z: 0}
+  m_PlayOnAwake: 0
+  m_Offset: {x: 0, y: 0.2, z: 0}
 --- !u!119 &119469097902454274
 Projector:
   m_ObjectHideFlags: 1
