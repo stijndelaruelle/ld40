@@ -93,7 +93,7 @@ public class Canon : ICargo
 
         //Fire bullet
         Bullet bullet = (Bullet)ObjectPoolManager.Instance.GetPool(m_Bullet).ActivateAvailableObject();
-        bullet.StartFlying(m_FirePosition.position, transform.forward, mesh, materials);
+        bullet.StartFlying(m_FirePosition.position, m_FirePosition.forward, mesh, materials);
 
         //Set cooldown
         m_CooldownTimer = m_Cooldown;
