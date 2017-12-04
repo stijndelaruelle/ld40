@@ -21,8 +21,9 @@ GameObject:
   - component: {fileID: 4374121552727254}
   - component: {fileID: 33852080518017190}
   - component: {fileID: 23481785258643424}
-  - component: {fileID: 95356777340061946}
   - component: {fileID: 64686257480961418}
+  - component: {fileID: 114965647634115432}
+  - component: {fileID: 208576905879144786}
   m_Layer: 0
   m_Name: Rock_5
   m_TagString: Untagged
@@ -95,23 +96,37 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Convex: 1
-  m_InflateMesh: 1
+  m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: c04db538bef03ad4da78bfa7e13e9277, type: 3}
---- !u!95 &95356777340061946
-Animator:
-  serializedVersion: 3
+--- !u!114 &114965647634115432
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1072487307451638}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: c04db538bef03ad4da78bfa7e13e9277, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ceb63f7dc3ea14ea6becb1908d6802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BubbleSFX: {fileID: 0}
+  m_BubblePS: {fileID: 0}
+  m_Health: 1
+  m_IsSunk: 0
+  Indestructible: 1
+--- !u!208 &208576905879144786
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1072487307451638}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.524, y: 1.9150001, z: 1.4510001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.841, y: 2.01, z: 0.026}
+  m_TimeToStationary: 0.5
