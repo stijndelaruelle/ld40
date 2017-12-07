@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Weight: 0
-  m_DubloonValue: 0
+  m_DubloonValue: 50
   m_Gravity: 5
   m_Collider: {fileID: 65630190088598526}
   m_Projection: {fileID: 1520192237839422}
